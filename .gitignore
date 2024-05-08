@@ -1,3 +1,5 @@
 .env
-manualEpub # symlink for nixosConfigurations.nixos-wsl.config.system.build.manual.manualEpub
-result # Symlink for system build
+manualEpub
+  # symlink for nixosConfigurations.nixos-wsl.config.system.build.manual.manualEpub
+result
+  # Symlink for system build
