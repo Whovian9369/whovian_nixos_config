@@ -66,7 +66,7 @@
     my_pkgs.rom-properties
 
     # Why does this *just* work? Blehh :P
-    # Is it because `$ nix run github:Qyriad/Xil` works?
+    # Is it because "$(nix run github:Qyriad/Xil)" works?
     xil
    ];
 
