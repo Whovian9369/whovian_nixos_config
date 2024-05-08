@@ -73,7 +73,7 @@
           home-manager.nixosModules.home-manager
           {
             home-manager = {
-              # users.whovian = import ./home/home.nix;
+
               sharedModules = [
                 ./home/home.nix
                 agenix.homeManagerModules.default
