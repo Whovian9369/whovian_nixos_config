@@ -9,7 +9,18 @@
     */
     # agenix.packages.x86_64-linux.default
   ];
-  
+
+  /*
+  documentation = {
+    nixos = {
+      includeAllModules = true;
+    };
+    man = {
+      generateCaches = true;
+    };
+  };
+  */
+
   nixpkgs = {
     config = {
       allowUnfree = true;
