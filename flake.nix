@@ -72,6 +72,9 @@
           nixos-wsl.nixosModules.wsl
           home-manager.nixosModules.home-manager
           {
+
+            system.configurationRevision = self.rev or self.dirtyRev or "dirty";
+
             home-manager = {
 
               sharedModules = [
