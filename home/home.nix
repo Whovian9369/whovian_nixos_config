@@ -2,6 +2,7 @@
   config,
   pkgs,
   my_pkgs,
+  xil,
   ...
 }:
 
@@ -49,7 +50,7 @@
     pkgs.ncdu
     pkgs.nixfmt-classic
     pkgs.progress
-    pkgs.pyrosimple # `lstor` etc, seems to be a `pyrocore` fork?
+    pkgs.pyrosimple
     pkgs.python3
     pkgs.quickbms
     pkgs.rclone
@@ -63,6 +64,10 @@
     # my_pkgs.irdkit
     my_pkgs.ird_tools
     my_pkgs.rom-properties
+
+    # Why does this *just* work? Blehh :P
+    # Is it because `$ nix run github:Qyriad/Xil` works?
+    xil
    ];
 
   /*

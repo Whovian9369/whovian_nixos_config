@@ -17,6 +17,9 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
         # optional, not necessary for the module
+      inputs.darwin.follows = "";
+        # optionally choose not to download darwin deps
+        # (saves some resources on Linux)
     };
 
     home-manager = {
@@ -28,9 +31,14 @@
       url = "/home/whovian/.flakes";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    xil = {
+      url = "github:Qyriad/Xil";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   }; # inputs
 
-  outputs = { self, nixpkgs, nixos-wsl, agenix, home-manager, my_packages, ... }:
+  outputs = { self, nixpkgs, nixos-wsl, agenix, home-manager, my_packages, xil, ... }:
   {
     nixosConfigurations = {
       nixos-wsl = nixpkgs.lib.nixosSystem {
@@ -49,12 +57,14 @@
 
               users.whovian.home.packages = [
                 agenix.packages.x86_64-linux.default
+
               ];
 
               # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
               extraSpecialArgs = {
                 system = "x86_64-linux";
                 inherit my_packages;
+                inherit xil;
                 my_pkgs = my_packages.packages.x86_64-linux;
               };
             };
