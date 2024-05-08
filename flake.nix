@@ -42,6 +42,11 @@
       inputs.flake-utils.follows = "flake-utils";
     };
 
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     #########
     # Extra inputs that I am adding just to make my life easier,
     # but don't like that they're included >:(
@@ -62,7 +67,11 @@
 
   }; # inputs
 
-  outputs = { self, nixpkgs, nixos-wsl, agenix, home-manager, my_packages, xil, ... }:
+  outputs = { 
+    # Needed
+    self, nixpkgs, nixos-wsl,
+    # Added
+    agenix, home-manager, my_packages, nix-index-database, xil, ... }:
   {
     nixosConfigurations = {
       nixos-wsl = nixpkgs.lib.nixosSystem {
@@ -80,6 +89,7 @@
               sharedModules = [
                 ./home/home.nix
                 agenix.homeManagerModules.default
+                nix-index-database.hmModules.nix-index
               ];
 
               users.whovian.home.packages = [
