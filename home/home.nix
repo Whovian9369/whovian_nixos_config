@@ -74,9 +74,7 @@
     Disabled
       pkgs.binutils
         # Instead just do `nix shell nixpkgs#binutils -c strings -- INPUT.ext > INPUT.ext.strings
-      pkgs.jq
       pkgs.mpv
-      pkgs.ripgrep
       pkgs.terminator
       pkgs.yt-dlp
       pkgs.p7zip
