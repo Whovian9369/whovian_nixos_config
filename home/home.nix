@@ -128,7 +128,7 @@
       enable = true;
     };
     nix-index = {
-      enable = true;
+      enable = false;
     };
     ripgrep = {
       enable = true;
