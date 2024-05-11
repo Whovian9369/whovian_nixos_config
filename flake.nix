@@ -23,7 +23,7 @@
         # Optionally choose not to download darwin deps
         # (saves some resources on Linux)
       inputs.systems.follows = "nix-systems_default";
-      inputs.home-manager.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
     };
 
     home-manager = {
