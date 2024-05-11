@@ -40,6 +40,7 @@
     pkgs.colorized-logs
     pkgs.croc
     pkgs.dhex
+    pkgs.fd
     pkgs.file
     pkgs.gdrive3
     pkgs.git

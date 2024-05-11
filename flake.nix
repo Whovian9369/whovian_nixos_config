@@ -70,7 +70,7 @@
   outputs = { 
     # Needed
     self, nixpkgs, nixos-wsl,
-    # Added
+    # Added by me
     agenix, home-manager, my_packages, nix-index-database, xil, ... }:
   {
     nixosConfigurations = {
@@ -81,11 +81,11 @@
           nixos-wsl.nixosModules.wsl
           home-manager.nixosModules.home-manager
           {
-
             system.configurationRevision = self.rev or self.dirtyRev or "dirty";
 
             home-manager = {
-
+              useGlobalPkgs = true;
+              useUserPackages = true;
               sharedModules = [
                 ./home/home.nix
                 agenix.homeManagerModules.default
@@ -94,7 +94,6 @@
 
               users.whovian.home.packages = [
                 agenix.packages.x86_64-linux.default
-
               ];
 
               # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
