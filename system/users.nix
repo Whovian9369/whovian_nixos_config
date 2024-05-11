@@ -14,8 +14,8 @@
           "wheel"
           "cdrom"
         ];
-        initialPassword = "abcde"; # I need to log in somehow
         shell = pkgs.zsh;
+        initialPassword = "abcde"; # I need to log in somehow
       };
     };
   };
