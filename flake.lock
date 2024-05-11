@@ -4,7 +4,7 @@
       "inputs": {
         "darwin": [],
         "home-manager": [
-          "nixpkgs"
+          "home-manager"
         ],
         "nixpkgs": [
           "nixpkgs"
