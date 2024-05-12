@@ -128,7 +128,8 @@
       enable = true;
     };
     nix-index = {
-      enable = false;
+      enable = true;
+      enableZshIntegration = false;
     };
     ripgrep = {
       enable = true;
