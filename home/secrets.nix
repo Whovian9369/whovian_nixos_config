@@ -4,4 +4,5 @@ in
 {
   "secrets/openai_key.age".publicKeys = [ whovian ];
   "secrets/curse.age".publicKeys = [ whovian ];
+  "secrets/itchy.age".publicKeys = [ whovian ];
 }
