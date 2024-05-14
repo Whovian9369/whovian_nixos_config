@@ -83,23 +83,6 @@
         "type": "github"
       }
     },
-    "my_packages": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1715061149,
-        "narHash": "sha256-ZM13/Z/7W9POKVIoMIJzRRzKY8v9oMD1nhLdXej0pFY=",
-        "path": "/home/whovian/.flakes",
-        "type": "path"
-      },
-      "original": {
-        "path": "/home/whovian/.flakes",
-        "type": "path"
-      }
-    },
     "nix-index-database": {
       "inputs": {
         "nixpkgs": [
@@ -181,7 +164,6 @@
         "agenix": "agenix",
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
-        "my_packages": "my_packages",
         "nix-index-database": "nix-index-database",
         "nix-systems_default": "nix-systems_default",
         "nixos-wsl": "nixos-wsl",

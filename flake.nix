@@ -31,11 +31,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    my_packages = {
-      url = "/home/whovian/.flakes";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     xil = {
       url = "github:Qyriad/Xil";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -71,13 +66,13 @@
     # Needed
     self, nixpkgs, nixos-wsl,
     # Added by me
-    agenix, home-manager, my_packages, nix-index-database, xil, ... }:
+    agenix, home-manager, nix-index-database, xil, ... }:
   {
     nixosConfigurations = {
       nixos-wsl = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./system/configuration.nix
+          ./system/nixos-wsl/configuration.nix
           nixos-wsl.nixosModules.wsl
           home-manager.nixosModules.home-manager
           {
@@ -87,21 +82,23 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               sharedModules = [
-                ./home/home.nix
                 agenix.homeManagerModules.default
                 nix-index-database.hmModules.nix-index
               ];
 
-              users.whovian.home.packages = [
-                agenix.packages.x86_64-linux.default
-              ];
+              users.whovian = ./home/home.nix;
 
               # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
               extraSpecialArgs = {
                 system = "x86_64-linux";
-                inherit my_packages;
                 inherit xil;
-                my_pkgs = my_packages.packages.x86_64-linux;
+                inherit nixpkgs;
+                pkgs = import nixpkgs {
+                  system = "x86_64-linux";
+                };
+                inherit agenix;
+                # inherit my_packages;
+                # my_pkgs = my_packages.packages.x86_64-linux;
               };
             };
           }
