@@ -76,7 +76,7 @@
           nixos-wsl.nixosModules.wsl
           home-manager.nixosModules.home-manager
           {
-            system.configurationRevision = self.rev or self.dirtyRev or "dirty";
+            system.configurationRevision = self.shortRev or self.dirtyShortRev or "dirty";
 
             home-manager = {
               useGlobalPkgs = true;
