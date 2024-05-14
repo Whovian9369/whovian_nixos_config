@@ -37,9 +37,6 @@
     */
     stateVersion = "23.05"; # Please read the comment before changing.
 
-    # The home.packages option allows you to install Nix packages into your
-    # environment.
-
     # Let Home Manager install and manage itself.
     # Probably not needed for a module?
     # programs.home-manager.enable = true;

@@ -10,12 +10,14 @@
     bat = {
       enable = true;
     };
+
     direnv = {
       enable = true;
       enableBashIntegration = true;
       enableZshIntegration = true;
       nix-direnv.enable = true;
     };
+
     git = {
       enable = true;
       userName = "Whovian9369";
@@ -26,15 +28,19 @@
         };
       };
     };
+
     jq = {
       enable = true;
     };
+
     nix-index = {
       enable = false;
     };
+
     ripgrep = {
       enable = true;
     };
+
     zsh = {
       enable = true;
       # Honestly unsure if I should be using `programs.zsh.envExtra` or
@@ -53,7 +59,11 @@
         theme = "bira";
       };
     };
+
   };
+
+  # The home.packages option allows you to install Nix packages into your
+  # environment.
 
   home.packages = [
     pkgs._7zz
@@ -97,21 +107,27 @@
   /*
     Disabled
       pkgs.binutils
-        # Instead just do `nix shell nixpkgs#binutils -c strings -- INPUT.ext > INPUT.ext.strings
+        # Just use "nix shell nixpkgs#binutils -c strings -- INPUT"
       pkgs.mpv
+        # Not needed on WSL
       pkgs.terminator
-      pkgs.yt-dlp
+        # Not needed on WSL, even though I'd like it on WSL.
       pkgs.p7zip
         # Replaced in favour of nixpkgs#_7zz
-    Disabled
+      pkgs.yt-dlp
+        # Not needed on WSL
   */
 
   /*
     # It is sometimes useful to fine-tune packages, for example, by applying
     # overrides. You can do that directly here, just don't forget the
-    # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # fonts?
-    (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+    # parentheses.
+    # Maybe you want to install Nerd Fonts with a limited number of fonts?
+    (pkgs.nerdfonts.override {
+      fonts = [
+        "FantasqueSansMono"
+      ];
+    })
   */
 
 }
