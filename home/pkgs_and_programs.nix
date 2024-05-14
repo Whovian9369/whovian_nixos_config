@@ -104,18 +104,18 @@
     xil.packages.${system}.xil
    ];
 
+  # Disabled Packages
   /*
-    Disabled
-      pkgs.binutils
-        # Just use "nix shell nixpkgs#binutils -c strings -- INPUT"
-      pkgs.mpv
-        # Not needed on WSL
-      pkgs.terminator
-        # Not needed on WSL, even though I'd like it on WSL.
-      pkgs.p7zip
-        # Replaced in favour of nixpkgs#_7zz
-      pkgs.yt-dlp
-        # Not needed on WSL
+    pkgs.binutils
+      # Just use "nix shell nixpkgs#binutils -c strings -- INPUT"
+    pkgs.mpv
+      # Not needed on WSL
+    pkgs.p7zip
+      # Replaced in favour of nixpkgs#_7zz
+    pkgs.terminator
+      # Not needed on WSL, even though I'd like it on WSL sometimes.
+    pkgs.yt-dlp
+      # Not needed on WSL
   */
 
   /*
