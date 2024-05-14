@@ -102,7 +102,7 @@
         file = ./secrets/openai_key.age;
       };
       itchy = {
-        file = ./secrets/itch.age;
+        file = ./secrets/itchy.age;
       };
     };
   };
