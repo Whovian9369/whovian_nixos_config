@@ -10,3 +10,11 @@ If you have suggestions on "fixing" or "cleaning up" my configurations, please a
 [[Xe Iaso] Nix Flakes on WSL](https://xeiaso.net/blog/nix-flakes-4-wsl-2022-05-01/)
 
 [[Home-Manager GitHub/Site] Setting up `home-manager` as a NixOS module.](https://nix-community.github.io/home-manager/index.xhtml#sec-flakes-nixos-module)
+
+### Notes:
+```bash
+$ sudo nix-channel --list
+nixos https://nixos.org/channels/nixos-23.11
+nixos-wsl https://github.com/nix-community/NixOS-WSL/archive/refs/heads/main.tar.gz
+```
+
