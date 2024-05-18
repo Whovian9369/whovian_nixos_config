@@ -95,6 +95,7 @@
                 inherit nixpkgs;
                 pkgs = import nixpkgs {
                   system = "x86_64-linux";
+                  config.allowUnfree = true;
                 };
                 inherit agenix;
                 # inherit my_packages;
