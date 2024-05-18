@@ -40,9 +40,10 @@ stdenv.mkDerivation {
   meta = {
     description = "PS3Dec r5 source mirror";
     homepage = "https://github.com/al3xtjames/PS3Dec";
-    license = lib.licenses.mit;
+    license = lib.licenses.unfree;
       # Technically it was posted to the 3k3y forums without a license file,
-      # So technically it's probably "All Rights Reserved" but.... Meh whatever
-    maintainers = with lib.maintainers; [ whovian9369 ];
+      # So technically it's probably "All Rights Reserved"...
+      # I think that's how this works?
+    maintainers = with lib.maintainers; [ ];
   };
 }
