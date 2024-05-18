@@ -106,5 +106,11 @@
         ];
       };
     };
+
+    packages.x86_64-linux = {
+      irdkit = callPackage ./home/packages/irdkit/package.nix {};
+      ird_tools = callPackage ./home/packages/ird_tools/package.nix {};
+      # rom-properties = callPackage ./home/packages/rom-properties/package.nix {};
+    };
   };
 }
