@@ -9,13 +9,12 @@ let
 
   # Especially for dotnet packages, remember to update "/flake.nix" too!
   my_packages = {
-    irdkit = callPackage ./packages/irdkit/package.nix {};
-    ird_tools = callPackage ./packages/ird_tools/package.nix {};
-    ps3dec = callPackage ./packages/ps3dec/package.nix {};
-    sabretools = callPackage ./packages/sabretools/package.nix {};
-    rom-properties = callPackage ./packages/rom-properties/package.nix {};
+    irdkit = pkgs.callPackage ./packages/irdkit/package.nix {};
+    ird_tools = pkgs.callPackage ./packages/ird_tools/package.nix {};
+    ps3dec = pkgs.callPackage ./packages/ps3dec/package.nix {};
+    sabretools = pkgs.callPackage ./packages/sabretools/package.nix {};
+    rom-properties = pkgs.callPackage ./packages/rom-properties/package.nix {};
   };
-  callPackage = pkgs.callPackage;
 
 in
 {
