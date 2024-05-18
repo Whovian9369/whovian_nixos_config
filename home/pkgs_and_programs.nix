@@ -11,7 +11,8 @@ let
   my_packages = {
     irdkit = callPackage ./packages/irdkit/package.nix {};
     ird_tools = callPackage ./packages/ird_tools/package.nix {};
-    ps3dec = callPackage ./home/packages/ps3dec/package.nix {};
+    ps3dec = callPackage ./packages/ps3dec/package.nix {};
+    # Sample = callPackage ./packages/Sample/package.nix {};
     # rom-properties = callPackage ./packages/rom-properties/package.nix {};
   };
   callPackage = pkgs.callPackage;
