@@ -116,6 +116,7 @@
     packages.x86_64-linux = {
       irdkit = pkgs.callPackage ./home/packages/irdkit/package.nix {};
       ird_tools = pkgs.callPackage ./home/packages/ird_tools/package.nix {};
+      ps3dec = pkgs.callPackage ./home/packages/ps3dec/package.nix {};
       # rom-properties = callPackage ./home/packages/rom-properties/package.nix {};
     };
   };
