@@ -1,4 +1,5 @@
-{ lib,
+{
+  lib,
   buildDotnetModule,
   dotnetCorePackages,
   fetchFromGitHub
@@ -20,10 +21,14 @@ buildDotnetModule {
   dotnet-sdk = dotnetCorePackages.sdk_8_0;
   dotnet-runtime = dotnetCorePackages.runtime_8_0;
   nugetDeps = ./deps.nix;
-  projectFile = "SabreTools.sln";
-  # projectFile = "SabreTools/SabreTools.csproj";
+  # projectFile = "SabreTools.sln";
+  projectFile = "SabreTools/SabreTools.csproj";
   dotnetBuildFlags = [ "--framework net8.0" ];
   dotnetInstallFlags = [ "--framework net8.0" ];
+
+  postFixup = ''
+    mv $out/bin/SabreTools $out/bin/sabretools
+  '';
 
   meta = {
     description = "DAT management tool with advanced editing and sorting features";
