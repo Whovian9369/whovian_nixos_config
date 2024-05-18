@@ -67,6 +67,12 @@
     self, nixpkgs, nixos-wsl,
     # Added by me
     agenix, home-manager, nix-index-database, xil, ... }:
+  let
+    pkgs = import nixpkgs {
+      system = "x86_64-linux";
+      config.allowUnfree = true;
+    };
+  in
   {
     nixosConfigurations = {
       nixos-wsl = nixpkgs.lib.nixosSystem {
@@ -108,8 +114,8 @@
     };
 
     packages.x86_64-linux = {
-      irdkit = callPackage ./home/packages/irdkit/package.nix {};
-      ird_tools = callPackage ./home/packages/ird_tools/package.nix {};
+      irdkit = pkgs.callPackage ./home/packages/irdkit/package.nix {};
+      ird_tools = pkgs.callPackage ./home/packages/ird_tools/package.nix {};
       # rom-properties = callPackage ./home/packages/rom-properties/package.nix {};
     };
   };
