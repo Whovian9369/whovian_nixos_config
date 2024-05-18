@@ -1,4 +1,4 @@
-{ 
+{
   lib,
   fetchFromGitHub,
   gcc13Stdenv,
@@ -32,14 +32,15 @@ gcc13Stdenv.mkDerivation {
     homepage = "https://github.com/Zarh/ird_tools";
     description = "DESCRIPTION PLACEHOLDER";
     longDescription = "DESCRIPTION PLACEHOLDER";
-    license = lib.licenses.gpl3;
-    # license = lib.licenses.unfree;
-    # Dev feels that it should be GPLv3, but doesn't have a `LICENSE` file in
-      # the repository "proving" the licensing. Running with it for now.
-      # Info on this: https://github.com/Zarh/ird_tools/issues/3
-      # Keeping `lib.licenses.unfree` license comment just to make sure I
-        # remember
-    maintainers = with lib.maintainers; [  ];
+    license = lib.licenses.unfree;
+    /*
+      Dev feels that it should be GPLv3, but doesn't have a `LICENSE` file in
+      the repository "proving" the licensing. Running with it for now.
+      Info on this: https://github.com/Zarh/ird_tools/issues/3
+      I'm keeping `lib.licenses.unfree` license comment just to make sure I
+      remember
+    */
+    maintainers = "whovian9369";
     mainProgram = "ird_tools";
     platforms = lib.platforms.linux;
   };

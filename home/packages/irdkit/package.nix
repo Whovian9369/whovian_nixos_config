@@ -1,4 +1,5 @@
-{ lib,
+{
+  lib,
   buildDotnetModule,
   dotnetCorePackages,
   fetchFromGitHub
