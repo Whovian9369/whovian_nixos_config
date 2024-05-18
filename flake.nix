@@ -118,7 +118,7 @@
       ird_tools = pkgs.callPackage ./home/packages/ird_tools/package.nix {};
       ps3dec = pkgs.callPackage ./home/packages/ps3dec/package.nix {};
       sabretools = pkgs.callPackage ./home/packages/sabretools/package.nix {};
-      rom-properties = callPackage ./home/packages/rom-properties/package.nix {};
+      rom-properties = pkgs.callPackage ./home/packages/rom-properties/package.nix {};
     };
   };
 }
