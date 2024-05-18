@@ -42,6 +42,20 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    ### Lix! Lix! Lix! Lix! Lix! Lix!
+
+    lix = {
+      url = "git+https://git@git.lix.systems/lix-project/lix?ref=refs/tags/2.90-beta.1";
+      flake = false;
+    };
+
+    lix-module = {
+      url = "git+https://git.lix.systems/lix-project/nixos-module";
+      inputs.lix.follows = "lix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
+
     #########
     # Extra inputs that I am adding just to make my life easier,
     # but don't like that they're included >:(
@@ -59,12 +73,13 @@
       url = "github:nix-systems/default";
     };
 
-
   }; # inputs
 
   outputs = { 
     # Needed
     self, nixpkgs, nixos-wsl,
+    # Lix
+    lix-module,
     # Added by me
     agenix, home-manager, nix-index-database, xil, ... }:
   let
@@ -79,7 +94,9 @@
         system = "x86_64-linux";
         modules = [
           ./system/nixos-wsl/configuration.nix
+          ./system/nix_lix.nix
           nixos-wsl.nixosModules.wsl
+          lix-module.nixosModules.default
           home-manager.nixosModules.home-manager
           {
             system.configurationRevision = self.shortRev or self.dirtyShortRev or "dirty";
