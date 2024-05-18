@@ -8,8 +8,8 @@
   stdenv,
 
   ### Ninja
-  withNinja ? false
-  ninja,
+  withNinja ? false,
+  ninja
 }:
 
 stdenv.mkDerivation {
@@ -30,7 +30,7 @@ stdenv.mkDerivation {
     mbedtls_2
     perl
     python3
-  ] ++ lib.optionals stdenv.withNinja ninja;
+  ] ++ lib.optionals withNinja ninja;
 
   installPhase = ''
     mkdir -p $out/bin
