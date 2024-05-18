@@ -9,7 +9,6 @@ buildDotnetModule {
   pname = "libird";
   version = "0.9.2";
     # NuGet page: https://www.nuget.org/packages/LibIRD
-    # NuGet version used there as of 2024-02-07 is 0.4.3
 
   src = fetchFromGitHub {
     owner = "Deterous";
