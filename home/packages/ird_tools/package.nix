@@ -41,7 +41,7 @@ gcc13Stdenv.mkDerivation {
       I'm keeping `lib.licenses.gpl3` license comment just to make sure I
       remember to change it back... If the dev adds the file.
     */
-    maintainers = "whovian9369";
+    maintainers = with lib.maintainers; [  ];
     mainProgram = "ird_tools";
     platforms = lib.platforms.linux;
   };
