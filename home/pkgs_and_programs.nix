@@ -5,6 +5,16 @@
   xil,
   ...
 }:
+let
+
+  my_packages = {
+    irdkit = callPackage ./packages/irdkit/package.nix {};
+    ird_tools = callPackage ./packages/ird_tools/package.nix {};
+    # rom-properties = callPackage ./home/packages/rom-properties/package.nix {};
+  };
+  callPackage = pkgs.callPackage;
+
+in
 {
   programs = {
     bat = {
@@ -59,8 +69,9 @@
         theme = "bira";
       };
     };
-
   };
+
+
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
@@ -96,9 +107,9 @@
     pkgs.xxd
     pkgs.yq
 
-    # my_pkgs.irdkit
-    # my_pkgs.ird_tools
-    # my_pkgs.rom-properties
+    my_packages.irdkit
+    my_packages.ird_tools
+    # my_packages.rom-properties
 
     agenix.packages.${system}.default
     xil.packages.${system}.xil
