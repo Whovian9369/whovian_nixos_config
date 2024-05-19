@@ -104,12 +104,16 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              sharedModules = [
-                agenix.homeManagerModules.default
-                nix-index-database.hmModules.nix-index
-              ];
 
-              users.whovian = ./home/home.nix;
+              users = {
+                whovian = {
+                  imports = [
+                    ./home/home.nix
+                    agenix.homeManagerModules.default
+                    nix-index-database.hmModules.nix-index
+                  ];
+                };
+              };
 
               # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
               extraSpecialArgs = {
