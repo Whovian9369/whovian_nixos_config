@@ -25,9 +25,12 @@ in
 
     direnv = {
       enable = true;
-      enableBashIntegration = true;
-      enableZshIntegration = true;
       nix-direnv.enable = true;
+      enableZshIntegration = true;
+      enableBashIntegration = true;
+      enableFishIntegration = false;
+      enableNushellIntegration = false;
+      loadInNixShell = true;
     };
 
     git = {
