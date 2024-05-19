@@ -3,7 +3,7 @@ I needed to put my config into a `git` repo, so I made my first system config fl
 If you have suggestions on "fixing" or "cleaning up" my configurations, please add it to the [Discussions](about:blank) so I can take a look at it later!
 
 ### Future reference:
-[[github:eclairevoyant/flake-migration - /nixos.md]How to switch to flakes from path-based nix](https://github.com/eclairevoyant/flake-migration/blob/main/nixos.md)
+[[github:eclairevoyant/flake-migration - /nixos.md] How to switch to flakes from path-based nix](https://github.com/eclairevoyant/flake-migration/blob/main/nixos.md)
 
 [[NixOS-WSL GitHub/Site] How to configure NixOS-WSL with flakes?](https://nix-community.github.io/NixOS-WSL/howto.html)
 
