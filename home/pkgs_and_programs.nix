@@ -30,7 +30,7 @@ in
       enableBashIntegration = true;
       enableFishIntegration = false;
       enableNushellIntegration = false;
-      loadInNixShell = true;
+      # loadInNixShell = true;
     };
 
     git = {
