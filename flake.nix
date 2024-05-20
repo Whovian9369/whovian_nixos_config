@@ -125,8 +125,6 @@
                   config.allowUnfree = true;
                 };
                 inherit agenix;
-                # inherit my_packages;
-                # my_pkgs = my_packages.packages.x86_64-linux;
               };
             };
           }
