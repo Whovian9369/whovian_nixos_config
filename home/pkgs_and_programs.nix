@@ -49,7 +49,10 @@ in
     };
 
     nix-index = {
-      enable = false;
+      enable = true;
+      enableZshIntegration = false;
+      enableBashIntegration = false;
+      enableFishIntegration = false;
     };
 
     ripgrep = {
