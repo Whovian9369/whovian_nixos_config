@@ -11,8 +11,9 @@ If you have suggestions on "fixing" or "cleaning up" my configurations, please a
 
 - [[Home-Manager GitHub/Site] Setting up `home-manager` as a NixOS module.](https://nix-community.github.io/home-manager/index.xhtml#sec-flakes-nixos-module)
 
-- [[github:LGUG2Z/nixos-wsl-starter - "A sane, batteries-included starter template for running NixOS on WSL"]](https://github.com/LGUG2Z/nixos-wsl-starter)
+- [[github:LGUG2Z/nixos-wsl-starter] "A sane, batteries-included starter template for running NixOS on WSL"](https://github.com/LGUG2Z/nixos-wsl-starter)
 
+- [[githubL:ashebanow Starred - Example Nix Configs] These are other people's nix configs I've found useful, informative, and/or inspirational.](https://github.com/stars/ashebanow/lists/example-nix-configs/)
 
 ### Notes:
 ```bash
