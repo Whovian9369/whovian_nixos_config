@@ -15,7 +15,7 @@ If you have suggestions on "fixing" or "cleaning up" my configurations, please a
 
 - [[githubL:ashebanow Starred - Example Nix Configs] "These are other people's nix configs I've found useful, informative, and/or inspirational."](https://github.com/stars/ashebanow/lists/example-nix-configs/)
 
-### Extra notes for possible future use:
+### Notes for possible future use:
 ```nix
 virtualisation.docker = {
   enableOnBoot = true;
@@ -55,7 +55,7 @@ nix = {
 };
 ```
 
-### Notes:
+### Information Backups:
 ```bash
 $ sudo nix-channel --list
 nixos https://nixos.org/channels/nixos-23.11
