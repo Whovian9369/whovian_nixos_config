@@ -16,10 +16,13 @@ If you have suggestions on "fixing" or "cleaning up" my configurations, please a
 - [[githubL:ashebanow Starred - Example Nix Configs] "These are other people's nix configs I've found useful, informative, and/or inspirational."](https://github.com/stars/ashebanow/lists/example-nix-configs/)
 
 ### Notes for possible future use:
+I really really should look further into these before actually using them. 
 ```nix
 virtualisation.docker = {
   enableOnBoot = true;
-  autoPrune.enable = true;
+  autoPrune = {
+    enable = true;
+  };
 };
 
 wsl = {
@@ -44,6 +47,7 @@ nix = {
       flake = inputs.nixpkgs;
     };
   };
+
   nixPath = [
     "nixpkgs=${inputs.nixpkgs.outPath}"
   ];
