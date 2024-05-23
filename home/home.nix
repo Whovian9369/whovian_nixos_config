@@ -42,12 +42,6 @@
     # programs.home-manager.enable = true;
   };
 
-  # nixpkgs = {
-  #   config = {
-  #     allowUnfree = true;
-  #   };
-  # };
-
   age = {
     identityPaths = [
       /home/whovian/.ssh/id_ed25519.nix
