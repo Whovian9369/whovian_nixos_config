@@ -15,10 +15,49 @@ If you have suggestions on "fixing" or "cleaning up" my configurations, please a
 
 - [[githubL:ashebanow Starred - Example Nix Configs] "These are other people's nix configs I've found useful, informative, and/or inspirational."](https://github.com/stars/ashebanow/lists/example-nix-configs/)
 
+### Extra notes for possible future use:
+```nix
+virtualisation.docker = {
+  enableOnBoot = true;
+  autoPrune.enable = true;
+};
+
+wsl = {
+  # Enable integration with Docker Desktop (needs to be installed)
+  docker-desktop.enable = false;
+};
+
+environment.shells = [pkgs.zsh];
+
+nix = {
+  settings = {
+    access-tokens = [
+      "github.com=${github_token-variable}"
+      "gitlab.com=OAuth2:${gitlab_token-variable}"
+    ];
+    accept-flake-config = true;
+    auto-optimise-store = true;
+  };
+
+  registry = {
+    nixpkgs = {
+      flake = inputs.nixpkgs;
+    };
+  };
+  nixPath = [
+    "nixpkgs=${inputs.nixpkgs.outPath}"
+  ];
+
+  gc = {
+    automatic = true;
+    options = "--delete-older-than 7d";
+  };
+};
+```
+
 ### Notes:
 ```bash
 $ sudo nix-channel --list
 nixos https://nixos.org/channels/nixos-23.11
 nixos-wsl https://github.com/nix-community/NixOS-WSL/archive/refs/heads/main.tar.gz
 ```
-
