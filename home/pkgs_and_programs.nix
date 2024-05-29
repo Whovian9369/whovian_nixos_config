@@ -124,6 +124,7 @@ in
     my_packages.ps3dec
     my_packages.sabretools
     my_packages.new_rclone
+    # my_packages.hactoolnet-bin
     # my_packages.rom-properties
 
     agenix.packages.${system}.default
@@ -134,11 +135,13 @@ in
   /*
     pkgs.binutils
       # Just use "nix shell nixpkgs#binutils -c strings -- INPUT"
+    pkgs.hactoolnet-bin
+      # Not needed on WSL as I currently use the Windows version.
     pkgs.mpv
       # Not needed on WSL
     pkgs.p7zip
       # Replaced in favour of nixpkgs#_7zz
-    # pkgs.rclone
+    pkgs.rclone
       # my_packages.new_rclone is the version with the patched build.
     pkgs.terminator
       # Not needed on WSL, even though I'd like it on WSL sometimes.
