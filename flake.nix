@@ -94,6 +94,9 @@
         system = "x86_64-linux";
         modules = [
           ./system/nixos-wsl/configuration.nix
+          ./system/dotnet_os_codename-workaround.nix
+            # Source of this fix file is
+            # https://github.com/nazarewk-iac/nix-configs/blob/main/modules/ascii-workaround.nix
           ./system/nix_lix.nix
           nixos-wsl.nixosModules.wsl
           lix-module.nixosModules.default
