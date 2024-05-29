@@ -14,7 +14,12 @@ let
     ps3dec = pkgs.callPackage ./packages/ps3dec/package.nix {};
     sabretools = pkgs.callPackage ./packages/sabretools/package.nix {};
     rom-properties = pkgs.callPackage ./packages/rom-properties/package.nix {};
+    new_rclone = pkgs.rclone.overrideAttrs (oldAttrs: rec {
+        patches = [ ./packages/new_rclone/patches/rclone_8ffe3e462cbf5688c37c54009db09d8dcb486860.diff ];
+      }
+    );
   };
+
 
 in
 {
@@ -107,7 +112,6 @@ in
     pkgs.pyrosimple
     pkgs.python3
     pkgs.quickbms
-    pkgs.rclone
     pkgs.screen
     pkgs.sshfs
     pkgs.unrar-wrapper
@@ -119,6 +123,7 @@ in
     my_packages.ird_tools
     my_packages.ps3dec
     my_packages.sabretools
+    my_packages.new_rclone
     # my_packages.rom-properties
 
     agenix.packages.${system}.default
@@ -133,6 +138,8 @@ in
       # Not needed on WSL
     pkgs.p7zip
       # Replaced in favour of nixpkgs#_7zz
+    # pkgs.rclone
+      # my_packages.new_rclone is the version with the patched build.
     pkgs.terminator
       # Not needed on WSL, even though I'd like it on WSL sometimes.
     pkgs.yt-dlp

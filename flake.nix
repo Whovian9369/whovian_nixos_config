@@ -138,6 +138,11 @@
       ps3dec = pkgs.callPackage ./home/packages/ps3dec/package.nix {};
       sabretools = pkgs.callPackage ./home/packages/sabretools/package.nix {};
       rom-properties = pkgs.callPackage ./home/packages/rom-properties/package.nix {};
+      new_rclone = pkgs.rclone.overrideAttrs (
+        oldAttrs: {
+          patches = [ ./home/packages/new_rclone/patches/rclone_8ffe3e462cbf5688c37c54009db09d8dcb486860.diff ];
+        }
+      );
     };
   };
 }
