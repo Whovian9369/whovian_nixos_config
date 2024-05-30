@@ -42,7 +42,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    ### Lix! Lix! Lix! Lix! Lix! Lix!
+    ### Lix! Lix! Lix!
 
     lix = {
       url = "git+https://git@git.lix.systems/lix-project/lix?ref=refs/tags/2.90-beta.1";
