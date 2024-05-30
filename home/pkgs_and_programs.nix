@@ -136,18 +136,19 @@ in
   /*
     pkgs.binutils
       # Just use "nix shell nixpkgs#binutils -c strings -- INPUT"
-    pkgs.hactoolnet-bin
-      # Not needed on WSL as I currently use the Windows version.
     pkgs.mpv
       # Not needed on WSL
     pkgs.p7zip
       # Replaced in favour of nixpkgs#_7zz
     pkgs.rclone
-      # my_packages.new_rclone is the version with the patched build.
+      # Replaced with my_packages.new_rclone which is a patched build.
     pkgs.terminator
       # Not needed on WSL, even though I'd like it on WSL sometimes.
     pkgs.yt-dlp
       # Not needed on WSL
+\
+    my_packages.hactoolnet-bin
+      # Not needed on WSL as I currently use the Windows version.
   */
 
   /*
