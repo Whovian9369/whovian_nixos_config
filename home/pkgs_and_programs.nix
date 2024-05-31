@@ -125,8 +125,8 @@ in
     my_packages.ps3dec
     my_packages.sabretools
     my_packages.new_rclone
+    my_packages.rom-properties
     # my_packages.hactoolnet-bin
-    # my_packages.rom-properties
 
     agenix.packages.${system}.default
     xil.packages.${system}.xil
