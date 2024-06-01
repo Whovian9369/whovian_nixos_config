@@ -73,7 +73,7 @@ stdenv.mkDerivation {
       --replace-fail "SCMP_SYS(write)," \
         "SCMP_SYS(write), SCMP_SYS(getdents64),"
     substituteInPlace "src/rp-stub/CMakeLists.txt" \
-      --replace-fail "{CMAKE_INSTALL_PREFIX}/" ""
+      --replace-fail "{CMAKE_INSTALL_PREFIX}/\$" ""
   '';
 
   meta = {
