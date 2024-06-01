@@ -16,6 +16,11 @@ If you have suggestions on "fixing" or "cleaning up" my configurations, please a
 - [[githubL:ashebanow Starred - Example Nix Configs] "These are other people's nix configs I've found useful, informative, and/or inspirational."](https://github.com/stars/ashebanow/lists/example-nix-configs/)
 
 ### Notes for possible future use:
+
+`/run/udev/rules.d` exists. Might be good to remember.
+
+-------------------------------
+
 I really really should look further into these before actually using them. 
 ```nix
 virtualisation.docker = {
