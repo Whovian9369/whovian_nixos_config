@@ -54,9 +54,26 @@ stdenv.mkDerivation {
     "-DINSTALL_APPARMOR=OFF"
   ];
 
+  /*
+    About "postPatch"... patches.
+      "src/librpsecure/os-secure_linux.c" change is needed to complete the
+        build as it's not being detected automatically. (WSL Issue????)
+      "src/rp-stub/CMakeLists.txt" change is needed to properly symlink
+        `result/libexec/rp-thumbnail` to `result/bin/rp-stub` due to the odd
+        double-path bug as described in
+        https://github.com/NixOS/nixpkgs/issues/144170
+          # CMake incorrect absolute include/lib paths tracking issue
+        https://github.com/NixOS/nixpkgs/pull/172347 and
+          #  cmake: add check-pc-files hook to check broken pc files
+        https://github.com/NixOS/nixpkgs/pull/247474
+          #  cmake: make check-pc-files hook also check .cmake files
+  */
   postPatch = ''
     substituteInPlace "src/librpsecure/os-secure_linux.c" \
-      --replace "SCMP_SYS(write)," "SCMP_SYS(write), SCMP_SYS(getdents64),"
+      --replace-fail "SCMP_SYS(write)," \
+        "SCMP_SYS(write), SCMP_SYS(getdents64),"
+    substituteInPlace "src/rp-stub/CMakeLists.txt" \
+      --replace-fail "{CMAKE_INSTALL_PREFIX}/" ""
   '';
 
   meta = {
@@ -68,3 +85,30 @@ stdenv.mkDerivation {
     platforms = lib.platforms.all;
   };
 }
+
+
+/*
+
+  Notes:
+
+  "$STORE_PATH" in these notes reference "nix/store/pnyxqz1vi124i18zdbl8ad1vypai73yg-rom-properties-git"
+  "$CMAKE_INSTALL_BINDIR" matches variable in Cmake flags
+  "$CMAKE_INSTALL_LIBDIR" matches variable in Cmake flags
+  "$CMAKE_INSTALL_LIBEXECDIR" matches variable in Cmake flags
+  =============================================================
+  /$CMAKE_INSTALL_LIBDIR/debug/$STORE_PATH/$CMAKE_INSTALL_LIBEXECDIR/rp-download.debug
+  /$CMAKE_INSTALL_LIBDIR/debug/$STORE_PATH/$CMAKE_INSTALL_LIBDIR/libromdata.debug
+  /$CMAKE_INSTALL_LIBDIR/debug/$STORE_PATH/$CMAKE_INSTALL_BINDIR/rpcli.debug
+  /$CMAKE_INSTALL_LIBDIR/debug/$STORE_PATH/$CMAKE_INSTALL_BINDIR/rp-thumbnail.debug
+  /$CMAKE_INSTALL_LIBDIR/debug/$STORE_PATH/$CMAKE_INSTALL_BINDIR/rp-config.debug
+
+  What I think I want the debug paths to end up as:
+  $CMAKE_INSTALL_LIBDIR/debug/libexec/rp-download.debug
+  $CMAKE_INSTALL_LIBDIR/debug/lib/libromdata.debug
+  $CMAKE_INSTALL_LIBDIR/debug/bin/rpcli.debug
+  $CMAKE_INSTALL_LIBDIR/debug/bin/rp-thumbnail.debug
+  $CMAKE_INSTALL_LIBDIR/debug/bin/rp-config.debug
+
+  ... Do I even need to build the debug executables anyway?
+
+*/
