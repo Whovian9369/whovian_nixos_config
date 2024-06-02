@@ -1,5 +1,8 @@
 .env
 manualEpub*
-  # symlink for nixosConfigurations.nixos-wsl.config.system.build.manual.manualEpub
+  # symlink for
+  # nixosConfigurations.nixos-wsl.config.system.build.manual.manualEpub
 result*
   # Symlink for system build
+/system/xps/
+  # Ignore the `nixps` config since it's out of commission right now anyway.
