@@ -113,7 +113,6 @@ in
     pkgs.pyrosimple
     pkgs.python3
     pkgs.quickbms
-    pkgs.screen
     pkgs.sshfs
     pkgs.unrar-wrapper
     pkgs.wget
@@ -142,6 +141,8 @@ in
       # Replaced in favour of nixpkgs#_7zz
     pkgs.rclone
       # Replaced with my_packages.new_rclone which is a patched build.
+    pkgs.screen
+      # Replaced with System `programs.screen.enable`
     pkgs.terminator
       # Not needed on WSL, even though I'd like it on WSL sometimes.
     pkgs.yt-dlp
