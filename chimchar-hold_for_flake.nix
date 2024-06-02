@@ -71,7 +71,7 @@
 
   outputs = { 
     # Needed
-    self, nixpkgs, nixos-wsl,
+    self, nixpkgs,
     # Lix
     lix-module,
     # Added by me
