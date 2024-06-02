@@ -147,7 +147,7 @@ in
       # Not needed on WSL, even though I'd like it on WSL sometimes.
     pkgs.yt-dlp
       # Not needed on WSL
-\
+
     my_packages.hactoolnet-bin
       # Not needed on WSL as I currently use the Windows version.
   */
