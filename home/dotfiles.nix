@@ -34,4 +34,7 @@
       alias ssl "set ssl:verify-certificate false"
     '';
   };
+
+  xdg.configFile = {
+  };
 }

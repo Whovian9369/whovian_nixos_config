@@ -56,6 +56,9 @@
       itchy = {
         file = ./secrets/itchy.age;
       };
+      elixire = {
+        file = ./secrets/elixire.age;
+      };
     };
   };
 }

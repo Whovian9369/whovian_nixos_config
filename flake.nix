@@ -133,6 +133,28 @@
           }
         ];
       };
+      isoimage = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          # ./configuration.nix
+          {
+            nix = {
+              extraOptions = "
+                experimental-features = nix-command flakes
+              ";
+            };
+            programs = {
+              zsh = {
+                enable = true;
+              };
+            };
+            users = {
+              defaultUserShell = pkgs.zsh;
+            };
+          }
+          "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix"
+        ];
+      };
     };
 
     packages.x86_64-linux = {
