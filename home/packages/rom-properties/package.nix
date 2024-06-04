@@ -1,10 +1,11 @@
 {
   lib,
   stdenv,
-  fetchFromGitHub,
   cmake,
-  gettext,
   curl,
+  fetchFromGitHub,
+  gettext,
+  glib,
   libjpeg,
   libpng,
   libseccomp,
@@ -12,10 +13,17 @@
   lzo,
   nettle,
   pkg-config,
-  tinyxml2,
+  tinyxml-2,
   zlib,
   zstd,
-  glib,
+
+  # Not really required afaik, but I like quieting the warnings :)
+  pcre2,
+  minizip-ng,
+  libselinux,
+  libsepol,
+  util-linux,
+  inih,
 
   # Use "Ninja" for the build.
   useNinja ? false,
@@ -39,24 +47,30 @@ stdenv.mkDerivation {
 
   nativeBuildInputs = [
     cmake
-    nettle.dev
     pkg-config
+    # So many "dev" package outputs, lol
+    nettle.dev
     glib.dev
-    tinyxml2
-  ]
-  ++ lib.optionals useNinja [ ninja ];
-
-  buildInputs = [
-    gettext
+    libselinux.dev
+    libsepol.dev
+    pcre2.dev
+    util-linux.dev
     curl.dev
     libjpeg.dev
     libpng.dev
     libseccomp.dev
     lz4.dev
-    lzo
     zlib.dev
     zstd.dev
-    tinyxml2
+  ]
+  ++ lib.optionals useNinja [ ninja ];
+
+  buildInputs = [
+    gettext
+    lzo
+    tinyxml-2
+    minizip-ng
+    inih
   ]
   ++ lib.optionals useTracker [ tracker ];
 
@@ -117,8 +131,22 @@ stdenv.mkDerivation {
 
 /* NOTES
 
-  Package 'libpcre2-8', required by 'glib-2.0', not found
-  Package libpcre2-8 was not found in the pkg-config search path.
-  Perhaps you should add the directory containing `libpcre2-8.pc'
+  *** ROM Properties Page Shell Extension v2.3.0+ ***
+  Build Summary:
+  - Target CPU architecture: amd64
+  - Building these UI frontends:
+  - Building command-line frontend: Yes
+  - GNOME Tracker API version: (none)
+  - libromdata is built as: shared library (.so)
+  - Security mechanism: seccomp()
+  - Decryption functionality: Enabled
+  - XML parsing: Enabled (system)
+  - PVRTC decoder: Enabled
+  - ZSTD decompression: Enabled (system)
+  - LZ4 decompression: Enabled (system)
+  - LZO decompression: Enabled (system)
+  Building these third-party libraries from extlib:
+  - minizip-ng
+  - inih
 
 */
