@@ -15,6 +15,9 @@ let
     ps3dec = pkgs.callPackage ./packages/ps3dec/package.nix {};
     sabretools = pkgs.callPackage ./packages/sabretools/package.nix {};
     rom-properties = pkgs.callPackage ./packages/rom-properties/package.nix {};
+    # rom-properties_ninja = pkgs.callPackage ./package.nix { useNinja = true; };
+    # rom-properties_gtracker = pkgs.callPackage ./package.nix { useTracker = true; };
+    # rom-properties_ninja_gtracker = pkgs.callPackage ./package.nix { useNinja = true; useTracker = true; };
     new_rclone = pkgs.rclone.overrideAttrs (oldAttrs: rec {
         patches = [ ./packages/new_rclone/patches/rclone_8ffe3e462cbf5688c37c54009db09d8dcb486860.diff ];
       }
@@ -147,7 +150,6 @@ in
       # Not needed on WSL, even though I'd like it on WSL sometimes.
     pkgs.yt-dlp
       # Not needed on WSL
-
     my_packages.hactoolnet-bin
       # Not needed on WSL as I currently use the Windows version.
   */

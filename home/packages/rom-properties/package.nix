@@ -15,7 +15,15 @@
   tinyxml2,
   zlib,
   zstd,
-  glib
+  glib,
+
+  # Use "Ninja" for the build.
+  useNinja ? false,
+  ninja,
+
+  # Enable GNOME "Tracker".
+  useTracker ? false,
+  tracker
 }:
 
 stdenv.mkDerivation {
@@ -25,8 +33,8 @@ stdenv.mkDerivation {
   src = fetchFromGitHub {
     owner = "GerbilSoft";
     repo = "rom-properties";
-    rev = "1df55be31d5aab88db1ba722267255389a812802";
-    hash = "sha256-e2K2XRPLLSXM+lWv5aFiU3PwotuUT0V8INAFc9QKmYY=";
+    rev = "10c20ccc3b5550e7950e036a56b0a34714edb263";
+    hash = "sha256-uoyD2xuPkdoKidyG1Dlckk5ImKnGw/rk8G27IS1cTes=";
   };
 
   nativeBuildInputs = [
@@ -34,7 +42,9 @@ stdenv.mkDerivation {
     nettle.dev
     pkg-config
     glib.dev
-  ];
+    tinyxml2
+  ]
+  ++ lib.optionals useNinja [ ninja ];
 
   buildInputs = [
     gettext
@@ -44,21 +54,45 @@ stdenv.mkDerivation {
     libseccomp.dev
     lz4.dev
     lzo
-    tinyxml2
     zlib.dev
     zstd.dev
-  ];
+    tinyxml2
+  ]
+  ++ lib.optionals useTracker [ tracker ];
 
   cmakeFlags = [
-    "-DCMAKE_BUILD_TYPE=Release"
-    "-DINSTALL_APPARMOR=OFF"
+    (lib.cmakeBool "INSTALL_APPARMOR" false)
+    (lib.cmakeBool "ENABLE_DECRYPTION" true)
+    (lib.cmakeBool "ENABLE_EXTRA_SECURITY" true)
+    (lib.cmakeBool "ENABLE_JPEG" true)
+    (lib.cmakeBool "ENABLE_XML" true)
+    (lib.cmakeBool "ENABLE_UNICE68" true)
+    (lib.cmakeBool "ENABLE_LIBMSPACK" true)
+    (lib.cmakeBool "ENABLE_PVRTC" true)
+    (lib.cmakeBool "ENABLE_ZSTD" true)
+    (lib.cmakeBool "ENABLE_LZ4" true)
+    (lib.cmakeBool "ENABLE_LZO" true)
+    (lib.cmakeBool "ENABLE_NLS" true)
+    (lib.cmakeBool "ENABLE_OPENMP" true)
+  ] ++ lib.optionals useTracker [ (lib.cmakeFeature "TRACKER_INSTALL_API_VERSION" "3") ];
+
+  patches = [
+    ./patches/fix_debug_paths.diff
+    ./patches/fix_getdents64_build.diff
+    ./patches/fix_rp-stub_symlink.diff
   ];
 
   /*
-    About "postPatch"... patches.
-      "src/librpsecure/os-secure_linux.c" change is needed to complete the
-        build as it's not being detected automatically. (WSL Issue????)
-      "src/rp-stub/CMakeLists.txt" change is needed to properly symlink
+    About "patches":
+      "fix_debug_paths.diff" is needed to properly have some correct debug
+        paths, due to "cmake"'s weird path issues.
+      (See below references for "fix_rp-stub_symlink.diff".)
+
+      "fix_getdents64_build.diff" is needed to properly complete and then run
+        the build as it's not being detected automatically.
+      (Maybe it's an issue with WSL?)
+
+      "fix_rp-stub_symlink.diff" is needed to properly symlink
         `result/libexec/rp-thumbnail` to `result/bin/rp-stub` due to the odd
         double-path bug as described in
         https://github.com/NixOS/nixpkgs/issues/144170
@@ -68,13 +102,6 @@ stdenv.mkDerivation {
         https://github.com/NixOS/nixpkgs/pull/247474
           #  cmake: make check-pc-files hook also check .cmake files
   */
-  postPatch = ''
-    substituteInPlace "src/librpsecure/os-secure_linux.c" \
-      --replace-fail "SCMP_SYS(write)," \
-        "SCMP_SYS(write), SCMP_SYS(getdents64),"
-    substituteInPlace "src/rp-stub/CMakeLists.txt" \
-      --replace-fail "{CMAKE_INSTALL_PREFIX}/\$" ""
-  '';
 
   meta = {
     description = "ROM Properties Page shell extension";
@@ -86,29 +113,12 @@ stdenv.mkDerivation {
   };
 }
 
+###################################################################
 
-/*
+/* NOTES
 
-  Notes:
-
-  "$STORE_PATH" in these notes reference "nix/store/pnyxqz1vi124i18zdbl8ad1vypai73yg-rom-properties-git"
-  "$CMAKE_INSTALL_BINDIR" matches variable in Cmake flags
-  "$CMAKE_INSTALL_LIBDIR" matches variable in Cmake flags
-  "$CMAKE_INSTALL_LIBEXECDIR" matches variable in Cmake flags
-  =============================================================
-  /$CMAKE_INSTALL_LIBDIR/debug/$STORE_PATH/$CMAKE_INSTALL_LIBEXECDIR/rp-download.debug
-  /$CMAKE_INSTALL_LIBDIR/debug/$STORE_PATH/$CMAKE_INSTALL_LIBDIR/libromdata.debug
-  /$CMAKE_INSTALL_LIBDIR/debug/$STORE_PATH/$CMAKE_INSTALL_BINDIR/rpcli.debug
-  /$CMAKE_INSTALL_LIBDIR/debug/$STORE_PATH/$CMAKE_INSTALL_BINDIR/rp-thumbnail.debug
-  /$CMAKE_INSTALL_LIBDIR/debug/$STORE_PATH/$CMAKE_INSTALL_BINDIR/rp-config.debug
-
-  What I think I want the debug paths to end up as:
-  $CMAKE_INSTALL_LIBDIR/debug/libexec/rp-download.debug
-  $CMAKE_INSTALL_LIBDIR/debug/lib/libromdata.debug
-  $CMAKE_INSTALL_LIBDIR/debug/bin/rpcli.debug
-  $CMAKE_INSTALL_LIBDIR/debug/bin/rp-thumbnail.debug
-  $CMAKE_INSTALL_LIBDIR/debug/bin/rp-config.debug
-
-  ... Do I even need to build the debug executables anyway?
+  Package 'libpcre2-8', required by 'glib-2.0', not found
+  Package libpcre2-8 was not found in the pkg-config search path.
+  Perhaps you should add the directory containing `libpcre2-8.pc'
 
 */
