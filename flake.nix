@@ -133,46 +133,7 @@
           }
         ];
       };
-    /*
-      nixps = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./system/xps/configuration.nix
-          # ./system/xps/users.nix
-          home-manager.nixosModules.home-manager
-          {
-            system.configurationRevision = self.shortRev or self.dirtyShortRev or "dirty";
 
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-
-              users = {
-                whovian = {
-                  imports = [
-                    ./home/home.nix
-                    agenix.homeManagerModules.default
-                    nix-index-database.hmModules.nix-index
-                  ];
-                };
-              };
-
-              # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
-              extraSpecialArgs = {
-                system = "x86_64-linux";
-                inherit xil;
-                inherit nixpkgs;
-                pkgs = import nixpkgs {
-                  system = "x86_64-linux";
-                  config.allowUnfree = true;
-                };
-                inherit agenix;
-              };
-            };
-          }
-        ];
-      };
-    */
       isoimage = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
@@ -195,6 +156,47 @@
           "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix"
         ];
       };
+
+      /*
+        nixps = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./system/xps/configuration.nix
+            # ./system/xps/users.nix
+            home-manager.nixosModules.home-manager
+            {
+              system.configurationRevision = self.shortRev or self.dirtyShortRev or "dirty";
+
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+
+                users = {
+                  whovian = {
+                    imports = [
+                      ./home/home.nix
+                      agenix.homeManagerModules.default
+                      nix-index-database.hmModules.nix-index
+                    ];
+                  };
+                };
+
+                # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
+                extraSpecialArgs = {
+                  system = "x86_64-linux";
+                  inherit xil;
+                  inherit nixpkgs;
+                  pkgs = import nixpkgs {
+                    system = "x86_64-linux";
+                    config.allowUnfree = true;
+                  };
+                  inherit agenix;
+                };
+              };
+            }
+          ];
+        };
+      */
     };
 
     packages.x86_64-linux = {
