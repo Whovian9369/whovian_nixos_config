@@ -145,7 +145,7 @@ in
     pkgs.rclone
       # Replaced with my_packages.new_rclone which is a patched build.
     pkgs.screen
-      # Replaced with System `programs.screen.enable`
+      # Replaced with System-set "programs.screen.enable"
     pkgs.terminator
       # Not needed on WSL, even though I'd like it on WSL sometimes.
     pkgs.yt-dlp
