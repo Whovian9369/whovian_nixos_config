@@ -30,7 +30,14 @@
       [/modules/programs/zsh.nix]
     https://github.com/nix-community/home-manager/issues/3521#issuecomment-1367197995
       [Issue #3521]
+
+    06 June 2024:
+    Appears to be handled by "programs.zsh.enableCompletion" being enabled.
+    https://github.com/NixOS/nixpkgs/blob/49f6869f71fb2724674ccc18670bbde70843d43f/nixos/modules/programs/zsh/zsh.nix#L305
+    I appear to have "programs.zsh.enableCompletion" disabled for some reason?
+    Need to look into this again at some point, I suppose.
   */
+
   environment.pathsToLink = [
     "/share/zsh"
   ];
