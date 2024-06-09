@@ -87,22 +87,47 @@
       system = "x86_64-linux";
       config.allowUnfree = true;
     };
+
+    inherit (import ./system/sshKeys.nix) mySSHKeys;
+    # inherit (import ./system/groups.nix) myWslGroups myHardwareGroups;
+
+    myOptions = { lib, ... }: {
+      options = {
+        isWSL = lib.mkOption {
+          default = false;
+          type = lib.types.bool;
+        };
+      };
+    };
+
   in
   {
+
     nixosConfigurations = {
       nixos-wsl = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
+          myOptions
           ./system/nixos-wsl/configuration.nix
           ./system/dotnet_os_codename-workaround.nix
             # Source of this fix file is
             # https://github.com/nazarewk-iac/nix-configs/blob/main/modules/ascii-workaround.nix
           ./system/nix_lix.nix
+          ./system/users.nix
           nixos-wsl.nixosModules.wsl
           lix-module.nixosModules.default
           home-manager.nixosModules.home-manager
           {
             system.configurationRevision = self.shortRev or self.dirtyShortRev or "dirty";
+
+            isWSL = true;
+
+            users.users.whovian = {
+              # extraGroups = myWslGroups;
+                # See above "let" expression
+                # and/or look at "system/groups.nix"
+              openssh.authorizedKeys.keys = mySSHKeys;
+            };
 
             home-manager = {
               useGlobalPkgs = true;
@@ -134,26 +159,65 @@
         ];
       };
 
-      isoimage = nixpkgs.lib.nixosSystem {
+      isoimage-pc = nixpkgs.lib.nixosSystem {
+        # How to build:
+        # $ nix build .#nixosConfigurations.isoimage-pc.config.system.build.isoImage
+        # TODO: Add to "packages.x86_64-linux" later?
+        # "packages.x86_64-linux.isoimage-pc = self.<iso_entry>"
         system = "x86_64-linux";
         modules = [
-          # ./configuration.nix
+          "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix"
           {
-            nix = {
-              extraOptions = "
+            environment.systemPackages = [
+              pkgs._7zz
+              pkgs.bat
+              pkgs.dhex
+              pkgs.fd
+              pkgs.file
+              pkgs.git
+              pkgs.lynx
+              pkgs.ncdu
+              pkgs.progress
+              pkgs.ripgrep
+              pkgs.sshfs
+              pkgs.wget
+              pkgs.xxd
+              pkgs.yq
+              xil.packages.x86_64-linux.xil
+            ];
+
+            nix.extraOptions = ''
                 experimental-features = nix-command flakes
-              ";
-            };
+              '';
+
             programs = {
+              nano.enable = true;
+              screen.enable = true;
               zsh = {
                 enable = true;
+                # Honestly unsure if I should be using `programs.zsh.envExtra` or
+                # `programs.zsh.localVariables` here.
+              /*
+                localVariables = {
+                  DISABLE_MAGIC_FUNCTIONS = true;
+                };
+              */
+                ohMyZsh = {
+                  enable = true;
+                  theme = "bira";
+                };
               };
             };
+
             users = {
               defaultUserShell = pkgs.zsh;
+              users.root = {
+                shell = pkgs.zsh;
+                openssh.authorizedKeys.keys = mySSHKeys;
+                  # Check if needed for "nixos" ISO user.
+              };
             };
           }
-          "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix"
         ];
       };
 

@@ -91,11 +91,13 @@
             # Am I going to use "configuration.nix" in this next config?
             # Am I going to put it all into the flake itself?
             # Am I going to do something else?
-          ./system/chimchar/users.nix
           ./system/dotnet_os_codename-workaround.nix
             # Source of this fix file is
             # https://github.com/nazarewk-iac/nix-configs/blob/main/modules/ascii-workaround.nix
           ./system/nix_lix.nix
+            # Enable Nix fork "Lix" instead of default "Nix" version from
+            # upstream
+          ./system/users.nix
           lix-module.nixosModules.default
           home-manager.nixosModules.home-manager
           {

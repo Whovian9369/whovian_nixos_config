@@ -22,9 +22,14 @@ let
         patches = [ ./packages/new_rclone/patches/rclone_8ffe3e462cbf5688c37c54009db09d8dcb486860.diff ];
       }
     );
+    unnix_script = pkgs.writeShellApplication {
+      name = "unnix";
+      /* runtimeInputs = [ sed ]; */
+      text = '' sed -r 's@/nix/store/[0-9a-z]{32}-@/<<NIX>>/@g' '';
+        # Quick command to remove Nix Store paths from output. Original source:
+        # https://trofi.github.io/posts/247-NixOS-22.05-release.html
+    };
   };
-
-
 in
 {
   programs = {
@@ -126,6 +131,7 @@ in
     my_packages.sabretools
     my_packages.new_rclone
     my_packages.rom-properties
+    my_packages.unnix_script
     # my_packages.hactoolnet-bin
 
     agenix.packages.${system}.default

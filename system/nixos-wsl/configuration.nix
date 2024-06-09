@@ -9,7 +9,7 @@
 {
   imports = [
     ./packages.nix
-    ./users.nix
+    # ./users.nix
     ./wsl.nix
   ];
 
