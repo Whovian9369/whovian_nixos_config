@@ -176,13 +176,31 @@
         modules = [
           "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix"
           {
-            /*
 
+          /*
             isoImage = {
-              # Placeholder
+            # Defaults
+              isoName = "nixos-24.11.20240607.051f920-x86_64-linux.iso";
+                # "iso-image.nix" says that it defaults to "${config.isoImage.isoBaseName}.iso"
+                # "installation-cd-base.nix" seems to default it as
+                  # "${config.isoImage.isoBaseName}-${config.system.nixos.label}-${pkgs.stdenv.hostPlatform.system}.iso"
+                # "installation-cd-base.nix" seems to be the canonical trust here.
+              isoBaseName = "nixos";
+                # Defaults to config.system.nixos.distroId
+                  # config.system.nixos.distroId = "nixos"
+              edition = "gnome";
+                # Defaults to an empty string
+                # "gnome" is set due to using
+                  # "installation-cd-graphical-gnome.nix"
+              volumeID = "nixos-gnome-24.11-x86_64";
+                # Defaults to "nixos${optionalString (config.isoImage.edition != "") "-${config.isoImage.edition}"}-${config.system.nixos.release}-${pkgs.stdenv.hostPlatform.uname.processor}";
+              prependToMenuLabel = "";
+                # Defaults to an empty string
+              appendToMenuLabel = "";
+                # Defaults to an empty string
             };
 
-            */
+          */
 
             environment.systemPackages = [
               pkgs._7zz
