@@ -102,6 +102,18 @@
 
   in
   {
+  # Notes
+  /*
+    $ nix build .#nixosConfigurations.<hostname>.config.system.build.toplevel
+      should let me build the system config without calling "nixos-rebuild"
+
+    How to build ISO:
+      Building .#nixosConfigurations.isoimage-pc.config.system.build.isoImage
+        should build ISO to "result" (or other set) symlink.
+      Alternatively, use:
+      - nix build -L .#packages.x86_64-linux.build_isoimage-pc
+      - nix build -L .#build_isoimage-pc
+  */
 
     nixosConfigurations = {
       nixos-wsl = nixpkgs.lib.nixosSystem {
@@ -160,14 +172,18 @@
       };
 
       isoimage-pc = nixpkgs.lib.nixosSystem {
-        # How to build:
-        # $ nix build .#nixosConfigurations.isoimage-pc.config.system.build.isoImage
-        # TODO: Add to "packages.x86_64-linux" later?
-        # "packages.x86_64-linux.isoimage-pc = self.<iso_entry>"
         system = "x86_64-linux";
         modules = [
           "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix"
           {
+            /*
+
+            isoImage = {
+              # Placeholder
+            };
+
+            */
+
             environment.systemPackages = [
               pkgs._7zz
               pkgs.bat
