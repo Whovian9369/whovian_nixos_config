@@ -313,6 +313,8 @@
           patches = [ ./home/packages/new_rclone/patches/rclone_8ffe3e462cbf5688c37c54009db09d8dcb486860.diff ];
         }
       );
+      build_isoimage-pc = self.nixosConfigurations.isoimage-pc.config.system.build.isoImage;
+      external_xil = xil.packages.x86_64-linux.xil;
     };
   };
 }
