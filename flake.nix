@@ -89,7 +89,6 @@
     };
 
     inherit (import ./system/sshKeys.nix) mySSHKeys;
-    # inherit (import ./system/groups.nix) myWslGroups myHardwareGroups;
 
     myOptions = { lib, ... }: {
       options = {
@@ -123,7 +122,8 @@
           ./system/nixos-wsl/configuration.nix
           ./system/dotnet_os_codename-workaround.nix
             # Source of this fix file is
-            # https://github.com/nazarewk-iac/nix-configs/blob/main/modules/ascii-workaround.nix
+            # https://github.com/nazarewk-iac/nix-configs
+            #   /modules/ascii-workaround.nix
           ./system/nix_lix.nix
           ./system/users.nix
           nixos-wsl.nixosModules.wsl
@@ -155,7 +155,8 @@
                 };
               };
 
-              # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
+              # Optionally, use home-manager.extraSpecialArgs to pass arguments
+                # to home.nix
               extraSpecialArgs = {
                 system = "x86_64-linux";
                 inherit xil;
