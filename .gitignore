@@ -4,5 +4,7 @@ manualEpub*
   # nixosConfigurations.nixos-wsl.config.system.build.manual.manualEpub
 result*
   # Symlink for system build
+isoimage-pc*
+  # Symlink for x86_64-linux ISO build
 /system/xps/
   # Ignore the `nixps` config since it's out of commission right now anyway.
