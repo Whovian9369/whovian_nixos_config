@@ -90,15 +90,6 @@
 
     inherit (import ./system/sshKeys.nix) mySSHKeys;
 
-    myOptions = { lib, ... }: {
-      options = {
-        isWSL = lib.mkOption {
-          default = false;
-          type = lib.types.bool;
-        };
-      };
-    };
-
   in
   {
   # Notes
@@ -118,7 +109,6 @@
       nixos-wsl = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          myOptions
           ./system/nixos-wsl/configuration.nix
           ./system/dotnet_os_codename-workaround.nix
             # Source of this fix file is
@@ -131,8 +121,6 @@
           home-manager.nixosModules.home-manager
           {
             system.configurationRevision = self.shortRev or self.dirtyShortRev or "dirty";
-
-            isWSL = true;
 
             users.users.whovian = {
               # extraGroups = myWslGroups;

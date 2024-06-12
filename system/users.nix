@@ -1,6 +1,6 @@
 {
   lib,
-  config,
+  options,
   pkgs,
   ...
 }:
@@ -15,12 +15,8 @@
         extraGroups = [
           "wheel"
             # Enable 'sudo' for the user.
-        ] ++ lib.optionals (!config.isWSL) [
+        ] ++ lib.optionals (!options ? wsl) [
         # These are the groups for baremetal machines, or possibly VMs.
-          "networkmanager"
-            # Enable use of NetworkManager
-          "usb"
-            # This should enable access to usb devices.
           "docker"
             # Enable 'docker' for the user.
         ];
