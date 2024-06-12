@@ -179,6 +179,7 @@
           {
 
           /*
+
             isoImage = {
             # Defaults
               isoName = "nixos-24.11.20240607.051f920-x86_64-linux.iso";
@@ -202,6 +203,14 @@
             };
 
           */
+
+            isoImage = {
+              isoBaseName = "Whovian-nixos";
+                # Defaults to config.system.nixos.distroId
+                  # config.system.nixos.distroId simply output... "nixos" lol
+                # I'm adding "Whovian-" in front because I like marking that
+                  # it's a custom image.
+            };
 
             environment.systemPackages = [
               pkgs._7zz
@@ -230,6 +239,14 @@
               screen.enable = true;
               zsh = {
                 enable = true;
+                shellInit = '' zsh-newuser-install () {} '';
+                /*
+                  Disable "zsh/newuser" since this is a Live-DVD!
+                  I just want a working shell to use, please.
+                  See https://www.zsh.org/mla/users/2007/msg00396.html for
+                  some conversation about this unchanged feature! ...
+                  17 years later!
+                */
                 # Honestly unsure if I should be using `programs.zsh.envExtra` or
                 # `programs.zsh.localVariables` here.
               /*
@@ -246,10 +263,15 @@
 
             users = {
               defaultUserShell = pkgs.zsh;
-              users.root = {
-                shell = pkgs.zsh;
-                openssh.authorizedKeys.keys = mySSHKeys;
-                  # Check if needed for "nixos" ISO user.
+              users.root.openssh.authorizedKeys.keys = mySSHKeys;
+              users.nixos.openssh.authorizedKeys.keys = mySSHKeys;
+            };
+
+            services.openssh = {
+              enable = true;
+              settings = {
+                PasswordAuthentication = false;
+                KbdInteractiveAuthentication = false;
               };
             };
           }
