@@ -25,7 +25,7 @@ let
     unnix_script = pkgs.writeShellApplication {
       name = "unnix";
       /* runtimeInputs = [ sed ]; */
-      text = '' sed -r 's@/nix/store/[0-9a-z]{32}-@/<<NIX>>/@g' '';
+      text = '' sed -r 's@/nix/store/[0-9a-z]{32}-@/<nix store path>/@g' '';
         # Quick command to remove Nix Store paths from output. Original source:
         # https://trofi.github.io/posts/247-NixOS-22.05-release.html
     };
