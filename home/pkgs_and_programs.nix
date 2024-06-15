@@ -9,13 +9,13 @@ let
 
   # Especially for dotnet packages, remember to update "/flake.nix" too!
   my_packages = {
-    hactoolnet-bin = pkgs.callPackage ./home/packages/hactoolnet-bin/package.nix {};
-    irdkit = pkgs.callPackage ./packages/irdkit/package.nix {};
-    ird_tools = pkgs.callPackage ./packages/ird_tools/package.nix {};
-    ps3dec = pkgs.callPackage ./packages/ps3dec/package.nix {};
-    sabretools = pkgs.callPackage ./packages/sabretools/package.nix {};
-    rom-properties = pkgs.callPackage ./packages/rom-properties/package.nix {};
     binaryobjectscanner = pkgs.callPackage ./packages/binaryobjectscanner/package.nix {};
+    hactoolnet-bin = pkgs.callPackage ./home/packages/hactoolnet-bin/package.nix {};
+    ird_tools = pkgs.callPackage ./packages/ird_tools/package.nix {};
+    irdkit = pkgs.callPackage ./packages/irdkit/package.nix {};
+    ps3dec = pkgs.callPackage ./packages/ps3dec/package.nix {};
+    rom-properties = pkgs.callPackage ./packages/rom-properties/package.nix {};
+    sabretools = pkgs.callPackage ./packages/sabretools/package.nix {};
     # rom-properties_ninja = pkgs.callPackage ./package.nix { useNinja = true; };
     # rom-properties_gtracker = pkgs.callPackage ./package.nix { useTracker = true; };
     # rom-properties_ninja_gtracker = pkgs.callPackage ./package.nix { useNinja = true; useTracker = true; };
@@ -126,14 +126,14 @@ in
     pkgs.xxd
     pkgs.yq
 
-    my_packages.irdkit
-    my_packages.ird_tools
-    my_packages.ps3dec
-    my_packages.sabretools
-    my_packages.new_rclone
-    my_packages.rom-properties
     my_packages.binaryobjectscanner
-    my_packages.unnix_script
+    my_packages.ird_tools
+    my_packages.irdkit
+    my_packages.new_rclone
+    my_packages.ps3dec
+    my_packages.rom-properties
+    my_packages.sabretools
+    my_packages.unnix_script # It's a one-line bash script
     # my_packages.hactoolnet-bin
 
     agenix.packages.${system}.default
