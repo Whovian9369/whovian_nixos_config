@@ -320,6 +320,7 @@
       rom-properties_ninja = pkgs.callPackage ./home/packages/rom-properties/package.nix { useNinja = true; };
       rom-properties_gtracker = pkgs.callPackage ./home/packages/rom-properties/package.nix { useTracker = true; };
       rom-properties_ninja_gtracker = pkgs.callPackage ./home/packages/rom-properties/package.nix { useNinja = true; useTracker = true; };
+      binaryobjectscanner = pkgs.callPackage ./home/packages/binaryobjectscanner/package.nix {};
       new_rclone = pkgs.rclone.overrideAttrs (
         oldAttrs: {
           patches = [ ./home/packages/new_rclone/patches/rclone_8ffe3e462cbf5688c37c54009db09d8dcb486860.diff ];

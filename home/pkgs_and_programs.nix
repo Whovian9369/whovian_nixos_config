@@ -15,6 +15,7 @@ let
     ps3dec = pkgs.callPackage ./packages/ps3dec/package.nix {};
     sabretools = pkgs.callPackage ./packages/sabretools/package.nix {};
     rom-properties = pkgs.callPackage ./packages/rom-properties/package.nix {};
+    binaryobjectscanner = pkgs.callPackage ./packages/binaryobjectscanner/package.nix {};
     # rom-properties_ninja = pkgs.callPackage ./package.nix { useNinja = true; };
     # rom-properties_gtracker = pkgs.callPackage ./package.nix { useTracker = true; };
     # rom-properties_ninja_gtracker = pkgs.callPackage ./package.nix { useNinja = true; useTracker = true; };
@@ -131,6 +132,7 @@ in
     my_packages.sabretools
     my_packages.new_rclone
     my_packages.rom-properties
+    my_packages.binaryobjectscanner
     my_packages.unnix_script
     # my_packages.hactoolnet-bin
 
