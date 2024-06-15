@@ -96,6 +96,9 @@
     $ nix build .#nixosConfigurations.<hostname>.config.system.build.toplevel
       should let me build the system config without calling "nixos-rebuild"
 
+    $ nix build .#nixosConfigurations.nixos-wsl.config.system.build.toplevel
+      should let me build the "nixos-wsl" system config.
+
     How to build ISO:
       Building .#nixosConfigurations.isoimage-pc.config.system.build.isoImage
         should build ISO to "result" (or other set) symlink.
