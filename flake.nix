@@ -132,7 +132,7 @@
             };
 
             environment.shells = [
-              "${pkgs.zsh}"
+              pkgs.zsh
             ];
 
             home-manager = {
