@@ -131,6 +131,10 @@
               openssh.authorizedKeys.keys = mySSHKeys;
             };
 
+            environment.shells = [
+              "${pkgs.zsh}"
+            ];
+
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
