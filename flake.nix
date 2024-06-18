@@ -125,9 +125,6 @@
             system.configurationRevision = self.shortRev or self.dirtyShortRev or "dirty";
 
             users.users.whovian = {
-              # extraGroups = myWslGroups;
-                # See above "let" expression
-                # and/or look at "system/groups.nix"
               openssh.authorizedKeys.keys = mySSHKeys;
             };
 
@@ -177,10 +174,11 @@
             isoImage = {
             # Defaults
               isoName = "nixos-24.11.20240607.051f920-x86_64-linux.iso";
-                # "iso-image.nix" says that it defaults to "${config.isoImage.isoBaseName}.iso"
+                # "iso-image.nix" says that it defaults to
+                  # "${config.isoImage.isoBaseName}.iso"
                 # "installation-cd-base.nix" seems to default it as
                   # "${config.isoImage.isoBaseName}-${config.system.nixos.label}-${pkgs.stdenv.hostPlatform.system}.iso"
-                # "installation-cd-base.nix" seems to be the canonical trust here.
+                # "installation-cd-base.nix" seems to be the canonical here.
               isoBaseName = "nixos";
                 # Defaults to config.system.nixos.distroId
                   # config.system.nixos.distroId = "nixos"
@@ -241,8 +239,8 @@
                   some conversation about this unchanged feature! ...
                   17 years later!
                 */
-                # Honestly unsure if I should be using `programs.zsh.envExtra` or
-                # `programs.zsh.localVariables` here.
+                # Honestly unsure if I should be using `programs.zsh.envExtra`
+                # or `programs.zsh.localVariables` here.
               /*
                 localVariables = {
                   DISABLE_MAGIC_FUNCTIONS = true;
