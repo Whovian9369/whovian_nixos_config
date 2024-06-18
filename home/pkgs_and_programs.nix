@@ -105,6 +105,7 @@ in
     pkgs.colorized-logs
     pkgs.croc
     pkgs.dhex
+    pkgs.doctl
     pkgs.fd
     pkgs.file
     pkgs.gdrive3
