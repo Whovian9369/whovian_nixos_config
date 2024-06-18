@@ -27,6 +27,8 @@ buildDotnetModule {
   dotnetBuildFlags = [ "--framework net8.0" ];
   dotnetInstallFlags = [ "--framework net8.0" ];
 
+  executables = [ "irdkit" ];
+
   meta = {
     description = "Placeholder :)";
     homepage = "https://github.com/Deterous/LibIRD";

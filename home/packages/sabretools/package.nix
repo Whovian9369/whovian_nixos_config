@@ -26,6 +26,8 @@ buildDotnetModule {
   dotnetBuildFlags = [ "--framework net8.0" ];
   dotnetInstallFlags = [ "--framework net8.0" ];
 
+  executables = [ "SabreTools" ];
+
   postFixup = ''
     mv $out/bin/SabreTools $out/bin/sabretools
   '';

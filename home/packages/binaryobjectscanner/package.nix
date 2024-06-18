@@ -26,6 +26,8 @@ buildDotnetModule {
   dotnetBuildFlags = [ "--framework net8.0" ];
   dotnetInstallFlags = [ "--framework net8.0" ];
 
+  executables = [ "Test" ];
+
   preFixup = ''
     mv $out/bin/Test $out/bin/binaryobjectscanner
   '';
