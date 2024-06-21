@@ -12,8 +12,8 @@ buildDotnetModule {
   src = fetchFromGitHub {
     owner = "SabreTools";
     repo = "BinaryObjectScanner";
-    rev = "a4ee4529caeb9a1739518abcd1e5d0ddbd096d12";
-    hash = "sha256-dSl1+8aoqRpPATQJuSGNyns9PGB7Olka5OJMg9MPz34=";
+    rev = "e3eed76826fe8a4254783eb59e91abe69233e935";
+    hash = "sha256-t0clhrZ8e6fiul2kAIutks1Y7v4D7N8zL+16J1vBAc0=";
     fetchSubmodules = true;
     leaveDotGit = false;
   };
