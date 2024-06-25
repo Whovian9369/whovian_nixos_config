@@ -45,12 +45,22 @@
     ### Lix! Lix! Lix!
 
     lix = {
-      url = "git+https://git@git.lix.systems/lix-project/lix?ref=refs/tags/2.90-beta.1";
+      url = "git+https://git@git.lix.systems/lix-project/lix";
+        /*
+          Future me, the pattern for using Forgejo URLs is:
+          git+https://git@${domain}/${user_org}/${repo}?ref=refs/tags/${TAG}
+          git+https://git@${domain}/${user_org}/${repo}?rev=${commitHash}
+        */
       flake = false;
     };
 
     lix-module = {
       url = "git+https://git.lix.systems/lix-project/nixos-module";
+        /*
+          Future me, the pattern for using Forgejo URLs is:
+          git+https://git@${domain}/${user_org}/${repo}?ref=refs/tags/${TAG}
+          git+https://git@${domain}/${user_org}/${repo}?rev=${commitHash}
+        */
       inputs.lix.follows = "lix";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
