@@ -1,5 +1,6 @@
 {
   lib,
+  aaru,
   agenix,
   config,
   modulesPath,

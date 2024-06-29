@@ -1,4 +1,5 @@
 {
+  aaru,
   agenix,
   pkgs,
   system,
@@ -139,6 +140,7 @@ in
 
     agenix.packages.${system}.default
     xil.packages.${system}.xil
+    aaru.packages.${system}.git
    ];
 
   # Disabled Packages
