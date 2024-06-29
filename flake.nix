@@ -42,6 +42,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    aaru = {
+      url = "github:Whovian9369/aaru-nix-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     ### Lix! Lix! Lix!
 
     lix = {
