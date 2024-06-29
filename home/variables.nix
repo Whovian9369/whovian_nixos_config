@@ -12,4 +12,8 @@
     ITCHIO_API_KEY = "\$(cat ${config.age.secrets."itchy".path})";
     ELIXIRE_API_KEY = "\$(cat ${config.age.secrets."elixire".path})";
   };
+
+  home.sessionPath = [
+    "$HOME/bin"
+  ];
 }
