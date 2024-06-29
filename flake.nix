@@ -96,7 +96,7 @@
     # Lix
     lix-module,
     # Added by me
-    agenix, home-manager, nix-index-database, xil, ... }:
+    agenix, home-manager, nix-index-database, xil, aaru, ... }:
   let
     pkgs = import nixpkgs {
       system = "x86_64-linux";
@@ -165,6 +165,7 @@
                 # to home.nix
               extraSpecialArgs = {
                 system = "x86_64-linux";
+                inherit aaru;
                 inherit xil;
                 inherit nixpkgs;
                 pkgs = import nixpkgs {
