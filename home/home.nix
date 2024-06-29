@@ -19,7 +19,8 @@
     ./dotfiles.nix # home.file
     ./variables.nix # home.sessionVariables
     ./aliases.nix # home.shellAliases
-    ./rust.nix # Should be my `rustfmt` config.
+    # ./rust.nix # Should be my `rustfmt` config.
+      # I no longer have an interest in Rust. :)
   ];
 
   home = {
