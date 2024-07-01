@@ -117,6 +117,7 @@ in
     pkgs.lynx
     pkgs.megatools
     pkgs.ncdu
+    pkgs.ndstool
     pkgs.nixfmt-classic
     pkgs.progress
     pkgs.pyrosimple
