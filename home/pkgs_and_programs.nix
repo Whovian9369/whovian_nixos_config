@@ -108,6 +108,7 @@ in
     pkgs.dhex
     pkgs.doctl
     pkgs.fd
+    pkgs.fq
     pkgs.file
     pkgs.gdrive3
     pkgs.git
@@ -122,6 +123,7 @@ in
     pkgs.progress
     pkgs.pyrosimple
     pkgs.python3
+    pkgs.python3Packages.nsz
     pkgs.quickbms
     pkgs.sshfs
     pkgs.unrar-wrapper
