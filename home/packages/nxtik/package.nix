@@ -10,8 +10,8 @@ rustPlatform.buildRustPackage {
   src = fetchFromGitHub {
     owner = "jam1garner";
     repo = "nxtik";
-    rev = "b01fa605505b9bb38fac9ca6253f61b86f11abf8";
-    hash = "sha256-S2vPMrwO6spasmkr3QXp0z6NGpwxxCpbxuVikMu3VOs=";
+    rev = "63be4e4aedbc371111aef692debeb1024eb6bf41";
+    hash = "sha256-2m1uJGHj/7qVUUIi5bbzOKxpGnFfGG1b41HCQLuUyeU=";
   };
 
   cargoLock = {
@@ -23,9 +23,9 @@ rustPlatform.buildRustPackage {
   };
 
   meta = {
-    description = "A library and tool for parsing and outputting informatino about Nintendo Switch .tik files";
+    description = "Tool for parsing and outputting informatino about Nintendo Switch .tik files";
     homepage = "https://github.com/jam1garner/nxtik";
-    license = lib.licenses.unfree; # TODO: Developer forgot to add a license file.
+    license = lib.licenses.mit;
     maintainers = with lib.maintainers; [ ];
     mainProgram = "nxtik";
   };
