@@ -332,6 +332,7 @@
       hactoolnet-bin = pkgs.callPackage ./home/packages/hactoolnet-bin/package.nix {};
       irdkit = pkgs.callPackage ./home/packages/irdkit/package.nix {};
       ird_tools = pkgs.callPackage ./home/packages/ird_tools/package.nix {};
+      nxtik = pkgs.callPackage ./home/packages/nxtik/package.nix {};
       ps3dec = pkgs.callPackage ./home/packages/ps3dec/package.nix {};
       sabretools = pkgs.callPackage ./home/packages/sabretools/package.nix {};
       rom-properties = pkgs.callPackage ./home/packages/rom-properties/package.nix {};

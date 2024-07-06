@@ -14,6 +14,7 @@ let
     hactoolnet-bin = pkgs.callPackage ./home/packages/hactoolnet-bin/package.nix {};
     ird_tools = pkgs.callPackage ./packages/ird_tools/package.nix {};
     irdkit = pkgs.callPackage ./packages/irdkit/package.nix {};
+    nxtik = pkgs.callPackage ./packages/nxtik/package.nix {};
     ps3dec = pkgs.callPackage ./packages/ps3dec/package.nix {};
     rom-properties = pkgs.callPackage ./packages/rom-properties/package.nix {};
     sabretools = pkgs.callPackage ./packages/sabretools/package.nix {};

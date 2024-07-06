@@ -22,7 +22,6 @@
       enable = true;
     };
 
-
     cdemu = {
       # I haven't figured out how to get `cdemu` properly working (in WSL), so
       # I'm just going to leave it as `programs.cdemu.enable = false;` for now.
