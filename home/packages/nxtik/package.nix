@@ -22,11 +22,11 @@ rustPlatform.buildRustPackage {
     };
   };
 
-  meta = with lib; {
+  meta = {
     description = "A library and tool for parsing and outputting informatino about Nintendo Switch .tik files";
     homepage = "https://github.com/jam1garner/nxtik";
-    license = licenses.unfree; # TODO: Developer forgot to add a license file.
-    maintainers = with maintainers; [ ];
+    license = lib.licenses.unfree; # TODO: Developer forgot to add a license file.
+    maintainers = with lib.maintainers; [ ];
     mainProgram = "nxtik";
   };
 }
