@@ -11,7 +11,7 @@ let
   # Especially for dotnet packages, remember to update "/flake.nix" too!
   my_packages = {
     binaryobjectscanner = pkgs.callPackage ./packages/binaryobjectscanner/package.nix {};
-    hactoolnet-bin = pkgs.callPackage ./home/packages/hactoolnet-bin/package.nix {};
+    hactoolnet-bin = pkgs.callPackage ./packages/hactoolnet-bin/package.nix {};
     ird_tools = pkgs.callPackage ./packages/ird_tools/package.nix {};
     irdkit = pkgs.callPackage ./packages/irdkit/package.nix {};
     nxtik = pkgs.callPackage ./packages/nxtik/package.nix {};
