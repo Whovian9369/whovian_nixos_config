@@ -12,5 +12,8 @@
   # From Nix environment
     "7z" = "7zz";
       # "7zz" is from "nixpkgs#_7zz"
+    "termbin" = "nc termbin.com 9999";
+      # Alias that lets me upload text to https://termbin.com/
+      # Mainly so I can lazily upload build logs.
   };
 }
