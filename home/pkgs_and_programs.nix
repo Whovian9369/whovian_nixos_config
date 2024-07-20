@@ -25,6 +25,10 @@ let
         patches = [ ./packages/new_rclone/patches/rclone_8ffe3e462cbf5688c37c54009db09d8dcb486860.diff ];
       }
     );
+    nix-init_packagenix = pkgs.nix-init.overrideAttrs (oldAttrs: rec {
+        patches = [ ./packages/nix-init/default_to_package.diff ];
+      }
+    );
     unnix_script = pkgs.writeShellApplication {
       name = "unnix";
       /* runtimeInputs = [ sed ]; */
@@ -136,6 +140,7 @@ in
     my_packages.ird_tools
     my_packages.irdkit
     my_packages.new_rclone
+    my_packages.nix-init_packagenix # Yay for patched apps :)
     my_packages.nxtik
     my_packages.ps3dec
     my_packages.rom-properties
