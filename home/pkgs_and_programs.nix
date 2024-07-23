@@ -125,6 +125,8 @@ in
     pkgs.ncdu
     pkgs.ndstool
     pkgs.nixfmt-classic
+      # nixfmt was renamed to nixfmt-classic.
+      # The nixfmt attribute may be used for the new RFC 166-style formatter in the future, which is currently available as nixfmt-rfc-style
     pkgs.progress
     pkgs.pyrosimple
     pkgs.python3
