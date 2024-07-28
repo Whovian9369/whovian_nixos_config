@@ -4,7 +4,7 @@
     pkgs.file
     pkgs.xterm
     # `agenix` is currently added via
-    # "<config>.nixos-wsl.modules.environment.systemPackages"
+    # home-manager's `home.packages`
   ];
 
 

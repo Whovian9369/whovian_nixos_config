@@ -12,6 +12,7 @@
         description = "Whovian9369";
         shell = pkgs.zsh;
         initialPassword = "abcde"; # I need to log in somehow
+        isNormalUser = true;
         extraGroups = [
           "wheel"
             # Enable 'sudo' for the user.
