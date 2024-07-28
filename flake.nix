@@ -286,6 +286,61 @@
         ];
       };
 
+      my_nixos_vm = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./system/my_nixos_vm/configuration.nix
+          # ./system/dotnet_os_codename-workaround.nix
+            # Source of this fix file is
+            # https://github.com/nazarewk-iac/nix-configs
+            #   /modules/ascii-workaround.nix
+          ./system/nix_lix.nix
+          ./system/users.nix
+          lix-module.nixosModules.default
+          home-manager.nixosModules.home-manager
+          {
+            system.configurationRevision = self.shortRev or self.dirtyShortRev or "dirty";
+
+            users.users.whovian = {
+              openssh.authorizedKeys.keys = mySSHKeys;
+            };
+
+            environment.shells = [
+              pkgs.zsh
+            ];
+
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+
+              users = {
+                whovian = {
+                  imports = [
+                    ./home/home.nix
+                    agenix.homeManagerModules.default
+                    nix-index-database.hmModules.nix-index
+                  ];
+                };
+              };
+
+              # Optionally, use home-manager.extraSpecialArgs to pass arguments
+                # to home.nix
+              extraSpecialArgs = {
+                system = "x86_64-linux";
+                inherit aaru;
+                inherit xil;
+                inherit nixpkgs;
+                pkgs = import nixpkgs {
+                  system = "x86_64-linux";
+                  config.allowUnfree = true;
+                };
+                inherit agenix;
+              };
+            };
+          }
+        ];
+      };
+
       /*
         nixps = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
