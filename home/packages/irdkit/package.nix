@@ -6,7 +6,7 @@
 }:
 
 buildDotnetModule {
-  pname = "libird";
+  pname = "irdkit";
   version = "0.9.2";
     # NuGet page: https://www.nuget.org/packages/LibIRD
 
