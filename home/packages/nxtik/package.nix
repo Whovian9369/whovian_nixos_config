@@ -5,22 +5,24 @@
 
 rustPlatform.buildRustPackage {
   pname = "nxtik";
-  version = "v1.0";
+  version = "1.0.1";
 
   src = fetchFromGitHub {
     owner = "jam1garner";
     repo = "nxtik";
-    rev = "63be4e4aedbc371111aef692debeb1024eb6bf41";
-    hash = "sha256-2m1uJGHj/7qVUUIi5bbzOKxpGnFfGG1b41HCQLuUyeU=";
+    rev = "9f9fe67e70a4cf1353e5e4d14075ec23a585be0a";
+    hash = "sha256-kpoPjYd57aE4hWXsbH6Twmdmyjv7QVczgXxae5I/VVc=";
   };
 
   cargoLock = {
     lockFile = ./Cargo.lock;
     outputHashes = {
-      "binread-0.0.0" = "sha256-K1QGNJnVDI/bqsCWShhnREmTQtWh+1La49K9XUHSwhc=";
-      "binread_derive-0.0.0" = "sha256-jK9x6edHiO/Q2xAoj00p6FahH6ToViKGm7jR+ArxzKw=";
+      "binread-2.2.0" = "sha256-nSsWrmKa+bZ7S4L8n1WSjEf4UkpHilx3u0hj+PQEYcI=";
     };
   };
+
+  # buildType = "debug";
+  # separateDebugInfo = true;
 
   meta = {
     description = "Tool for parsing and outputting informatino about Nintendo Switch .tik files";
