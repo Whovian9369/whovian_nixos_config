@@ -175,6 +175,8 @@
                 inherit agenix;
               };
             };
+
+            # services.nixseparatedebuginfod.enable = true;
           }
         ];
       };
