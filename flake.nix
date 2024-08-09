@@ -116,7 +116,7 @@
 
         How to build ISO:
           Building .#nixosConfigurations.isoimage-pc.config.system.build.isoImage
-            should build ISO to "result" (or other set) symlink.
+          should build ISO to "result" (or other set) symlink.
           Alternatively, use:
           - nix build -L .#packages.x86_64-linux.build_isoimage-pc
           - nix build -L .#build_isoimage-pc
