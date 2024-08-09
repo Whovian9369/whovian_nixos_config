@@ -305,6 +305,14 @@
               openssh.authorizedKeys.keys = mySSHKeys;
             };
 
+            services.openssh = {
+              enable = true;
+              settings = {
+                PasswordAuthentication = false;
+                KbdInteractiveAuthentication = false;
+              };
+            };
+
             environment.shells = [
               pkgs.zsh
             ];
