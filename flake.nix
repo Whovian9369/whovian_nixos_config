@@ -394,24 +394,30 @@
     };
 
     packages.x86_64-linux = {
+      binaryobjectscanner = pkgs.callPackage ./home/packages/binaryobjectscanner/package.nix {};
       hactoolnet-bin = pkgs.callPackage ./home/packages/hactoolnet-bin/package.nix {};
-      irdkit = pkgs.callPackage ./home/packages/irdkit/package.nix {};
       ird_tools = pkgs.callPackage ./home/packages/ird_tools/package.nix {};
+      irdkit = pkgs.callPackage ./home/packages/irdkit/package.nix {};
       nxtik = pkgs.callPackage ./home/packages/nxtik/package.nix {};
       ps3dec = pkgs.callPackage ./home/packages/ps3dec/package.nix {};
-      sabretools = pkgs.callPackage ./home/packages/sabretools/package.nix {};
       rom-properties = pkgs.callPackage ./home/packages/rom-properties/package.nix {};
-      rom-properties_ninja = pkgs.callPackage ./home/packages/rom-properties/package.nix { useNinja = true; };
-      rom-properties_gtracker = pkgs.callPackage ./home/packages/rom-properties/package.nix { useTracker = true; };
-      rom-properties_ninja_gtracker = pkgs.callPackage ./home/packages/rom-properties/package.nix { useNinja = true; useTracker = true; };
-      binaryobjectscanner = pkgs.callPackage ./home/packages/binaryobjectscanner/package.nix {};
+      sabretools = pkgs.callPackage ./home/packages/sabretools/package.nix {};
+      # rom-properties_ninja = pkgs.callPackage ./home/packages/rom-properties/package.nix { useNinja = true; };
+      # rom-properties_gtracker = pkgs.callPackage ./home/packages/rom-properties/package.nix { useTracker = true; };
+      # rom-properties_ninja_gtracker = pkgs.callPackage ./home/packages/rom-properties/package.nix { useNinja = true; useTracker = true; };
       new_rclone = pkgs.rclone.overrideAttrs (
         oldAttrs: {
           patches = [ ./home/packages/new_rclone/patches/rclone_8ffe3e462cbf5688c37c54009db09d8dcb486860.diff ];
         }
       );
+      new_nix-init = pkgs.nix-init.overrideAttrs (oldAttrs: rec {
+        patches = [ ./home/packages/nix-init/default_to_package.diff ];
+      }
+    );
+
       build_isoimage-pc = self.nixosConfigurations.isoimage-pc.config.system.build.isoImage;
       external_xil = xil.packages.x86_64-linux.xil;
+      external_aaru = aaru.packages.x86_64-linux.git;
     };
   };
 }
