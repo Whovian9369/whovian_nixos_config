@@ -142,7 +142,12 @@ in
     my_packages.ird_tools
     my_packages.irdkit
     my_packages.new_rclone
-    my_packages.nix-init_packagenix # Yay for patched apps :)
+    # my_packages.nix-init_packagenix
+      # Yay for patched apps :)
+      # TODO: Wait for github:NixOS/nixpkgs/pull/335035 to become available on
+        # nixos-unstable. Commit in question is
+        # 6d1563583aedcf2cfeab34f4977e6062d1617696 | 2024-08-16
+
     my_packages.nxtik
     my_packages.ps3dec
     my_packages.rom-properties
