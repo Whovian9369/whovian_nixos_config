@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1722134598,
-        "narHash": "sha256-EObw0Zt4PNWsiPXM9R0BO6kjqOPOXICsNZL9z64bzSc=",
+        "lastModified": 1723761384,
+        "narHash": "sha256-MSBNNd9U/nBt4f7aSwoTm+nYsfSc9EoOkZfgo5NAnTs=",
         "owner": "Whovian9369",
         "repo": "aaru-nix-flake",
-        "rev": "05f6b81ac906ae93c363198bf25490c6c257e447",
+        "rev": "c45fa35a8b0d92f72ed0853c1cc2277ac7e581f9",
         "type": "github"
       },
       "original": {
