@@ -10,6 +10,7 @@
     nixos-wsl = { 
       url = "github:nix-community/NixOS-WSL/main";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-compat.follows = "flake-compat";
       inputs.flake-utils.follows = "flake-utils";
     };
 
@@ -56,7 +57,8 @@
           git+https://git@${domain}/${user_org}/${repo}?ref=refs/tags/${TAG}
           git+https://git@${domain}/${user_org}/${repo}?rev=${commitHash}
         */
-      flake = false;
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-compat.follows = "flake-compat";
     };
 
     lix-module = {
@@ -88,13 +90,18 @@
       url = "github:nix-systems/default";
     };
 
+    # Ditto to github:edolstra/flake-compat
+    flake-compat = {
+      url = "github:edolstra/flake-compat";
+    };
+
   }; # inputs
 
   outputs = { 
     # Needed
     self, nixpkgs, nixos-wsl,
     # Lix
-    lix-module,
+    lix, lix-module,
     # Added by me
     agenix, home-manager, nix-index-database, xil, aaru, ... }:
   let
@@ -288,7 +295,7 @@
         ];
       };
 
-      my_nixos_vm = nixpkgs.lib.nixosSystem {
+    /*  my_nixos_vm = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ./system/my_nixos_vm/configuration.nix
@@ -350,9 +357,9 @@
           }
         ];
       };
+    */
 
-      /*
-        nixps = nixpkgs.lib.nixosSystem {
+    /*  nixps = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
             ./system/xps/configuration.nix
@@ -390,7 +397,7 @@
             }
           ];
         };
-      */
+    */
     };
 
     packages.x86_64-linux = {
@@ -405,17 +412,15 @@
       # rom-properties_ninja = pkgs.callPackage ./home/packages/rom-properties/package.nix { useNinja = true; };
       # rom-properties_gtracker = pkgs.callPackage ./home/packages/rom-properties/package.nix { useTracker = true; };
       # rom-properties_ninja_gtracker = pkgs.callPackage ./home/packages/rom-properties/package.nix { useNinja = true; useTracker = true; };
-      new_rclone = pkgs.rclone.overrideAttrs (
-        oldAttrs: {
+      new_rclone = pkgs.rclone.overrideAttrs ( oldAttrs: {
           patches = [ ./home/packages/new_rclone/patches/rclone_8ffe3e462cbf5688c37c54009db09d8dcb486860.diff ];
-        }
-      );
-      new_nix-init = pkgs.nix-init.overrideAttrs (oldAttrs: rec {
-        patches = [ ./home/packages/nix-init/default_to_package.diff ];
-      }
-    );
+        } );
+      new_nix-init = pkgs.nix-init.overrideAttrs (oldAttrs: {
+          patches = [ ./home/packages/nix-init/default_to_package.diff ];
+        } );
 
       build_isoimage-pc = self.nixosConfigurations.isoimage-pc.config.system.build.isoImage;
+      external_lix = lix.packages.x86_64-linux.nix;
       external_xil = xil.packages.x86_64-linux.xil;
       external_aaru = aaru.packages.x86_64-linux.git;
     };
