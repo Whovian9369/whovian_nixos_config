@@ -41,8 +41,8 @@ stdenv.mkDerivation {
   src = fetchFromGitHub {
     owner = "GerbilSoft";
     repo = "rom-properties";
-    rev = "eba71880c1f36bb059be662c70a4eefba2b88226";
-    hash = "sha256-K8Tn2z8GwJkjLVPOjIBvj1M63+ivMwqfydSFVAMVtI0=";
+    rev = "82ddbbe6574ba64d12c09229ff275bd9f5ba3f1e";
+    hash = "sha256-Xj0xGcA/2hqk0gNLOOrqWxNjWONhH6J3VIF4Up/6NVU=";
   };
 
   nativeBuildInputs = [
