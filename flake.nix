@@ -402,7 +402,8 @@
 
     packages.x86_64-linux = {
       binaryobjectscanner = pkgs.callPackage ./home/packages/binaryobjectscanner/package.nix {};
-      hactoolnet-bin = pkgs.callPackage ./home/packages/hactoolnet-bin/package.nix {};
+      hactoolnet = pkgs.callPackage ./home/packages/hactoolnet/package.nix {};
+      hactoolnet-bin = pkgs.callPackage ./home/packages/hactoolnet/bin.nix {};
       ird_tools = pkgs.callPackage ./home/packages/ird_tools/package.nix {};
       irdkit = pkgs.callPackage ./home/packages/irdkit/package.nix {};
       nxtik = pkgs.callPackage ./home/packages/nxtik/package.nix {};

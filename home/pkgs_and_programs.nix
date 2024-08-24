@@ -11,7 +11,8 @@ let
   # Especially for dotnet packages, remember to update "/flake.nix" too!
   my_packages = {
     binaryobjectscanner = pkgs.callPackage ./packages/binaryobjectscanner/package.nix {};
-    hactoolnet-bin = pkgs.callPackage ./packages/hactoolnet-bin/package.nix {};
+    hactoolnet = pkgs.callPackage ./home/packages/hactoolnet/package.nix {};
+    hactoolnet-bin = pkgs.callPackage ./home/packages/hactoolnet/bin.nix {};
     ird_tools = pkgs.callPackage ./packages/ird_tools/package.nix {};
     irdkit = pkgs.callPackage ./packages/irdkit/package.nix {};
     nxtik = pkgs.callPackage ./packages/nxtik/package.nix {};
@@ -150,7 +151,7 @@ in
     my_packages.rom-properties
     my_packages.sabretools
     my_packages.unnix_script # It's a one-line bash script
-    # my_packages.hactoolnet-bin
+    # my_packages.hactoolnet
 
     agenix.packages.${system}.default
     xil.packages.${system}.xil
@@ -174,6 +175,8 @@ in
     pkgs.yt-dlp
       # Not needed on WSL
     my_packages.hactoolnet-bin
+      # Not needed on WSL as I currently use the Windows version.
+    my_packages.hactoolnet
       # Not needed on WSL as I currently use the Windows version.
   */
 
