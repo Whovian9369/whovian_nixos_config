@@ -46,7 +46,7 @@
     # programs.home-manager.enable = true;
   };
 
-  age = {
+  /* age = {
     identityPaths = [
       /home/whovian/.ssh/id_ed25519.nix
     ];
@@ -65,4 +65,5 @@
       };
     };
   };
+  */
 }
