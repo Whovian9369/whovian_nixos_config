@@ -48,6 +48,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    rom-properties = {
+      url = "github:Whovian9369/rom-properties-nix-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     ### Lix! Lix! Lix!
 
     lix = {
@@ -103,7 +108,7 @@
     # Lix
     lix, lix-module,
     # Added by me
-    agenix, home-manager, nix-index-database, xil, aaru, ... }:
+    agenix, home-manager, nix-index-database, xil, aaru, rom-properties, ... }:
   let
     pkgs = import nixpkgs {
       system = "x86_64-linux";
@@ -173,13 +178,11 @@
               extraSpecialArgs = {
                 system = "x86_64-linux";
                 inherit aaru;
-                inherit xil;
-                inherit nixpkgs;
-                pkgs = import nixpkgs {
-                  system = "x86_64-linux";
-                  config.allowUnfree = true;
-                };
                 inherit agenix;
+                inherit nixpkgs;
+                inherit rom-properties;
+                inherit xil;
+                pkgs = import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true; };
               };
             };
 
@@ -409,11 +412,8 @@
       nxtik = pkgs.callPackage ./home/packages/nxtik/package.nix {};
       ps3dec = pkgs.callPackage ./home/packages/ps3dec/package.nix {};
       psfo = pkgs.callPackage ./home/packages/psfo/package.nix {};
-      rom-properties = pkgs.callPackage ./home/packages/rom-properties/package.nix {};
       sabretools = pkgs.callPackage ./home/packages/sabretools/package.nix {};
-      # rom-properties_ninja = pkgs.callPackage ./home/packages/rom-properties/package.nix { useNinja = true; };
-      # rom-properties_gtracker = pkgs.callPackage ./home/packages/rom-properties/package.nix { useTracker = true; };
-      # rom-properties_ninja_gtracker = pkgs.callPackage ./home/packages/rom-properties/package.nix { useNinja = true; useTracker = true; };
+
       new_rclone = pkgs.rclone.overrideAttrs ( oldAttrs: {
           patches = [ ./home/packages/new_rclone/patches/rclone_8ffe3e462cbf5688c37c54009db09d8dcb486860.diff ];
         } );
@@ -425,6 +425,7 @@
       external_lix = lix.packages.x86_64-linux.nix;
       external_xil = xil.packages.x86_64-linux.xil;
       external_aaru = aaru.packages.x86_64-linux.git;
+      external_rom-properties = rom-properties.packages.x86_64-linux.default;
     };
   };
 }

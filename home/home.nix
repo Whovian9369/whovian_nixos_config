@@ -9,6 +9,7 @@
   options,
   osConfig,
   pkgs,
+  rom-properties,
   specialArgs,
   system,
   xil
