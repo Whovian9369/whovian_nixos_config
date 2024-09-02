@@ -150,7 +150,7 @@ in
     # my_packages.hactoolnet
 
     agenix.packages.${system}.default
-    xil.packages.${system}.xil
+    # xil.packages.${system}.xil
     aaru.packages.${system}.git
     rom-properties.packages.x86_64-linux.default
    ];

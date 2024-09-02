@@ -244,10 +244,11 @@
               pkgs.progress
               pkgs.ripgrep
               pkgs.sshfs
+              pkgs.terminator
               pkgs.wget
               pkgs.xxd
               pkgs.yq
-              xil.packages.x86_64-linux.xil
+              # xil.packages.x86_64-linux.xil
             ];
 
             nix.extraOptions = ''
@@ -348,19 +349,19 @@
               extraSpecialArgs = {
                 system = "x86_64-linux";
                 inherit aaru;
-                inherit xil;
+                # inherit xil;
                 inherit nixpkgs;
                 pkgs = import nixpkgs {
                   system = "x86_64-linux";
                   config.allowUnfree = true;
                 };
+                inherit rom-properties;
                 inherit agenix;
               };
             };
           }
         ];
       };
-    */
 
     /*  nixps = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
