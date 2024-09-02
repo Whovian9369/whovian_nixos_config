@@ -296,6 +296,26 @@
         "type": "github"
       }
     },
+    "rom-properties": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1725238711,
+        "narHash": "sha256-i+VVY+VwyvwidCNPVcC4P/ekAwua4QSh4oAdBNQx/qg=",
+        "owner": "Whovian9369",
+        "repo": "rom-properties-nix-flake",
+        "rev": "3ccab4a7d5d1f49074e35b90a87cba53d4e420a3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Whovian9369",
+        "repo": "rom-properties-nix-flake",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "aaru": "aaru",
@@ -309,6 +329,7 @@
         "nix-systems_default": "nix-systems_default",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs",
+        "rom-properties": "rom-properties",
         "xil": "xil"
       }
     },
