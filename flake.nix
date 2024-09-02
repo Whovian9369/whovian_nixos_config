@@ -299,7 +299,7 @@
         ];
       };
 
-    /*  my_nixos_vm = nixpkgs.lib.nixosSystem {
+      my_nixos_vm = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ./system/my_nixos_vm/configuration.nix
@@ -313,6 +313,11 @@
           home-manager.nixosModules.home-manager
           {
             system.configurationRevision = self.shortRev or self.dirtyShortRev or "dirty";
+
+            boot.loader.systemd-boot = {
+              enable = true;
+              editor = false;
+            };
 
             users.users.whovian = {
               openssh.authorizedKeys.keys = mySSHKeys;
