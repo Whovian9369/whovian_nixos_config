@@ -284,6 +284,10 @@
                 ohMyZsh = {
                   enable = true;
                   theme = "bira";
+                  plugins = [
+                    "git"
+                    "sudo"
+                  ];
                 };
               };
             };
