@@ -132,6 +132,12 @@
           Alternatively, use:
           - nix build -L .#packages.x86_64-linux.build_isoimage-pc
           - nix build -L .#build_isoimage-pc
+
+        How to use config in an install:
+          Mount partitions.
+          $ sudo nixos-install -v --root /mnt --flake "git+https://git.n2.pm/whovian/nixos_config#CONFIG_NAME"
+        Example for nixosConfigurations.my_nixos_vm:
+          $ sudo nixos-install -v --root /mnt --flake "git+https://git.n2.pm/whovian/nixos_config#my_nixos_vm"
       */
 
     nixosConfigurations = {
