@@ -10,6 +10,8 @@
   imports = [
     ./packages.nix
     ./hardware-configuration.nix # Include the results of the hardware scan.
+    ./gui-kde6.nix # GUI Stuff (DE + WM)
+    ./vmware.nix # VMWAre Guest Stuff
   ];
 
   networking.hostName = "my_nixos_vm";

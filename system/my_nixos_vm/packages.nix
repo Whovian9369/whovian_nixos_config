@@ -11,20 +11,16 @@
   nixpkgs = {
     config = {
       allowUnfree = true;
+      permittedInsecurePackages = [
+        "openssl-1.1.1w"
+      ];
     };
   };
 
   programs = {
-    zsh = {
-      enable = true;
-    };
-    nano = {
-      enable = true;
-    };
-
-    screen = {
-      enable = true;
-    };
-
+    firefox.enable = true;
+    nano.enable = true;
+    screen.enable = true;
+    zsh.enable = true;
   };
 }
