@@ -54,6 +54,9 @@ nix = {
 };
 ```
 
+### GUI Notes
+  - Look into `nixpkgs#eww`
+
 ### Information Backups:
 ```bash
 $ sudo nix-channel --list
