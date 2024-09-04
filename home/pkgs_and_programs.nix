@@ -122,9 +122,7 @@ in
     pkgs.megatools
     pkgs.ncdu
     pkgs.ndstool
-    pkgs.nixfmt-classic
-      # nixfmt was renamed to nixfmt-classic.
-      # The nixfmt attribute may be used for the new RFC 166-style formatter in the future, which is currently available as nixfmt-rfc-style
+    pkgs.nixfmt-rfc-style
     pkgs.progress
     pkgs.pyrosimple
     pkgs.python3
@@ -161,6 +159,9 @@ in
       # Just use "nix shell nixpkgs#binutils -c strings -- INPUT"
     pkgs.mpv
       # Not needed on WSL
+    pkgs.nixfmt-classic
+      # nixfmt was renamed to nixfmt-classic.
+      # The nixfmt attribute may be used for the new RFC 166-style formatter in the future, which is currently available as nixfmt-rfc-style
     pkgs.p7zip
       # Replaced in favour of nixpkgs#_7zz
     pkgs.rclone
