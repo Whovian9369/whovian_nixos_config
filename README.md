@@ -47,16 +47,6 @@ nix = {
     auto-optimise-store = true;
   };
 
-  registry = {
-    nixpkgs = {
-      flake = inputs.nixpkgs;
-    };
-  };
-
-  nixPath = [
-    "nixpkgs=${inputs.nixpkgs.outPath}"
-  ];
-
   gc = {
     automatic = true;
     options = "--delete-older-than 7d";
