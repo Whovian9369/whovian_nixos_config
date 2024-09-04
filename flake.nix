@@ -136,8 +136,8 @@
         How to use config in an install:
           Mount partitions.
           $ sudo nixos-install -v --root /mnt --flake "github:Whovian9369/whovian_nixos_config#CONFIG_NAME"
-        Example for nixosConfigurations.my_nixos_vm:
-          $ sudo nixos-install -v --root /mnt --flake "github:Whovian9369/whovian_nixos_config#my_nixos_vm"
+        Example for nixosConfigurations.piplup:
+          $ sudo nixos-install -v --root /mnt --flake "github:Whovian9369/whovian_nixos_config#piplup"
       */
 
     nixosConfigurations = {
@@ -309,11 +309,11 @@
         ];
       };
 
-      my_nixos_vm = nixpkgs.lib.nixosSystem {
+      piplup = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
          specialArgs = { inherit rom-properties; };
         modules = [
-          ./system/my_nixos_vm/configuration.nix
+          ./system/piplup/configuration.nix
           # ./system/dotnet_os_codename-workaround.nix
             # Source of this fix file is
             # https://github.com/nazarewk-iac/nix-configs

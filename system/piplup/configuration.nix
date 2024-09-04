@@ -14,7 +14,7 @@
     ./vmware.nix # VMWAre Guest Stuff
   ];
 
-  networking.hostName = "my_nixos_vm";
+  networking.hostName = "piplup";
 
   # Enable nix flakes
   nix.settings.experimental-features = [
