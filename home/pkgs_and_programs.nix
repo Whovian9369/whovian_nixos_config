@@ -126,7 +126,6 @@ in
     pkgs.progress
     pkgs.pyrosimple
     pkgs.python3
-    pkgs.python3Packages.nsz
     pkgs.quickbms
     pkgs.sshfs
     pkgs.unrar-wrapper
@@ -162,6 +161,8 @@ in
     pkgs.nixfmt-classic
       # nixfmt was renamed to nixfmt-classic.
       # The nixfmt attribute may be used for the new RFC 166-style formatter in the future, which is currently available as nixfmt-rfc-style
+    pkgs.python3Packages.nsz
+      # Eh, don't want it in my current config.
     pkgs.p7zip
       # Replaced in favour of nixpkgs#_7zz
     pkgs.rclone
