@@ -379,7 +379,8 @@
         ];
       };
 
-    /*  nixps = nixpkgs.lib.nixosSystem {
+      /*
+      nixps = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
             ./system/xps/configuration.nix
@@ -417,7 +418,7 @@
             }
           ];
         };
-    */
+      */
     };
 
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
