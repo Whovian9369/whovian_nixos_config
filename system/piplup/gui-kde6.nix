@@ -37,10 +37,13 @@
     pkgs.unifont
     pkgs.noto-fonts-color-emoji
     # fonts.enableDefaultPackages
-    pkgs.unifont_upper
+    pkgs.comic-mono
+    pkgs.corefonts
+    pkgs.inconsolata
+    pkgs.monocraft
     pkgs.noto-fonts
     pkgs.noto-fonts-cjk-sans
-    pkgs.corefonts
+    pkgs.unifont_upper
   ];
   fonts.fontconfig.cache32Bit = true;
   # dconf
