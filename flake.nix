@@ -420,6 +420,20 @@
     */
     };
 
+    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
+      /*
+        Some options:
+        - nixpkgs.legacyPackages.x86_64-linux.alejandra
+        - nixpkgs.legacyPackages.x86_64-linux.nixfmt-classic
+        - nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style
+        - nixpkgs.legacyPackages.x86_64-linux.treefmt
+          - Didn't figure it out
+          - Seems too... "Meh"
+
+        Related but not formatters:
+        - nixpkgs.legacyPackages.x86_64-linux.deadnix
+      */
+
     packages.x86_64-linux = {
       binaryobjectscanner = pkgs.callPackage ./home/packages/binaryobjectscanner/package.nix {};
       hactoolnet = pkgs.callPackage ./home/packages/hactoolnet/package.nix {};
