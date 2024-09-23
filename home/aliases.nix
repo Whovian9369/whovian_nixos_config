@@ -1,4 +1,4 @@
-{ nixpkgs }:
+{ nixpkgs, ... }:
 {
   home.shellAliases = {
   # From Nix environment
