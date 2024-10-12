@@ -9,7 +9,7 @@
       # Mainly so I can lazily upload build logs.
   # From Windows "%PATH%"
     "adb" = "adb.exe";
-    "caja" = "explorer.exe";
+    "caja" = "wsl-open";
     "hactoolnet" = "hactoolnet.exe";
     "mpv" = "mpv.com";
     "tailscale" = "tailscale.exe";
