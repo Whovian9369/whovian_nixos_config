@@ -53,6 +53,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    ninfs = {
+      url = "github:ihaveamac/ninfs";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
+
     ### Lix! Lix! Lix!
 
     lix = {
@@ -108,14 +114,14 @@
     # Lix
     lix, lix-module,
     # Added by me
-    agenix, home-manager, nix-index-database, xil, aaru, rom-properties, ... }:
+    aaru, agenix, home-manager, ninfs, nix-index-database, rom-properties, xil, ... }:
   let
     pkgs = import nixpkgs {
       system = "x86_64-linux";
       config.allowUnfree = true;
     };
 
-    inherit (import ./system/sshKeys.nix) mySSHKeys;
+    inherit (import ./system/common/sshKeys.nix) mySSHKeys;
   in
   {
     # Notes
@@ -143,290 +149,92 @@
     nixosConfigurations = {
       nixos-wsl = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = {
+          inherit aaru agenix home-manager ninfs nix-index-database xil rom-properties mySSHKeys;
+        };
         modules = [
-          ./system/nixos-wsl/configuration.nix
+          ./system/shared_imports.nix
+          ./system/nixos-wsl/main.nix
           # ./system/dotnet_os_codename-workaround.nix
             # Source of this fix file is
             # https://github.com/nazarewk-iac/nix-configs
             #   /modules/ascii-workaround.nix
-          ./system/nix_lix.nix
-          ./system/users.nix
           nixos-wsl.nixosModules.wsl
           lix-module.nixosModules.default
           home-manager.nixosModules.home-manager
           {
             system.configurationRevision = self.shortRev or self.dirtyShortRev or "dirty";
-
-            users.users.whovian = {
-              openssh.authorizedKeys.keys = mySSHKeys;
-            };
-
-            environment.shells = [
-              pkgs.zsh
-            ];
-
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-
-              users = {
-                whovian = {
-                  imports = [
-                    ./home/home.nix
-                    agenix.homeManagerModules.default
-                    nix-index-database.hmModules.nix-index
-                  ];
-                };
-              };
-
-              # Optionally, use home-manager.extraSpecialArgs to pass arguments
-                # to home.nix
-              extraSpecialArgs = {
-                system = "x86_64-linux";
-                inherit aaru;
-                inherit agenix;
-                inherit nixpkgs;
-                inherit rom-properties;
-                inherit xil;
-                pkgs = import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true; };
-              };
-            };
-
-            # services.nixseparatedebuginfod.enable = true;
           }
         ];
       };
 
-      isoimage-pc = nixpkgs.lib.nixosSystem {
+      chimchar = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = {
+          # inherit aaru home-manager xil;
+          # inherit agenix nix-index-database rom-properties mySSHKeys;
+          inherit aaru agenix home-manager ninfs nix-index-database xil rom-properties mySSHKeys;
+        };
         modules = [
-          "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix"
+          ./system/shared_imports.nix
+          ./system/chimchar/main.nix
+          lix-module.nixosModules.default
+          home-manager.nixosModules.home-manager
           {
-
-          /*
-
-            isoImage = {
-            # Defaults
-              isoName = "nixos-24.11.20240607.051f920-x86_64-linux.iso";
-                # "iso-image.nix" says that it defaults to
-                  # "${config.isoImage.isoBaseName}.iso"
-                # "installation-cd-base.nix" seems to default it as
-                  # "${config.isoImage.isoBaseName}-${config.system.nixos.label}-${pkgs.stdenv.hostPlatform.system}.iso"
-                # "installation-cd-base.nix" seems to be the canonical here.
-              isoBaseName = "nixos";
-                # Defaults to config.system.nixos.distroId
-                  # config.system.nixos.distroId = "nixos"
-              edition = "gnome";
-                # Defaults to an empty string
-                # "gnome" is set due to using
-                  # "installation-cd-graphical-gnome.nix"
-              volumeID = "nixos-gnome-24.11-x86_64";
-                # Defaults to "nixos${optionalString (config.isoImage.edition != "") "-${config.isoImage.edition}"}-${config.system.nixos.release}-${pkgs.stdenv.hostPlatform.uname.processor}";
-              prependToMenuLabel = "";
-                # Defaults to an empty string
-              appendToMenuLabel = "";
-                # Defaults to an empty string
-            };
-
-          */
-
-            isoImage = {
-              isoBaseName = "Whovian-nixos";
-                # Defaults to config.system.nixos.distroId
-                  # config.system.nixos.distroId simply output... "nixos" lol
-                # I'm adding "Whovian-" in front because I like marking that
-                  # it's a custom image.
-            };
-
-            environment.systemPackages = [
-              pkgs._7zz
-              pkgs.bat
-              pkgs.dhex
-              pkgs.fd
-              pkgs.file
-              pkgs.git
-              pkgs.lynx
-              pkgs.ncdu
-              pkgs.progress
-              pkgs.ripgrep
-              pkgs.sshfs
-              pkgs.terminator
-              pkgs.wget
-              pkgs.xxd
-              pkgs.yq
-              # xil.packages.x86_64-linux.xil
-            ];
-
-            nix.extraOptions = ''
-                experimental-features = nix-command flakes
-              '';
-
-            programs = {
-              nano.enable = true;
-              screen.enable = true;
-              zsh = {
-                enable = true;
-                shellInit = '' zsh-newuser-install () {} '';
-                /*
-                  Disable "zsh/newuser" since this is a Live-DVD!
-                  I just want a working shell to use, please.
-                  See https://www.zsh.org/mla/users/2007/msg00396.html for
-                  some conversation about this unchanged feature! ...
-                  17 years later!
-                */
-                # Honestly unsure if I should be using `programs.zsh.envExtra`
-                # or `programs.zsh.localVariables` here.
-              /*
-                localVariables = {
-                  DISABLE_MAGIC_FUNCTIONS = true;
-                };
-              */
-                ohMyZsh = {
-                  enable = true;
-                  theme = "bira";
-                  plugins = [
-                    "git"
-                    "sudo"
-                  ];
-                };
-              };
-            };
-
-            users = {
-              defaultUserShell = pkgs.zsh;
-              users.root.openssh.authorizedKeys.keys = mySSHKeys;
-              users.nixos.openssh.authorizedKeys.keys = mySSHKeys;
-            };
-
-            services.openssh = {
-              enable = true;
-              settings = {
-                PasswordAuthentication = false;
-                KbdInteractiveAuthentication = false;
-              };
-            };
+            system.configurationRevision = self.shortRev or self.dirtyShortRev or "dirty";
           }
         ];
       };
 
       piplup = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-         specialArgs = { inherit rom-properties; };
+        specialArgs = {
+          inherit aaru agenix home-manager ninfs nix-index-database xil rom-properties mySSHKeys;
+        };
         modules = [
-          ./system/piplup/configuration.nix
+          ./system/shared_imports.nix
+          ./system/piplup/main.nix
           # ./system/dotnet_os_codename-workaround.nix
             # Source of this fix file is
             # https://github.com/nazarewk-iac/nix-configs
             #   /modules/ascii-workaround.nix
-          ./system/nix_lix.nix
-          ./system/users.nix
           lix-module.nixosModules.default
           home-manager.nixosModules.home-manager
           {
             system.configurationRevision = self.shortRev or self.dirtyShortRev or "dirty";
-
-            boot.loader.systemd-boot = {
-              enable = true;
-              editor = false;
-            };
-
-            users.users.whovian = {
-              openssh.authorizedKeys.keys = mySSHKeys;
-            };
-
-            services.openssh = {
-              enable = true;
-              settings = {
-                PasswordAuthentication = false;
-                KbdInteractiveAuthentication = false;
-              };
-            };
-
-            environment.shells = [
-              pkgs.zsh
-            ];
-
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-
-              users = {
-                whovian = {
-                  imports = [
-                    ./home/home.nix
-                    agenix.homeManagerModules.default
-                    nix-index-database.hmModules.nix-index
-                  ];
-                };
-              };
-
-              # Optionally, use home-manager.extraSpecialArgs to pass arguments
-                # to home.nix
-              extraSpecialArgs = {
-                system = "x86_64-linux";
-                inherit aaru;
-                # inherit xil;
-                inherit nixpkgs;
-                pkgs = import nixpkgs {
-                  system = "x86_64-linux";
-                  config.allowUnfree = true;
-                };
-                inherit rom-properties;
-                inherit agenix;
-              };
-            };
           }
         ];
       };
 
-      /*
       nixps = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            ./system/xps/configuration.nix
-            # ./system/xps/users.nix
-            home-manager.nixosModules.home-manager
-            {
-              system.configurationRevision = self.shortRev or self.dirtyShortRev or "dirty";
+        system = "x86_64-linux";
+        modules = [
+          ./system/shared_imports.nix
+          ./system/nixps/main.nix
+          home-manager.nixosModules.home-manager
+          {
+            system.configurationRevision = self.shortRev or self.dirtyShortRev or "dirty";
+          }
+        ];
+      };
 
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
+      isoimage-pc = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit mySSHKeys; };
+        modules = [
+          ./system/isoimage-pc/main.nix
+          "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix"
+        ];
+      };
 
-                users = {
-                  whovian = {
-                    imports = [
-                      ./home/home.nix
-                      agenix.homeManagerModules.default
-                      nix-index-database.hmModules.nix-index
-                    ];
-                  };
-                };
-
-                # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
-                extraSpecialArgs = {
-                  system = "x86_64-linux";
-                  inherit xil;
-                  inherit nixpkgs;
-                  pkgs = import nixpkgs {
-                    system = "x86_64-linux";
-                    config.allowUnfree = true;
-                  };
-                  inherit agenix;
-                };
-              };
-            }
-          ];
-        };
-      */
     };
 
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
       /*
         Some options:
         - nixpkgs.legacyPackages.x86_64-linux.alejandra
+        - nixpkgs.legacyPackages.x86_64-linux.nixfmt
         - nixpkgs.legacyPackages.x86_64-linux.nixfmt-classic
-        - nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style
         - nixpkgs.legacyPackages.x86_64-linux.treefmt
           - Didn't figure it out
           - Seems too... "Meh"
@@ -455,9 +263,9 @@
 
       build_isoimage-pc = self.nixosConfigurations.isoimage-pc.config.system.build.isoImage;
       external_lix = lix.packages.x86_64-linux.nix;
-      external_xil = xil.packages.x86_64-linux.xil;
-      external_aaru = aaru.packages.x86_64-linux.git;
-      external_rom-properties = rom-properties.packages.x86_64-linux.default;
+      # external_xil = xil.packages.x86_64-linux.xil;
+      # external_aaru = aaru.packages.x86_64-linux.git;
+      # external_rom-properties = rom-properties.packages.x86_64-linux.default;
     };
   };
 }

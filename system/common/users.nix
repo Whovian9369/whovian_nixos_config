@@ -18,6 +18,8 @@
             # Enable 'sudo' for the user.
         ] ++ lib.optionals (!options ? wsl) [
         # These are the groups for baremetal machines, or possibly VMs.
+          "networkmanager"
+            # Enable use of NetworkManager
           "docker"
             # Enable 'docker' for the user.
         ];

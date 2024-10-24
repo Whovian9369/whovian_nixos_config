@@ -1,18 +1,9 @@
 {
   lib,
-  aaru,
   agenix,
-  config,
-  modulesPath,
-  nixosConfig,
-  nixpkgs,
-  options,
-  osConfig,
-  pkgs,
-  rom-properties,
   specialArgs,
   system,
-  xil
+  ...
 }:
 {
   imports = [

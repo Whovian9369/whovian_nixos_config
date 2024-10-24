@@ -1,12 +1,17 @@
-{ nixpkgs, options, ... }:
+{
+  lib,
+  osConfig,
+  ...
+}:
 {
   home.shellAliases = {
-  # From Nix environment
-    "7z" = "7zz";
-      # "7zz" is from "nixpkgs#_7zz"
-    "termbin" = "nc termbin.com 9999";
-      # Alias that lets me upload text to https://termbin.com/
-      # Mainly so I can lazily upload build logs.
+    # From Nix environment
+      "7z" = "7zz";
+        # "7zz" is from "nixpkgs#_7zz"
+      "termbin" = "nc termbin.com 9999";
+        # Alias that lets me upload text to https://termbin.com/
+        # Mainly so I can lazily upload build logs.
+  } // lib.optionalAttrs (osConfig.wsl.enable or false) {
   # From Windows "%PATH%"
     "adb" = "adb.exe";
     "caja" = "wsl-open";
@@ -16,5 +21,4 @@
     "yt-dlp" = "yt-dlp.exe";
     "7zexe" = "/mnt/c/Program\\ Files/7-Zip/7z.exe";
   };
-  # } // nixpkgs.lib.optionalAttrs (options ? wsl) {
 }

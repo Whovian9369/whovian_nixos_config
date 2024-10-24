@@ -1,8 +1,11 @@
 {
+  lib,
   aaru,
-  rom-properties,
   agenix,
+  osConfig,
+  ninfs,
   pkgs,
+  rom-properties,
   system,
   xil,
   ...
@@ -12,8 +15,8 @@ let
   # Especially for dotnet packages, remember to update "/flake.nix" too!
   my_packages = {
     binaryobjectscanner = pkgs.callPackage ./packages/binaryobjectscanner/package.nix {};
-    hactoolnet = pkgs.callPackage ./home/packages/hactoolnet/package.nix {};
-    hactoolnet-bin = pkgs.callPackage ./home/packages/hactoolnet/bin.nix {};
+    hactoolnet = pkgs.callPackage ./packages/hactoolnet/package.nix {};
+    hactoolnet-bin = pkgs.callPackage ./packages/hactoolnet/bin.nix {};
     ird_tools = pkgs.callPackage ./packages/ird_tools/package.nix {};
     irdkit = pkgs.callPackage ./packages/irdkit/package.nix {};
     nxtik = pkgs.callPackage ./packages/nxtik/package.nix {};
@@ -108,15 +111,14 @@ in
     pkgs.cdecrypt
     pkgs.colorized-logs
     pkgs.croc
+    pkgs.ctrtool
     pkgs.dhex
-    pkgs.doctl
     pkgs.fd
-    pkgs.fq
     pkgs.file
+    pkgs.fq
     pkgs.gdrive3
     pkgs.git
     pkgs.hactool
-    pkgs.instaloader
     pkgs.internetarchive
     pkgs.lynx
     pkgs.megatools
@@ -137,27 +139,30 @@ in
     my_packages.ird_tools
     my_packages.irdkit
     my_packages.new_rclone
-    my_packages.nix-init_packagenix
-      # Yay for patched apps :)
+    my_packages.nix-init_packagenix # Yay for patched apps :)
 
     my_packages.nxtik
     my_packages.ps3dec
     my_packages.sabretools
     my_packages.unnix_script # It's a one-line bash script
-    # my_packages.hactoolnet
 
-    agenix.packages.${system}.default
-    # xil.packages.${system}.xil
     aaru.packages.${system}.git
-    rom-properties.packages.x86_64-linux.default
+    agenix.packages.${system}.default
+    ninfs.packages.${system}.ninfs
+    rom-properties.packages.${system}.default
+    # xil.packages.${system}.xil
+   ] ++ lib.optionals (!osConfig.wsl.enable or false) [
+    pkgs.mpv
+    pkgs.terminator
+    pkgs.yt-dlp
+
+    my_packages.hactoolnet
    ];
 
-  # Disabled Packages
   /*
+    # Disabled Packages
     pkgs.binutils
       # Just use "nix shell nixpkgs#binutils -c strings -- INPUT"
-    pkgs.mpv
-      # Not needed on WSL
     pkgs.nixfmt-classic
       # nixfmt was renamed to nixfmt-classic.
       # The nixfmt attribute may be used for the new RFC 166-style formatter in the future, which is currently available as nixfmt-rfc-style
@@ -168,15 +173,21 @@ in
     pkgs.rclone
       # Replaced with my_packages.new_rclone which is a patched build.
     pkgs.screen
-      # Replaced with System-set "programs.screen.enable"
+      # Replaced with system-set "programs.screen.enable"
+    my_packages.hactoolnet-bin
+      # Not needed on WSL as I currently use the Windows version.
+      # Not needed otherwise as I currently use the self-built version.
+
+    # Not included in WSL, but included otherwise:
+    pkgs.mpv
+      # Not needed on WSL
     pkgs.terminator
       # Not needed on WSL, even though I'd like it on WSL sometimes.
     pkgs.yt-dlp
       # Not needed on WSL
-    my_packages.hactoolnet-bin
-      # Not needed on WSL as I currently use the Windows version.
     my_packages.hactoolnet
       # Not needed on WSL as I currently use the Windows version.
+
   */
 
   /*

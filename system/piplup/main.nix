@@ -1,19 +1,21 @@
-{ lib,
+{
+  lib,
   pkgs,
   config,
   modulesPath,
-  nixos-wsl,
+  mySSHKeys,
   ...
 }:
 
 {
   imports = [
     ./packages.nix
-    # ./users.nix
-    ./wsl.nix
+    ./hardware-configuration.nix # Include the results of the hardware scan.
+    ./gui-kde6.nix # GUI Stuff (DE + WM)
+    ./vmware.nix # VMWAre Guest Stuff
   ];
 
-  networking.hostName = "nixos-wsl";
+  networking.hostName = "piplup";
 
   # Enable nix flakes
   nix.settings.experimental-features = [
@@ -42,5 +44,28 @@
     "/share/zsh"
   ];
 
-  system.stateVersion = "22.05";
+  boot.loader.systemd-boot = {
+    enable = true;
+    editor = false;
+  };
+
+  users.users.whovian = {
+    openssh.authorizedKeys.keys = mySSHKeys;
+  };
+
+  services.openssh = {
+    enable = true;
+    settings = {
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+    };
+  };
+
+  environment.shells = [
+    pkgs.zsh
+  ];
+
+
+
+  system.stateVersion = "24.05";
 }
