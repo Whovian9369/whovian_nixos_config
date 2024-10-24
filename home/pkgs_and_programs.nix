@@ -132,6 +132,7 @@ in
     pkgs.sshfs
     pkgs.unrar-wrapper
     pkgs.wget
+    pkgs.wsl-open
     pkgs.xxd
     pkgs.yq
 
