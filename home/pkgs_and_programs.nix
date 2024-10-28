@@ -130,7 +130,7 @@ in
     pkgs.python3
     pkgs.quickbms
     pkgs.sshfs
-    pkgs.unrar-wrapper
+    pkgs.unrar
     pkgs.wget
     pkgs.wsl-open
     pkgs.xxd
