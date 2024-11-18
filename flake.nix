@@ -168,6 +168,7 @@
         ];
       };
 
+      # Expected Next Desktop
       chimchar = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
@@ -186,6 +187,7 @@
         ];
       };
 
+      # Currently for VMs
       piplup = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
@@ -206,6 +208,7 @@
         ];
       };
 
+      # Mainly for that broken Dell XPS
       nixps = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
@@ -218,6 +221,7 @@
         ];
       };
 
+      # I love being able to generate
       isoimage-pc = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit mySSHKeys; };
@@ -229,7 +233,7 @@
 
     };
 
-    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
+    formatter.x86_64-linux = pkgs.nixfmt-rfc-style;
       /*
         Some options:
         - nixpkgs.legacyPackages.x86_64-linux.alejandra

@@ -7,25 +7,25 @@
 
 buildDotnetModule {
   pname = "irdkit";
-  version = "0.9.2";
+  version = "0.9.3";
     # NuGet page: https://www.nuget.org/packages/LibIRD
 
   src = fetchFromGitHub {
     owner = "Deterous";
     repo = "LibIRD";
-    rev = "82d53db68f610d9cb972efa0dacb1c85a363880a";
-    hash = "sha256-QPpS+zxH0fFoMGNA1AraqOseRaYJS+s67IGHKB6n2ig=";
+    rev = "048d70b473fa7bf84c6d490e9d05b653c6b2e54e";
+    hash = "sha256-3o9+eo4DABG/TEhCxlMXvLDbzMNmr2H6UOBle9X0jHw=";
     fetchSubmodules = true;
     leaveDotGit = false;
   };
 
-  dotnet-sdk = dotnetCorePackages.sdk_8_0;
-  dotnet-runtime = dotnetCorePackages.runtime_8_0;
+  dotnet-sdk = dotnetCorePackages.sdk_9_0;
+  dotnet-runtime = dotnetCorePackages.runtime_9_0;
   nugetDeps = ./deps.nix;
   projectFile = "IRDKit/IRDKit.csproj";
   selfContainedBuild = false;
-  dotnetBuildFlags = [ "--framework net8.0" ];
-  dotnetInstallFlags = [ "--framework net8.0" ];
+  dotnetBuildFlags = [ "--framework net9.0" ];
+  dotnetInstallFlags = [ "--framework net9.0" ];
 
   executables = [ "irdkit" ];
 
