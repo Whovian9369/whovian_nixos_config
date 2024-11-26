@@ -14,6 +14,7 @@
   } // lib.optionalAttrs (osConfig.wsl.enable or false) {
   # From Windows "%PATH%"
     "adb" = "adb.exe";
+    "aaru6exe"="/mnt/c/Users/Whovian/Downloads/Games/Tools/aaru/v6.0.0-alpha9/aaru-6.0.0-alpha9_windows_x64/aaru.exe";
     "caja" = "wsl-open";
     "hactoolnet" = "hactoolnet.exe";
     "mpv" = "mpv.com";
