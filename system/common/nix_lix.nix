@@ -1,5 +1,7 @@
 {
   nix.settings = {
+    trusted-users = [ "whovian" ];
+
     extra-substituters = [
     "https://cache.lix.systems"
     ];
