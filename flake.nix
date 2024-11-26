@@ -89,22 +89,38 @@
     # but don't like that they're included >:(
     #########
 
-    # I don't like `flake-utils`, but so many things use it that I might as
-    # well only keep a single version of it.
+    /*
+      Used by:
+      - lix
+      - nixos-wsl
+    */
+    flake-compat = {
+      url = "github:edolstra/flake-compat";
+    };
+
+    /*
+      Used by:
+      - lix-module
+      - ninfs
+        - Itself
+        - inputs.pyctr
+      - nixos-wsl
+      - xil
+    */
     flake-utils = {
       url = "github:numtide/flake-utils";
       inputs.systems.follows = "nix-systems_default";
     };
 
-    # Ditto to github:nix-systems/default
+    /*
+      Used by:
+      - agenix
+      - flake-utils
+    */
     nix-systems_default = {
       url = "github:nix-systems/default";
     };
 
-    # Ditto to github:edolstra/flake-compat
-    flake-compat = {
-      url = "github:edolstra/flake-compat";
-    };
 
   }; # inputs
 
