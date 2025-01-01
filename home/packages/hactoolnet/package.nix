@@ -18,7 +18,7 @@ buildDotnetModule {
 
   dotnet-sdk = dotnetCorePackages.sdk_8_0;
   dotnet-runtime = dotnetCorePackages.runtime_8_0;
-  nugetDeps = ./deps.nix;
+  nugetDeps = ./deps.json;
   projectFile = "src/hactoolnet/hactoolnet.csproj";
   selfContainedBuild = false;
   dotnetBuildFlags = [ "--framework net8.0" ];
