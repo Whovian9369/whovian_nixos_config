@@ -12,8 +12,8 @@ buildDotnetModule {
   src = fetchFromGitHub {
     owner = "SabreTools";
     repo = "SabreTools";
-    rev = "eb2fad55b1d6c551ccd3950eda52698a7ecabad7";
-    hash = "sha256-lkCcCBhqQq1ciSG+M2cLfjUIcfJkOibHqpXLS+e48I4=";
+    rev = "acfd6b1d116fc9d0d75166654df92fd1b0fb455d";
+    hash = "sha256-/bH+LV7tEdXcbP52j9hH0MU0V+oGWoJlZMla5Bq72fg=";
     fetchSubmodules = true;
     leaveDotGit = false;
   };

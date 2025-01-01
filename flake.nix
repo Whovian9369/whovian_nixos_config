@@ -59,6 +59,11 @@
       inputs.flake-utils.follows = "flake-utils";
     };
 
+    ihaveahax-nur = {
+      url = "github:ihaveamac/nur-packages/staging";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     ### Lix! Lix! Lix!
 
     lix = {
@@ -130,7 +135,7 @@
     # Lix
     lix, lix-module,
     # Added by me
-    aaru, agenix, home-manager, ninfs, nix-index-database, rom-properties, xil, ... }:
+    aaru, agenix, home-manager, ihaveahax-nur, ninfs, nix-index-database, rom-properties, xil, ... }:
   let
     pkgs = import nixpkgs {
       system = "x86_64-linux";
@@ -166,7 +171,7 @@
       nixos-wsl = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
-          inherit aaru agenix home-manager ninfs nix-index-database xil rom-properties mySSHKeys;
+          inherit aaru agenix home-manager ihaveahax-nur ninfs nix-index-database xil rom-properties mySSHKeys;
         };
         modules = [
           ./system/shared_imports.nix
@@ -190,7 +195,7 @@
         specialArgs = {
           # inherit aaru home-manager xil;
           # inherit agenix nix-index-database rom-properties mySSHKeys;
-          inherit aaru agenix home-manager ninfs nix-index-database xil rom-properties mySSHKeys;
+          inherit aaru agenix home-manager ihaveahax-nur ninfs nix-index-database xil rom-properties mySSHKeys;
         };
         modules = [
           ./system/shared_imports.nix
@@ -207,7 +212,7 @@
       piplup = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
-          inherit aaru agenix home-manager ninfs nix-index-database xil rom-properties mySSHKeys;
+          inherit aaru agenix home-manager ihaveahax-nur ninfs nix-index-database xil rom-properties mySSHKeys;
         };
         modules = [
           ./system/shared_imports.nix
@@ -282,7 +287,7 @@
         } );
 
       build_isoimage-pc = self.nixosConfigurations.isoimage-pc.config.system.build.isoImage;
-      external_lix = lix.packages.x86_64-linux.nix;
+      # external_lix = lix.packages.x86_64-linux.nix;
       # external_xil = xil.packages.x86_64-linux.xil;
       # external_aaru = aaru.packages.x86_64-linux.git;
       # external_rom-properties = rom-properties.packages.x86_64-linux.default;

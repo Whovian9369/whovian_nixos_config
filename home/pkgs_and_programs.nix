@@ -3,6 +3,7 @@
   aaru,
   agenix,
   osConfig,
+  ihaveahax-nur,
   ninfs,
   pkgs,
   rom-properties,
@@ -111,7 +112,6 @@ in
     pkgs.cdecrypt
     pkgs.colorized-logs
     pkgs.croc
-    pkgs.ctrtool
     pkgs.dhex
     pkgs.fd
     pkgs.file
@@ -120,6 +120,7 @@ in
     pkgs.git
     pkgs.hactool
     pkgs.internetarchive
+    pkgs.lgogdownloader
     pkgs.lynx
     pkgs.megatools
     pkgs.ncdu
@@ -128,7 +129,6 @@ in
     pkgs.progress
     pkgs.pyrosimple
     pkgs.python3
-    pkgs.quickbms
     pkgs.sshfs
     pkgs.unrar
     pkgs.wget
@@ -149,28 +149,36 @@ in
 
     aaru.packages.${system}.git
     agenix.packages.${system}.default
+    ihaveahax-nur.packages.${system}."3dstool"
+    ihaveahax-nur.packages.${system}.ctrtool
     ninfs.packages.${system}.ninfs
     rom-properties.packages.${system}.default
-    # xil.packages.${system}.xil
    ] ++ lib.optionals (!osConfig.wsl.enable or false) [
     pkgs.mpv
     pkgs.terminator
+    pkgs.wezterm
     pkgs.yt-dlp
 
     my_packages.hactoolnet
-   ];
+  ];
 
   /*
     # Disabled Packages
     pkgs.binutils
       # Just use "nix shell nixpkgs#binutils -c strings -- INPUT"
+    pkgs.ctrtool
+      # Using ctrtool from ihaveahax's NUR Repo.
     pkgs.nixfmt-classic
       # nixfmt was renamed to nixfmt-classic.
-      # The nixfmt attribute may be used for the new RFC 166-style formatter in the future, which is currently available as nixfmt-rfc-style
+      # The nixfmt attribute may be used for the new RFC 166-style formatter in
+      # the future, which is currently available as nixfmt-rfc-style
     pkgs.python3Packages.nsz
       # Eh, don't want it in my current config.
     pkgs.p7zip
       # Replaced in favour of nixpkgs#_7zz
+    # pkgs.quickbms
+      # 2024-12-31 Broken in Hydra
+      # also tbh I wasn't using it anyway
     pkgs.rclone
       # Replaced with my_packages.new_rclone which is a patched build.
     pkgs.screen
@@ -178,6 +186,8 @@ in
     my_packages.hactoolnet-bin
       # Not needed on WSL as I currently use the Windows version.
       # Not needed otherwise as I currently use the self-built version.
+    xil.packages.${system}.xil
+      # Build is broken, and unfortunately has been for a while.
 
     # Not included in WSL, but included otherwise:
     pkgs.mpv
