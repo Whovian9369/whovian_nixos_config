@@ -1,6 +1,6 @@
 { lib, pkgs, config, modulesPath, ... }: {
   nix = {
-    package = pkgs.nixFlakes;  
+    # package = pkgs.nixVersions.stable;
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
     };

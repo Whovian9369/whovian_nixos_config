@@ -8,9 +8,6 @@
   # Use PipeWire
   security.rtkit.enable = true;
 
-  # dconf
-  programs.dconf.enable = true;
-
   services = {
     # Use PipeWire
     pipewire = {
@@ -31,30 +28,9 @@
     desktopManager.cinnamon.enable = true;
   };
 
+  # dconf
+  programs.dconf.enable = true;
 
-  # Fonts
-  fonts = {
-    enableDefaultPackages = false;
-    packages = [
-    # fonts.enableDefaultPackages
-      pkgs.dejavu_fonts
-      pkgs.freefont_ttf
-      pkgs.gyre-fonts
-        # TrueType substitutes for standard PostScript fonts
-      pkgs.liberation_ttf
-      pkgs.unifont
-      pkgs.noto-fonts-color-emoji
-    # fonts.enableDefaultPackages
-      pkgs.unifont_upper
-      pkgs.noto-fonts
-      pkgs.noto-fonts-cjk-sans
-      pkgs.corefonts
-    ];
-    fontconfig.cache32Bit = true;
-  };
-
-  # KDE6
-  # Enable the KDE Desktop Environment.
   xdg.icons.enable = true;
   environment = {
     sessionVariables.NIXOS_OZONE_WL = "1";

@@ -1,7 +1,10 @@
 {
+  lib,
   aaru,
   agenix,
+  config,
   home-manager,
+  ihaveahax-nur,
   ninfs,
   nixpkgs,
   pkgs,
@@ -9,11 +12,12 @@
   xil,
   ...
 }:
-# let inherit (import ./system/1_common/sshKeys.nix) mySSHKeys; in
+
 {
   imports = [
     ./common/nix_lix.nix
     ./common/users.nix
+    ./common/fonts.nix
   ];
 
   # Optionally, use home-manager.extraSpecialArgs to pass arguments
@@ -24,6 +28,7 @@
     inherit aaru;
     inherit agenix;
     # inherit nixpkgs;
+    inherit ihaveahax-nur;
     inherit ninfs;
     inherit rom-properties;
     inherit xil;

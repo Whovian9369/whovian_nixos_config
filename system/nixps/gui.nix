@@ -42,7 +42,7 @@
     xserver = {
       enable = true;
         # Enable the X11 windowing system.
-      videoDrivers = [ "intel" ];
+      videoDrivers = [ "modesetting" ];
       desktopManager = {
         xterm.enable = false;
         xfce.enable = false;
