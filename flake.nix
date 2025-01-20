@@ -11,7 +11,6 @@
       url = "github:nix-community/NixOS-WSL/main";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-compat.follows = "flake-compat";
-      inputs.flake-utils.follows = "flake-utils";
     };
 
     ### My extra inputs
@@ -56,7 +55,6 @@
     ninfs = {
       url = "github:ihaveamac/ninfs";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
     };
 
     ihaveahax-nur = {
@@ -106,10 +104,6 @@
     /*
       Used by:
       - lix-module
-      - ninfs
-        - Itself
-        - inputs.pyctr
-      - nixos-wsl
       - xil
     */
     flake-utils = {
