@@ -23,10 +23,6 @@ let
     nxtik = pkgs.callPackage ./packages/nxtik/package.nix {};
     ps3dec = pkgs.callPackage ./packages/ps3dec/package.nix {};
     sabretools = pkgs.callPackage ./packages/sabretools/package.nix {};
-    new_rclone = pkgs.rclone.overrideAttrs (oldAttrs: rec {
-        patches = [ ./packages/new_rclone/patches/rclone_8ffe3e462cbf5688c37c54009db09d8dcb486860.diff ];
-      }
-    );
     nix-init_packagenix = pkgs.nix-init.overrideAttrs (oldAttrs: rec {
         patches = [ ./packages/nix-init/default_to_package.diff ];
       }
@@ -129,6 +125,7 @@ in
     pkgs.progress
     pkgs.pyrosimple
     pkgs.python3
+    pkgs.rclone
     pkgs.sshfs
     pkgs.unrar
     pkgs.wget
@@ -139,7 +136,6 @@ in
     my_packages.binaryobjectscanner
     my_packages.ird_tools
     my_packages.irdkit
-    my_packages.new_rclone
     my_packages.nix-init_packagenix # Yay for patched apps :)
 
     my_packages.nxtik
@@ -179,8 +175,6 @@ in
     # pkgs.quickbms
       # 2024-12-31 Broken in Hydra
       # also tbh I wasn't using it anyway
-    pkgs.rclone
-      # Replaced with my_packages.new_rclone which is a patched build.
     pkgs.screen
       # Replaced with system-set "programs.screen.enable"
     my_packages.hactoolnet-bin
