@@ -178,7 +178,10 @@
           lix-module.nixosModules.default
           home-manager.nixosModules.home-manager
           {
-            system.configurationRevision = self.shortRev or self.dirtyShortRev or "dirty";
+            system = {
+              configurationRevision = self.shortRev or self.dirtyShortRev or "dirty";
+              extraSystemBuilderCmds = "ln -s ${self.sourceInfo.outPath} $out/src";
+            };
           }
         ];
       };
@@ -197,7 +200,10 @@
           lix-module.nixosModules.default
           home-manager.nixosModules.home-manager
           {
-            system.configurationRevision = self.shortRev or self.dirtyShortRev or "dirty";
+            system = {
+              configurationRevision = self.shortRev or self.dirtyShortRev or "dirty";
+              extraSystemBuilderCmds = "ln -s ${self.sourceInfo.outPath} $out/src";
+            };
           }
         ];
       };
@@ -218,7 +224,10 @@
           lix-module.nixosModules.default
           home-manager.nixosModules.home-manager
           {
-            system.configurationRevision = self.shortRev or self.dirtyShortRev or "dirty";
+            system = {
+              configurationRevision = self.shortRev or self.dirtyShortRev or "dirty";
+              extraSystemBuilderCmds = "ln -s ${self.sourceInfo.outPath} $out/src";
+            };
           }
         ];
       };
@@ -231,7 +240,10 @@
           ./system/nixps/main.nix
           home-manager.nixosModules.home-manager
           {
-            system.configurationRevision = self.shortRev or self.dirtyShortRev or "dirty";
+            system = {
+              configurationRevision = self.shortRev or self.dirtyShortRev or "dirty";
+              extraSystemBuilderCmds = "ln -s ${self.sourceInfo.outPath} $out/src";
+            };
           }
         ];
       };
@@ -245,7 +257,6 @@
           "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix"
         ];
       };
-
     };
 
     formatter.x86_64-linux = pkgs.nixfmt-rfc-style;
