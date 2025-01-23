@@ -129,6 +129,7 @@ in
     pkgs.sshfs
     pkgs.unrar
     pkgs.wget
+    pkgs.wiimms-iso-tools
     pkgs.wsl-open
     pkgs.xxd
     pkgs.yq
