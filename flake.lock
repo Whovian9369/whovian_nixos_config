@@ -104,11 +104,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1737394973,
-        "narHash": "sha256-EW4oXMfnfA5sNM9Jqm+y98horWVvN66Gu7YIcEpFYZc=",
+        "lastModified": 1737630279,
+        "narHash": "sha256-wJQCxyMRc4P26zDrHmZiRD5bbfcJpqPG3e2djdGG3pk=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "9786661d57c476021c8a0c3e53bf9fa2b4f3328b",
+        "rev": "0db5c8bfcce78583ebbde0b2abbc95ad93445f7c",
         "type": "github"
       },
       "original": {
@@ -124,11 +124,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1737305576,
-        "narHash": "sha256-RNSfGPwsK0hB3GfmHYLSWZUUEx7kQoEpSxUkjD8bpFA=",
+        "lastModified": 1737557255,
+        "narHash": "sha256-A9hMi4XZ0IOPKTQcP5vspHv1FCXqWsaq8NzLh++/nmw=",
         "owner": "ihaveamac",
         "repo": "nur-packages",
-        "rev": "c5d30170a137a5ebd842084a082f3b5f2a60148d",
+        "rev": "00928246559732d2a4848367db944f9b30327220",
         "type": "github"
       },
       "original": {
@@ -151,11 +151,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1737400654,
-        "narHash": "sha256-szM+hEGCKFiPxWkKCXqA0oIGmlfbHupsk4b1uss1zuk=",
+        "lastModified": 1737647630,
+        "narHash": "sha256-ZxaaAmD3t5NDUQO+3NwK2bhbDhyIsme/f6LJDUsDlnk=",
         "ref": "refs/heads/main",
-        "rev": "831e9d62f118dc6180901a762e25d04fde064595",
-        "revCount": 16644,
+        "rev": "25fe10110210b7039196399abf78a21ee7f79c9a",
+        "revCount": 16667,
         "type": "git",
         "url": "https://git@git.lix.systems/lix-project/lix"
       },
@@ -289,11 +289,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1737062831,
-        "narHash": "sha256-Tbk1MZbtV2s5aG+iM99U8FqwxU/YNArMcWAv6clcsBc=",
+        "lastModified": 1737469691,
+        "narHash": "sha256-nmKOgAU48S41dTPIXAq0AHZSehWUn6ZPrUKijHAMmIk=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "5df43628fdf08d642be8ba5b3625a6c70731c19c",
+        "rev": "9e4d5190a9482a1fb9d18adf0bdb83c6e506eaab",
         "type": "github"
       },
       "original": {
@@ -364,11 +364,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1737225403,
-        "narHash": "sha256-drol1zFcWbBWDCJ9Lk7F16On9/rz0v2FWRtM+0Ry/wQ=",
+        "lastModified": 1737648853,
+        "narHash": "sha256-SB7kgpUGu7ldihOri4w/8bx0j8ts2DWjHI4lsLEqimU=",
         "owner": "Whovian9369",
         "repo": "rom-properties-nix-flake",
-        "rev": "a7d74854e00c63605a840f7a2bba1441a3731e66",
+        "rev": "fb710d1359ec18c788fec16b334e08906c68f3ee",
         "type": "github"
       },
       "original": {
