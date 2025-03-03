@@ -292,9 +292,6 @@
       psfo = pkgs.callPackage ./home/packages/psfo/package.nix {};
       sabretools = pkgs.callPackage ./home/packages/sabretools/package.nix {};
 
-      new_rclone = pkgs.rclone.overrideAttrs ( oldAttrs: {
-          patches = [ ./home/packages/new_rclone/patches/rclone_8ffe3e462cbf5688c37c54009db09d8dcb486860.diff ];
-        } );
       new_nix-init = pkgs.nix-init.overrideAttrs (oldAttrs: {
           patches = [ ./home/packages/nix-init/default_to_package.diff ];
         } );
