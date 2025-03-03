@@ -26,6 +26,11 @@
       inputs.home-manager.follows = "home-manager";
     };
 
+    flake-programs-sqlite = {
+      url = "github:wamserma/flake-programs-sqlite";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -129,7 +134,7 @@
     # Lix
     lix, lix-module,
     # Added by me
-    aaru, agenix, home-manager, ihaveahax-nur, ninfs, nix-index-database, rom-properties, xil, ... }:
+    aaru, agenix, flake-programs-sqlite, home-manager, ihaveahax-nur, ninfs, nix-index-database, rom-properties, xil, ... }:
   let
     pkgs = import nixpkgs {
       system = "x86_64-linux";
@@ -174,6 +179,7 @@
             # Source of this fix file is
             # https://github.com/nazarewk-iac/nix-configs
             #   /modules/ascii-workaround.nix
+          flake-programs-sqlite.nixosModules.programs-sqlite
           nixos-wsl.nixosModules.wsl
           lix-module.nixosModules.default
           home-manager.nixosModules.home-manager
@@ -197,6 +203,7 @@
         modules = [
           ./system/shared_imports.nix
           ./system/chimchar/main.nix
+          flake-programs-sqlite.nixosModules.programs-sqlite
           lix-module.nixosModules.default
           home-manager.nixosModules.home-manager
           {
@@ -221,6 +228,7 @@
             # Source of this fix file is
             # https://github.com/nazarewk-iac/nix-configs
             #   /modules/ascii-workaround.nix
+          flake-programs-sqlite.nixosModules.programs-sqlite
           lix-module.nixosModules.default
           home-manager.nixosModules.home-manager
           {
