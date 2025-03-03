@@ -6,17 +6,32 @@
 {
 
   /*
-    isoImage = {
+
+    # ElvishJerico seems to be the current ISO maintainer, so reach out to them
+    # if required?
+
+    ### 2025-02-22
+    nix-repl> nixosConfigurations.isoimage-pc.config.image
+    {
+      baseName = "nixos-gnome-25.05.20250218.73cf49b-x86_64-linux";
+      extension = "iso";
+      fileName = "nixos-gnome-25.05.20250218.73cf49b-x86_64-linux.iso";
+      filePath = "iso/nixos-gnome-25.05.20250218.73cf49b-x86_64-linux.iso";
+      modules = «error: The option `image.modules' was accessed but has no value defined. Try setting the option.»;
+    }
+    ### 2025-02-22
+
+    image = {
     # Defaults
-      isoName = "nixos-24.11.20240607.051f920-x86_64-linux.iso";
+      baseName = "nixos";
+        # Defaults to config.system.nixos.distroId
+          # config.system.nixos.distroId = "nixos"
+      fileName = "nixos-24.11.20240607.051f920-x86_64-linux.iso";
         # "iso-image.nix" says that it defaults to
           # "${config.isoImage.isoBaseName}.iso"
         # "installation-cd-base.nix" seems to default it as
           # "${config.isoImage.isoBaseName}-${config.system.nixos.label}-${pkgs.stdenv.hostPlatform.system}.iso"
         # "installation-cd-base.nix" seems to be the canonical here.
-      isoBaseName = "nixos";
-        # Defaults to config.system.nixos.distroId
-          # config.system.nixos.distroId = "nixos"
       edition = "gnome";
         # Defaults to an empty string
         # "gnome" is set due to using
@@ -30,13 +45,15 @@
     };
   */
 
-  isoImage = {
-    isoBaseName = "Whovian-nixos";
+  /*
+    # Filename prefix seems to be "broken" for my purpose, so removing this
+    # option. Unfortunate, but it is what it is.
+    image.baseName = "Whovian-nixos";
       # Defaults to config.system.nixos.distroId
         # config.system.nixos.distroId simply output... "nixos" lol
       # I'm adding "Whovian-" in front because I like marking that
         # it's a custom image.
-  };
+  */
 
   environment.systemPackages = [
     pkgs._7zz
