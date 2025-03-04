@@ -192,7 +192,7 @@
         ];
       };
 
-      # Expected Next Desktop
+      # MacBook Pro 9,2
       chimchar = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
@@ -256,7 +256,7 @@
         ];
       };
 
-      # I love being able to generate
+      # I love being able to generate ISOs
       isoimage-pc = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit mySSHKeys; };

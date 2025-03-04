@@ -14,6 +14,7 @@
     ./packages.nix
     ./hardware-configuration.nix # Include the results of the hardware scan.
       # TODO: Generate actual hw-cfg for chimchar as current one is piplup's
+    ./mac.nix # Extra Mac settings
   ];
 
   networking.hostName = "chimchar";
@@ -101,5 +102,5 @@
 
     For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   */
-  system.stateVersion = "24.11";
+  system.stateVersion = "25.05";
 }
