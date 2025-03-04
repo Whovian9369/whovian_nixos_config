@@ -55,6 +55,21 @@
         # it's a custom image.
   */
 
+  isoImage.edition = "mate";
+
+  services.displayManager = {
+    sddm.enable = true;
+    autoLogin = {
+      enable = true;
+      user = "nixos";
+    };
+  };
+
+  services.xserver = {
+    enable = true;
+    desktopManager.mate.enable = true;
+  };
+
   environment.systemPackages = [
     pkgs._7zz
     pkgs.bat

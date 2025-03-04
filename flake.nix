@@ -261,8 +261,11 @@
         system = "x86_64-linux";
         specialArgs = { inherit mySSHKeys; };
         modules = [
+          # "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix"
+          "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-base.nix"
           ./system/isoimage-pc/main.nix
-          "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix"
+          ./system/common/nix_lix.nix
+          lix-module.nixosModules.default
         ];
       };
     };
