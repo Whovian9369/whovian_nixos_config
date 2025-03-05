@@ -14,7 +14,10 @@
     ./packages.nix
     ./hardware-configuration.nix # Include the results of the hardware scan.
       # TODO: Generate actual hw-cfg for chimchar as current one is piplup's
-    ./mac.nix # Extra Mac settings
+    ./mac.nix
+      # Extra Mac settings
+    ./gui-mate.nix
+      # GUI Stuff - MATE
   ];
 
   networking.hostName = "chimchar";
