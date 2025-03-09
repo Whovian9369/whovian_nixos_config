@@ -10,6 +10,9 @@
   environment.systemPackages = [
     pkgs.file
     pkgs.xterm
+    pkgs.sublime4
+    pkgs.waypipe
+    pkgs.fusee-nano
     # `agenix` is currently added via
     # home-manager's `home.packages`
   ];
@@ -28,5 +31,6 @@
     nano.enable = true;
     screen.enable = true;
     zsh.enable = true;
+    nm-applet.enable = true;
   };
 }

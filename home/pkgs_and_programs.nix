@@ -156,6 +156,8 @@ in
     pkgs.wezterm
     pkgs.yt-dlp
 
+    (pkgs.discord.override { withMoonlight = true; })
+
     my_packages.hactoolnet
   ];
 
