@@ -12,8 +12,9 @@
 {
   imports = [
     ./packages.nix
-    ./hardware-configuration.nix # Include the results of the hardware scan.
-      # TODO: Generate actual hw-cfg for chimchar as current one is piplup's
+      # environment.systemPackages, nixpkgs config, and related.
+    ./hardware-configuration.nix
+      # Include the results of the hardware scan.
     ./mac.nix
       # Extra Mac settings
     ./gui-mate.nix
