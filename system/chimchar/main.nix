@@ -18,6 +18,8 @@
       # Extra Mac settings
     ./gui-mate.nix
       # GUI Stuff - MATE
+    ./udev.nix
+      # Extra udev rules
   ];
 
   networking.hostName = "chimchar";
