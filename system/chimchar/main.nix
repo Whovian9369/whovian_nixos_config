@@ -22,6 +22,8 @@
       # GUI Stuff - Cinnamon
     ./gui-xfce.nix
       # GUI Stuff - XFCE
+    ./printing.nix
+      # Printer stuff
     ./udev.nix
       # Extra udev rules
   ];
