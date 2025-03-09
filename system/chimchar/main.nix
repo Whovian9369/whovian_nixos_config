@@ -18,6 +18,10 @@
       # Extra Mac settings
     ./gui-mate.nix
       # GUI Stuff - MATE
+    ./gui-cinnamon.nix
+      # GUI Stuff - Cinnamon
+    ./gui-xfce.nix
+      # GUI Stuff - XFCE
     ./udev.nix
       # Extra udev rules
   ];
@@ -33,9 +37,12 @@
     };
   };
 
-  boot.loader.systemd-boot = {
-    enable = true;
-    editor = false;
+  boot = {
+    # tmp.cleanOnBoot = true;
+    loader.systemd-boot = {
+      enable = true;
+      editor = false;
+    };
   };
 
   services.openssh = {
