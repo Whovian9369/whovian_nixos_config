@@ -149,7 +149,7 @@ in
     ihaveahax-nur.packages.${system}."3dstool"
     ihaveahax-nur.packages.${system}.ctrtool
     ninfs.packages.${system}.ninfs
-    rom-properties.packages.${system}.default
+    # rom-properties.packages.${system}.default
    ] ++ lib.optionals (!osConfig.wsl.enable or false) [
     pkgs.mpv
     pkgs.terminator
