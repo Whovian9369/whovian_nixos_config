@@ -60,6 +60,8 @@
     "flakes"
   ];
 
+  services.tailscale.enable = true;
+
   time.timeZone = "America/New_York";
 
   home-manager = {
