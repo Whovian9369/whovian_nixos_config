@@ -1,5 +1,12 @@
+{ pkgs, config, ... }:
 {
-  boot.kernelParams = [
-    "hid_apple.swap_opt_cmd=1"
-  ];
+  # Explicitly set libinput stuff
+  services.libinput = {
+    enable = true;
+    touchpad = {
+      horizontalScrolling = true;
+      scrollMethod = "twofinger";
+      naturalScrolling = false;
+    };
+  };
 }

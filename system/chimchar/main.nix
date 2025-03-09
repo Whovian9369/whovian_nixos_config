@@ -22,7 +22,16 @@
       # Extra udev rules
   ];
 
-  networking.hostName = "chimchar";
+  networking = {
+    hostName = "chimchar";
+    enableB43Firmware = lib.mkDefault true;
+    networkmanager = {
+      enable = true;
+      # dns = "systemd-resolved";
+      plugins = [ ];
+      # settings = { };
+    };
+  };
 
   boot.loader.systemd-boot = {
     enable = true;
