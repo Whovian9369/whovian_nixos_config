@@ -22,6 +22,10 @@
             # Enable use of NetworkManager
           "docker"
             # Enable 'docker' for the user.
+          "scanner"
+            # Enable use of scanners via SANE.
+          "lp"
+            # Enable use of printers.
         ];
       };
     };

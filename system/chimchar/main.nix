@@ -11,20 +11,26 @@
 
 {
   imports = [
-    ./packages.nix
-      # environment.systemPackages, nixpkgs config, and related.
     ./hardware-configuration.nix
       # Include the results of the hardware scan.
-    ./mac.nix
-      # Extra Mac settings
-    ./gui-mate.nix
-      # GUI Stuff - MATE
+    ./packages.nix
+      # environment.systemPackages, nixpkgs config, and related.
+
     ./gui-cinnamon.nix
       # GUI Stuff - Cinnamon
+    ./gui-mate.nix
+      # GUI Stuff - MATE
     ./gui-xfce.nix
       # GUI Stuff - XFCE
-    ./printing.nix
-      # Printer stuff
+
+    ./containers.nix
+      # Podman or Docker settings.
+    ./mac.nix
+      # Extra Mac settings
+    # ./mpd.nix
+      # Music
+    ./printing_scanning.nix
+      # Printer and Scanner stuff
     ./udev.nix
       # Extra udev rules
   ];

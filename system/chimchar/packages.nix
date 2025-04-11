@@ -1,6 +1,5 @@
 {
   lib,
-  # agenix,
   pkgs,
   config,
   modulesPath,
@@ -8,13 +7,13 @@
 }:
 {
   environment.systemPackages = [
+    pkgs.distrobox
     pkgs.file
-    pkgs.xterm
     pkgs.sublime4
+    pkgs.pwvucontrol
+    (pkgs.vlc.override { libbluray = pkgs.libbluray.override { withAACS = true; withBDplus = true; withJava = true; }; })
     pkgs.waypipe
-    pkgs.fusee-nano
-    # `agenix` is currently added via
-    # home-manager's `home.packages`
+    pkgs.xterm
   ];
 
   nixpkgs = {

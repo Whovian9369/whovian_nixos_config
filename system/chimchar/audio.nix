@@ -2,9 +2,13 @@
   # Enable sound with pipewire.
   security.rtkit.enable = true;
   services = {
-    pulseaudio.enable = false;
-    pipewire = {
+    pulseaudio = {
       enable = true;
+      systemWide = false;
+      # systemWide = true;
+    };
+    pipewire = {
+      enable = false;
       alsa = {
         enable = true;
         support32Bit = true;
