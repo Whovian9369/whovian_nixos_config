@@ -23,6 +23,7 @@ let
     nxtik = pkgs.callPackage ./packages/nxtik/package.nix {};
     ps3dec = pkgs.callPackage ./packages/ps3dec/package.nix {};
     sabretools = pkgs.callPackage ./packages/sabretools/package.nix {};
+    psfo = pkgs.callPackage ./packages/psfo/package.nix {};
     nix-init_packagenix = pkgs.nix-init.overrideAttrs (oldAttrs: rec {
         patches = [ ./packages/nix-init/default_to_package.diff ];
       }
@@ -142,6 +143,7 @@ in
 
     my_packages.nxtik
     my_packages.ps3dec
+    my_packages.psfo
     my_packages.sabretools
     my_packages.unnix_script # It's a one-line bash script
 
