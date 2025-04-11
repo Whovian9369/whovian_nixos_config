@@ -116,6 +116,7 @@ in
     pkgs.git
     pkgs.hactool
     pkgs.internetarchive
+    pkgs.lftp
     pkgs.lgogdownloader
     pkgs.lynx
     pkgs.megatools
@@ -149,9 +150,16 @@ in
     ihaveahax-nur.packages.${system}."3dstool"
     ihaveahax-nur.packages.${system}.ctrtool
     ninfs.packages.${system}.ninfs
-    # rom-properties.packages.${system}.default
+    rom-properties.packages.${system}.default
    ] ++ lib.optionals (!osConfig.wsl.enable or false) [
+    pkgs.acpi
+    pkgs.fusee-nano
+    pkgs.hunspell
+    pkgs.hunspellDicts.en-us-large
+    pkgs.imhex
+    pkgs.libreoffice-qt
     pkgs.mpv
+    pkgs.obsidian
     pkgs.terminator
     pkgs.wezterm
     pkgs.yt-dlp
