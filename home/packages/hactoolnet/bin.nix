@@ -14,7 +14,7 @@ stdenv.mkDerivation rec {
   version = "0.19.0";
 
   src = fetchzip {
-    url = "https://github.com/Thealexbarney/LibHac/releases/download/v0.19.0/hactoolnet-0.19.0-linux.zip";
+    url = "https://github.com/Thealexbarney/LibHac/releases/download/v${version}/hactoolnet-${version}-linux.zip";
     sha256 = "njlIFsAjyKErYatbP+3fmjP5dv3DhJ7G1+KvC2ZPdso=";
   };
 
