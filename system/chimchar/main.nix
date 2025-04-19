@@ -23,6 +23,8 @@
     ./gui-xfce.nix
       # GUI Stuff - XFCE
 
+    ./battery.nix
+       # Battery/Power Saving stuff.
     ./containers.nix
       # Podman or Docker settings.
     ./ios.nix
