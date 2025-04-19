@@ -21,11 +21,13 @@
           "networkmanager"
             # Enable use of NetworkManager
           "docker"
-            # Enable 'docker' for the user.
+            # Enable use of "docker".
           "scanner"
             # Enable use of scanners via SANE.
           "lp"
             # Enable use of printers.
+          "adbusers"
+            # Enable use of "adb".
         ];
       };
     };

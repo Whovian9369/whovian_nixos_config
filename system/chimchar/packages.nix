@@ -36,10 +36,11 @@
   };
 
   programs = {
+    adb.enable = true;
     firefox.enable = true;
     nano.enable = true;
+    nm-applet.enable = true;
     screen.enable = true;
     zsh.enable = true;
-    nm-applet.enable = true;
   };
 }
