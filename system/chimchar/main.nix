@@ -25,6 +25,8 @@
 
     ./containers.nix
       # Podman or Docker settings.
+    ./ios.nix
+      # iOS Tooling.
     ./mac.nix
       # Extra Mac settings
     # ./mpd.nix
