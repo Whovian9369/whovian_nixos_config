@@ -128,7 +128,6 @@ in
     pkgs.pyrosimple
     pkgs.python3
     pkgs.rclone
-    pkgs.scrcpy
     pkgs.sshfs
     pkgs.unrar
     pkgs.wget
@@ -163,6 +162,7 @@ in
     pkgs.libreoffice-qt
     pkgs.mpv
     pkgs.obsidian
+    pkgs.scrcpy
     pkgs.terminator
     pkgs.wezterm
     pkgs.yt-dlp
