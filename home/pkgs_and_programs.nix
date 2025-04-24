@@ -128,6 +128,7 @@ in
     pkgs.pyrosimple
     pkgs.python3
     pkgs.rclone
+    pkgs.scrcpy
     pkgs.sshfs
     pkgs.unrar
     pkgs.wget
