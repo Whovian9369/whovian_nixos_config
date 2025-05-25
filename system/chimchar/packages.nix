@@ -15,6 +15,10 @@
     pkgs.waypipe
     pkgs.xterm
 
+    ### Scanning
+    (pkgs.epsonscan2.override { withGui = true; withNonFreePlugins = true; })
+    ### Scanning
+
     ### iOS Stuff
     pkgs.libimobiledevice
     pkgs.ifuse
@@ -22,8 +26,6 @@
     pkgs.checkra1n
     pkgs.libusbmuxd
     ### iOS Stuff
-
-
   ];
 
   nixpkgs = {
