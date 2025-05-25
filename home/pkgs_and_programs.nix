@@ -155,6 +155,7 @@ in
     rom-properties.packages.${system}.default
    ] ++ lib.optionals (!osConfig.wsl.enable or false) [
     pkgs.acpi
+    pkgs.filezilla
     pkgs.fusee-nano
     pkgs.hunspell
     pkgs.hunspellDicts.en-us-large
