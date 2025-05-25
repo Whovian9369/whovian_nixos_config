@@ -42,5 +42,11 @@
     nm-applet.enable = true;
     screen.enable = true;
     zsh.enable = true;
+    cdemu = {
+      enable = true;
+      group = "cdrom";
+      gui = true;
+      image-analyzer = true;
+    };
   };
 }

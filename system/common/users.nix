@@ -28,6 +28,8 @@
             # Enable use of printers.
           "adbusers"
             # Enable use of "adb".
+          "cdrom"
+            # Enable use of "cdemu"
         ];
       };
     };
