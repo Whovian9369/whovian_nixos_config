@@ -386,8 +386,8 @@
   },
   {
     "pname": "Net35.Actions",
-    "version": "1.1.0",
-    "hash": "sha256-Hm2altpaOFQYLozHk3FMHQ3w8ehcirmUP6sqVD7JBnE="
+    "version": "1.4.0",
+    "hash": "sha256-kqCEMvHJ+s7o5CWbD9L+r3xHQaufzdHpRRHbTYTbonU="
   },
   {
     "pname": "NetLegacySupport.Numerics",
@@ -430,9 +430,14 @@
     "hash": "sha256-RrSr9yGfqUGIu5iG0AAv0MwZ2/+9a/2XNYaPOPFsNzM="
   },
   {
+    "pname": "SabreTools.IO",
+    "version": "1.6.3",
+    "hash": "sha256-Gw7lXit1cXrLPeTMkM4aI8gLV+2KpnzOp2YgIDxVeKk="
+  },
+  {
     "pname": "SabreTools.Matching",
-    "version": "1.5.1",
-    "hash": "sha256-YrcdBXJKFfoD3+S4XkoAUH4LhN1rPk5DMY6z9UwTXQ8="
+    "version": "1.5.2",
+    "hash": "sha256-AxCreZ3xVfaIur7YvMEH9elF/EIdInHuHP2lcYST968="
   },
   {
     "pname": "SabreTools.Models",
