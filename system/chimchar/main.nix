@@ -33,6 +33,8 @@
       # Extra Mac settings
     # ./mpd.nix
       # Music
+    ./networking.nix
+      # Various extra networking related options.
     ./printing_scanning.nix
       # Printer and Scanner stuff
     ./udev.nix
