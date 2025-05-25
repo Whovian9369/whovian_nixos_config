@@ -15,7 +15,7 @@ stdenv.mkDerivation rec {
 
   src = fetchzip {
     url = "https://github.com/Thealexbarney/LibHac/releases/download/v${version}/hactoolnet-${version}-linux.zip";
-    sha256 = "njlIFsAjyKErYatbP+3fmjP5dv3DhJ7G1+KvC2ZPdso=";
+    hash = "sha256-njlIFsAjyKErYatbP+3fmjP5dv3DhJ7G1+KvC2ZPdso=";
   };
 
   buildInputs = [
