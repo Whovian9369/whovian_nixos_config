@@ -300,10 +300,6 @@
         } );
 
       build_isoimage-pc = self.nixosConfigurations.isoimage-pc.config.system.build.isoImage;
-      # external_lix = lix.packages.x86_64-linux.nix;
-      # external_xil = xil.packages.x86_64-linux.xil;
-      # external_aaru = aaru.packages.x86_64-linux.git;
-      # external_rom-properties = rom-properties.packages.x86_64-linux.default;
     };
   };
 }
