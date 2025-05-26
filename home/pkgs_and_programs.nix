@@ -117,6 +117,7 @@ in
     pkgs.git
     pkgs.hactool
     pkgs.internetarchive
+    pkgs.itch-dl
     pkgs.lftp
     pkgs.lgogdownloader
     pkgs.lynx
