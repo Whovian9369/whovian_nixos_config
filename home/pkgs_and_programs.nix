@@ -171,7 +171,7 @@ in
 
     (pkgs.discord.override { withMoonlight = true; })
 
-    my_packages.hactoolnet-bin
+    my_packages.hactoolnet
   ];
 
   /*
