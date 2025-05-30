@@ -152,6 +152,8 @@
         $ nix build .#nixosConfigurations.nixos-wsl.config.system.build.toplevel
           should let me build the "nixos-wsl" system config.
 
+        TODO: Change isoimage-pc to use "nixos-rebuild build-image --image-variant" "iso" or "iso-installer"?
+
         How to build ISO:
           Building .#nixosConfigurations.isoimage-pc.config.system.build.isoImage
           should build ISO to "result" (or other set) symlink.
