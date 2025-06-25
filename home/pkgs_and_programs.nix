@@ -139,7 +139,6 @@ in
     pkgs.unrar
     pkgs.wget
     pkgs.wiimms-iso-tools
-    pkgs.wsl-open
     pkgs.xxd
     pkgs.yq
 
@@ -178,6 +177,9 @@ in
     (pkgs.discord.override { withMoonlight = true; })
 
     my_packages.hactoolnet
+  ] ++ lib.optionals (osConfig.wsl.enable or true) [
+    pkgs.wsl-open
+      # Don't really need this outside of WSL
   ];
 
   /*
