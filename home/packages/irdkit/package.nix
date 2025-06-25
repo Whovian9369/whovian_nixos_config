@@ -30,7 +30,7 @@ buildDotnetModule {
   executables = [ "irdkit" ];
 
   meta = {
-    description = "Placeholder :)";
+    description = "Tool that allows direct use of LibIRD functionality from a command line interface";
     homepage = "https://github.com/Deterous/LibIRD";
     license = lib.licenses.gpl3Only;
     maintainers = with lib.maintainers; [ ];
