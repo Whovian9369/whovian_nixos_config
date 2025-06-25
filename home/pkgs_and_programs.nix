@@ -5,6 +5,7 @@
   osConfig,
   ihaveahax-nur,
   ninfs,
+  nixexprs,
   pkgs,
   rom-properties,
   system,
@@ -41,6 +42,11 @@ in
   programs = {
     bat = {
       enable = true;
+    };
+
+    command-not-found = {
+      enable = false;
+      dbPath = "${nixexprs}/programs.sqlite";
     };
 
     direnv = {

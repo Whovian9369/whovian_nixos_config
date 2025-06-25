@@ -3,7 +3,6 @@
   aaru,
   agenix,
   config,
-  flake-programs-sqlite,
   home-manager,
   ihaveahax-nur,
   ninfs,

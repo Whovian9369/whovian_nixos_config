@@ -15,6 +15,9 @@
 
     ### My extra inputs
 
+    nixexprs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
+      # Used for programs.command-not-found.dbPath
+
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -24,11 +27,6 @@
         # (saves some resources on Linux)
       inputs.systems.follows = "nix-systems_default";
       inputs.home-manager.follows = "home-manager";
-    };
-
-    flake-programs-sqlite = {
-      url = "github:wamserma/flake-programs-sqlite";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     home-manager = {
@@ -134,7 +132,7 @@
     # Lix
     lix, lix-module,
     # Added by me
-    aaru, agenix, flake-programs-sqlite, home-manager, ihaveahax-nur, ninfs, nix-index-database, rom-properties, xil, ... }:
+    aaru, agenix, home-manager, ihaveahax-nur, ninfs, nix-index-database, nixexprs, rom-properties, xil, ... }:
   let
     pkgs = import nixpkgs {
       system = "x86_64-linux";
@@ -172,7 +170,7 @@
       nixos-wsl = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
-          inherit aaru agenix home-manager ihaveahax-nur ninfs nix-index-database xil rom-properties mySSHKeys;
+          inherit aaru agenix home-manager ihaveahax-nur ninfs nix-index-database nixexprs xil rom-properties mySSHKeys;
         };
         modules = [
           ./system/shared_imports.nix
@@ -181,7 +179,6 @@
             # Source of this fix file is
             # https://github.com/nazarewk-iac/nix-configs
             #   /modules/ascii-workaround.nix
-          flake-programs-sqlite.nixosModules.programs-sqlite
           nixos-wsl.nixosModules.wsl
           lix-module.nixosModules.default
           home-manager.nixosModules.home-manager
@@ -200,12 +197,11 @@
         specialArgs = {
           # inherit aaru home-manager xil;
           # inherit agenix nix-index-database rom-properties mySSHKeys;
-          inherit aaru agenix home-manager ihaveahax-nur ninfs nix-index-database xil rom-properties mySSHKeys;
+          inherit aaru agenix home-manager ihaveahax-nur ninfs nix-index-database nixexprs xil rom-properties mySSHKeys;
         };
         modules = [
           ./system/shared_imports.nix
           ./system/chimchar/main.nix
-          flake-programs-sqlite.nixosModules.programs-sqlite
           lix-module.nixosModules.default
           home-manager.nixosModules.home-manager
           {
@@ -221,7 +217,7 @@
       piplup = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
-          inherit aaru agenix home-manager ihaveahax-nur ninfs nix-index-database xil rom-properties mySSHKeys;
+          inherit aaru agenix home-manager ihaveahax-nur ninfs nix-index-database nixexprs xil rom-properties mySSHKeys;
         };
         modules = [
           ./system/shared_imports.nix
@@ -230,7 +226,6 @@
             # Source of this fix file is
             # https://github.com/nazarewk-iac/nix-configs
             #   /modules/ascii-workaround.nix
-          flake-programs-sqlite.nixosModules.programs-sqlite
           lix-module.nixosModules.default
           home-manager.nixosModules.home-manager
           {
