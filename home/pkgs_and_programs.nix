@@ -159,7 +159,9 @@ in
     ihaveahax-nur.packages.${system}.ctrtool
     ninfs.packages.${system}.ninfs
     rom-properties.packages.${system}.default
-   ] ++ lib.optionals (!osConfig.wsl.enable or false) [
+    xil.packages.${system}.xil
+
+  ] ++ lib.optionals (!osConfig.wsl.enable or false) [
     pkgs.acpi
     pkgs.filezilla
     pkgs.fusee-nano
@@ -204,8 +206,6 @@ in
     my_packages.hactoolnet-bin
       # Not needed on WSL as I currently use the Windows version.
       # Not needed otherwise as I currently use the self-built version.
-    xil.packages.${system}.xil
-      # Build is broken, and unfortunately has been for a while.
 
     # Not included in WSL, but included otherwise:
     pkgs.mpv
