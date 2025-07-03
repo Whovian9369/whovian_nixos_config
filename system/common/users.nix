@@ -29,7 +29,9 @@
           "adbusers"
             # Enable use of "adb".
           "cdrom"
-            # Enable use of "cdemu"
+            # Enable use of "cdemu".
+          "flashrom"
+            # Enable use of "flashrom".
         ];
       };
     };
