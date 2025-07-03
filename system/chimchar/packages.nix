@@ -52,5 +52,9 @@
       gui = true;
       image-analyzer = true;
     };
+    mosh = {
+      enable = true;
+      openFirewall = false;
+    };
   };
 }
