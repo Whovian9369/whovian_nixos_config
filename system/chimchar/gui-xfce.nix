@@ -9,10 +9,13 @@
   imports = [ ./audio.nix ];
 
   services = {
-    displayManager.sddm.enable = true;
+    displayManager = {
+      sddm.enable = false;
+    };
     xserver = {
       enable = true;
       desktopManager.xfce.enable = true;
+      displayManager.lightdm.enable = true;
     };
   };
 

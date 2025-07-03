@@ -9,12 +9,21 @@
   imports = [ ./audio.nix ];
 
   # Enable the Cinnamon Desktop Environment.
-  services.displayManager.sddm.enable = true;
+  services.displayManager = {
+    sddm.enable = false;
+  };
 
-  services.displayManager.defaultSession = "cinnamon-wayland";
+  services.displayManager = {
+    defaultSession = "cinnamon";
+  };
 
-  services.xserver.desktopManager = {
-    cinnamon.enable = true;
+  services.xserver = {
+    displayManager = {
+      lightdm.enable = true;
+    };
+    desktopManager = {
+      cinnamon.enable = true;
+    };
   };
 
   # Enable KDE Connect
@@ -28,7 +37,10 @@
   };
 
   environment = {
-    cinnamon.excludePackages = [ pkgs.celluloid ];
+    cinnamon.excludePackages = [
+      pkgs.celluloid
+      pkgs.onboard
+    ];
     systemPackages = [
       rom-properties.packages.x86_64-linux.rp_gtk3
     ];

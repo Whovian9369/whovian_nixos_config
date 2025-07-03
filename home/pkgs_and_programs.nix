@@ -89,6 +89,7 @@ in
       enable = true;
       # Honestly unsure if I should be using `programs.zsh.envExtra` or
       # `programs.zsh.localVariables` here.
+      # Maybe `programs.zsh.shellInit`?
       localVariables = {
         DISABLE_MAGIC_FUNCTIONS = true;
       };
