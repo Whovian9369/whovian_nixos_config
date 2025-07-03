@@ -40,10 +40,12 @@
   programs = {
     adb.enable = true;
     firefox.enable = true;
+    flashrom.enable = true;
     nano.enable = true;
     nm-applet.enable = true;
     screen.enable = true;
     zsh.enable = true;
+
     cdemu = {
       enable = true;
       group = "cdrom";
