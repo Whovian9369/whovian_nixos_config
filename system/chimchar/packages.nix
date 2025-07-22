@@ -57,4 +57,16 @@
       openFirewall = false;
     };
   };
+
+  services.fwupd = {
+    enable = true;
+    daemonSettings = {
+      DisabledPlugins = [
+        "test"
+        "test_ble"
+        "invalid"
+        "bios"
+      ];
+    };
+  };
 }
