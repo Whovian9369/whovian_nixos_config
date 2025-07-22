@@ -10,8 +10,10 @@
       drivers = [
         pkgs.brlaser
           # Drivers for some Brother printers
-        pkgs.cnijfilter2
-          # Drivers for some Canon Pixma devices (Proprietary driver)
+        pkgs.brgenml1lpr
+          # Generic drivers for more Brother printers
+        pkgs.brgenml1cupswrapper
+          # Generic drivers for more Brother printers
       ];
         /* Available drivers for services.printing.drivers:
           pkgs.gutenprint
