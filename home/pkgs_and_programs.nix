@@ -127,6 +127,7 @@ in
     pkgs.itch-dl
     pkgs.lftp
     pkgs.lgogdownloader
+    pkgs.libplist
     pkgs.lynx
     pkgs.megatools
     pkgs.ncdu
@@ -164,6 +165,7 @@ in
 
   ] ++ lib.optionals (!osConfig.wsl.enable or false) [
     pkgs.acpi
+    pkgs.dino
     pkgs.filezilla
     pkgs.fusee-nano
     pkgs.hunspell
