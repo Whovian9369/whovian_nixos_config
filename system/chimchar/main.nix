@@ -15,6 +15,9 @@
       # Include the results of the hardware scan.
     ./packages.nix
       # environment.systemPackages, nixpkgs config, and related.
+    ./firmware.nix
+      # hardware.firmware - Mainly just to add appropriate drivers for some
+      # hardware, like USB bluetooth adapters.
 
     ./gui-cinnamon.nix
       # GUI Stuff - Cinnamon
