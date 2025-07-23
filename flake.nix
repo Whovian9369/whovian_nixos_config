@@ -134,10 +134,7 @@
     # Added by me
     aaru, agenix, home-manager, ihaveahax-nur, ninfs, nix-index-database, nixexprs, rom-properties, xil, ... }:
   let
-    pkgs = import nixpkgs {
-      system = "x86_64-linux";
-      config.allowUnfree = true;
-    };
+    pkgs = import nixpkgs { system = "x86_64-linux"; };
 
     inherit (import ./system/common/sshKeys.nix) mySSHKeys;
   in
