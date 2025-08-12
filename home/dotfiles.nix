@@ -13,10 +13,6 @@
       '';
     */
 
-    ".zshrc".text = ''
-      eval "$(direnv hook zsh)"
-    '';
-
     ".lftp/rc".text = ''
       alias s32 "mirror -c --use-pget-n=32"
       alias p32 "pget -n 32 -c"
