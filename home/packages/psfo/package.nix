@@ -33,8 +33,8 @@ gcc13Stdenv.mkDerivation {
 
   meta = {
     homepage = "https://github.com/hippie68/sfo";
-    description = "DESCRIPTION PLACEHOLDER";
-    longDescription = "DESCRIPTION PLACEHOLDER";
+    description = "Fast C program that reads a file to print or modify its SFO parameters";
+    longDescription = "Fast C program that reads a file to print or modify its SFO parameters. Can be used for automation or to build param.sfo files from scratch.";
     license = lib.licenses.unfree;
       # No license file in repo.
     maintainers = [ lib.maintainers.whovian9369 ];
