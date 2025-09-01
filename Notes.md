@@ -17,6 +17,13 @@ nixos https://nixos.org/channels/nixos-23.11
 nixos-wsl https://github.com/nix-community/NixOS-WSL/archive/refs/heads/main.tar.gz
 ```
 
+Had to make a new `nixos-wsl` install approximately on 2025-08-19, but switched to flakes near immediately:
+```bash
+$  sudo nix-channel --list
+nixos https://nixos.org/channels/nixos-25.05
+nixos-wsl https://github.com/nix-community/NixOS-WSL/archive/refs/heads/release-25.05.tar.gz
+```
+
 ## Options that I may want:
 I really really should look further into these before actually using them. 
 ```nix
