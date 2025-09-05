@@ -134,7 +134,13 @@
     # Added by me
     aaru, agenix, home-manager, ihaveahax-nur, ninfs, nix-index-database, nixexprs, rom-properties, xil, ... }:
   let
-    pkgs = import nixpkgs { system = "x86_64-linux"; };
+    pkgs = import nixpkgs {
+      system = "x86_64-linux";
+      config = {
+        allowUnfree = true;
+        permittedInsecurePackages = [ "openssl-1.1.1w" "sublimetext4" ];
+      };
+    };
 
     inherit (import ./system/common/sshKeys.nix) mySSHKeys;
   in
@@ -169,6 +175,8 @@
         specialArgs = {
           inherit aaru agenix home-manager ihaveahax-nur ninfs nix-index-database nixexprs xil rom-properties mySSHKeys;
         };
+
+        inherit pkgs;
         modules = [
           ./system/shared_imports.nix
           ./system/nixos-wsl/main.nix
@@ -182,7 +190,7 @@
           {
             system = {
               configurationRevision = self.shortRev or self.dirtyShortRev or "dirty";
-              extraSystemBuilderCmds = "ln -s ${self.sourceInfo.outPath} $out/src";
+              extraSystemBuilderCmds = "ln -s ${nixpkgs.lib.cleanSource self.sourceInfo.outPath} $out/src";
             };
           }
         ];
@@ -196,6 +204,8 @@
           # inherit agenix nix-index-database rom-properties mySSHKeys;
           inherit aaru agenix home-manager ihaveahax-nur ninfs nix-index-database nixexprs xil rom-properties mySSHKeys;
         };
+
+        inherit pkgs;
         modules = [
           ./system/shared_imports.nix
           ./system/chimchar/main.nix
@@ -204,7 +214,7 @@
           {
             system = {
               configurationRevision = self.shortRev or self.dirtyShortRev or "dirty";
-              extraSystemBuilderCmds = "ln -s ${self.sourceInfo.outPath} $out/src";
+              extraSystemBuilderCmds = "ln -s ${nixpkgs.lib.cleanSource self.sourceInfo.outPath} $out/src";
             };
           }
         ];
@@ -216,6 +226,8 @@
         specialArgs = {
           inherit aaru agenix home-manager ihaveahax-nur ninfs nix-index-database nixexprs xil rom-properties mySSHKeys;
         };
+
+        inherit pkgs;
         modules = [
           ./system/shared_imports.nix
           ./system/piplup/main.nix
@@ -228,7 +240,7 @@
           {
             system = {
               configurationRevision = self.shortRev or self.dirtyShortRev or "dirty";
-              extraSystemBuilderCmds = "ln -s ${self.sourceInfo.outPath} $out/src";
+              extraSystemBuilderCmds = "ln -s ${nixpkgs.lib.cleanSource self.sourceInfo.outPath} $out/src";
             };
           }
         ];
@@ -237,6 +249,8 @@
       # Mainly for that broken Dell XPS
       nixps = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+
+        inherit pkgs;
         modules = [
           ./system/shared_imports.nix
           ./system/nixps/main.nix
@@ -244,7 +258,7 @@
           {
             system = {
               configurationRevision = self.shortRev or self.dirtyShortRev or "dirty";
-              extraSystemBuilderCmds = "ln -s ${self.sourceInfo.outPath} $out/src";
+              extraSystemBuilderCmds = "ln -s ${nixpkgs.lib.cleanSource self.sourceInfo.outPath} $out/src";
             };
           }
         ];
@@ -254,6 +268,7 @@
       isoimage-pc = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit mySSHKeys; };
+        inherit pkgs;
         modules = [
           # "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix"
           "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-base.nix"

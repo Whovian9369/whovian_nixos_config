@@ -90,9 +90,7 @@ in
       # Honestly unsure if I should be using `programs.zsh.envExtra` or
       # `programs.zsh.localVariables` here.
       # Maybe `programs.zsh.shellInit`?
-      localVariables = {
-        DISABLE_MAGIC_FUNCTIONS = true;
-      };
+      localVariables.DISABLE_MAGIC_FUNCTIONS = true;
       # enableAutosuggestions = true;
       # enableCompletion = true;
       oh-my-zsh = {
@@ -112,6 +110,7 @@ in
   home.packages = [
     pkgs._7zz
     pkgs.bat
+    pkgs.binary-object-scanner
     pkgs.binwalk
     pkgs.cdecrypt
     pkgs.colorized-logs
@@ -124,7 +123,7 @@ in
     pkgs.git
     pkgs.hactool
     pkgs.internetarchive
-    pkgs.itch-dl
+    # pkgs.itch-dl
     pkgs.lftp
     pkgs.lgogdownloader
     pkgs.libplist
@@ -144,7 +143,7 @@ in
     pkgs.xxd
     pkgs.yq
 
-    my_packages.binaryobjectscanner
+    # my_packages.binaryobjectscanner
     my_packages.ird_tools
     my_packages.irdkit
     my_packages.nix-init_packagenix # Yay for patched apps :)
@@ -161,17 +160,19 @@ in
     ihaveahax-nur.packages.${system}.ctrtool
     ninfs.packages.${system}.ninfs
     rom-properties.packages.${system}.default
-    xil.packages.${system}.xil
+    # xil.packages.${system}.xil
 
   ] ++ lib.optionals (!osConfig.wsl.enable or false) [
     pkgs.acpi
     pkgs.dino
+    pkgs.dosage
     pkgs.filezilla
     pkgs.fusee-nano
     pkgs.hunspell
     pkgs.hunspellDicts.en-us-large
     pkgs.imhex
     pkgs.libreoffice-qt
+    pkgs.liferea
     pkgs.mpv
     pkgs.obsidian
     pkgs.scrcpy

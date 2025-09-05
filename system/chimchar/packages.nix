@@ -28,14 +28,6 @@
     ### iOS Stuff
   ];
 
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
-      permittedInsecurePackages = [ "openssl-1.1.1w" ];
-      # allowInsecurePredicate = pkgs: builtins.elem (lib.getName pkgs) [ ];
-    };
-  };
-
   programs = {
     adb.enable = true;
     firefox.enable = true;

@@ -7,14 +7,14 @@
 
 buildDotnetModule {
   pname = "irdkit";
-  version = "0.9.3";
+  version = "1.0.0";
     # NuGet page: https://www.nuget.org/packages/LibIRD
 
   src = fetchFromGitHub {
     owner = "Deterous";
     repo = "LibIRD";
-    rev = "048d70b473fa7bf84c6d490e9d05b653c6b2e54e";
-    hash = "sha256-3o9+eo4DABG/TEhCxlMXvLDbzMNmr2H6UOBle9X0jHw=";
+    rev = "44928620513fbcdadaa26e601f1b902415da044f";
+    hash = "sha256-srEztsG8lUay9u+AAb89DJ8KdS+Iwcz5PJ/rTDkENaQ=";
     fetchSubmodules = true;
     leaveDotGit = false;
   };

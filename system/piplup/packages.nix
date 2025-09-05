@@ -7,16 +7,6 @@
     # home-manager's `home.packages`
   ];
 
-
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
-      permittedInsecurePackages = [
-        "openssl-1.1.1w"
-      ];
-    };
-  };
-
   programs = {
     firefox.enable = true;
     nano.enable = true;

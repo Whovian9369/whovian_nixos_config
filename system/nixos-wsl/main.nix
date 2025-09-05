@@ -43,7 +43,7 @@
         imports = [
           ../../home/home.nix
           agenix.homeManagerModules.default
-          nix-index-database.hmModules.nix-index
+          nix-index-database.homeModules.nix-index
         ];
       };
     };

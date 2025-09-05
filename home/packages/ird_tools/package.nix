@@ -23,8 +23,7 @@ gcc13Stdenv.mkDerivation {
 
   installPhase = ''
     runHook preInstall
-    mkdir -p $out/bin
-    cp ird_tools $out/bin
+    install -Dm755 -t $out/bin ird_tools
     runHook postInstall
   '';
 
