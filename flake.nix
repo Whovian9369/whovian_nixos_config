@@ -65,6 +65,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-game-preservation = {
+      url = "github:Whovian9369/nix-game-preservation";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     ### Lix! Lix! Lix!
 
     lix = {
@@ -132,7 +137,7 @@
     # Lix
     lix, lix-module,
     # Added by me
-    aaru, agenix, home-manager, ihaveahax-nur, ninfs, nix-index-database, nixexprs, rom-properties, xil, ... }:
+    aaru, agenix, home-manager, ihaveahax-nur, ninfs, nix-index-database, nix-game-preservation, nixexprs, rom-properties, xil, ... }:
   let
     pkgs = import nixpkgs {
       system = "x86_64-linux";
@@ -173,7 +178,7 @@
       nixos-wsl = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
-          inherit aaru agenix home-manager ihaveahax-nur ninfs nix-index-database nixexprs xil rom-properties mySSHKeys;
+          inherit aaru agenix home-manager ihaveahax-nur ninfs nix-game-preservation nix-index-database nixexprs xil rom-properties mySSHKeys;
         };
 
         inherit pkgs;
@@ -202,7 +207,7 @@
         specialArgs = {
           # inherit aaru home-manager xil;
           # inherit agenix nix-index-database rom-properties mySSHKeys;
-          inherit aaru agenix home-manager ihaveahax-nur ninfs nix-index-database nixexprs xil rom-properties mySSHKeys;
+          inherit aaru agenix home-manager ihaveahax-nur ninfs nix-game-preservation nix-index-database nixexprs xil rom-properties mySSHKeys;
         };
 
         inherit pkgs;
@@ -224,7 +229,7 @@
       piplup = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
-          inherit aaru agenix home-manager ihaveahax-nur ninfs nix-index-database nixexprs xil rom-properties mySSHKeys;
+          inherit aaru agenix home-manager ihaveahax-nur ninfs nix-game-preservation nix-index-database nixexprs xil rom-properties mySSHKeys;
         };
 
         inherit pkgs;
