@@ -5,6 +5,7 @@
   osConfig,
   ihaveahax-nur,
   ninfs,
+  nix-game-preservation,
   nixexprs,
   pkgs,
   rom-properties,
@@ -151,7 +152,6 @@ in
     my_packages.nxtik
     my_packages.ps3dec
     my_packages.psfo
-    my_packages.sabretools
     my_packages.unnix_script # It's a one-line bash script
 
     aaru.packages.${system}.git
@@ -159,7 +159,7 @@ in
     ihaveahax-nur.packages.${system}."3dstool"
     ihaveahax-nur.packages.${system}.ctrtool
     ninfs.packages.${system}.ninfs
-    rom-properties.packages.${system}.default
+    nix-game-preservation.packages.${system}.sabretools-git
     # xil.packages.${system}.xil
 
   ] ++ lib.optionals (!osConfig.wsl.enable or false) [
