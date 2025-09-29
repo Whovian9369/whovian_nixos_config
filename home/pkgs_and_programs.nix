@@ -177,6 +177,7 @@ in
     pkgs.obsidian
     pkgs.scrcpy
     pkgs.terminator
+    pkgs.unofficial-homestuck-collection
     pkgs.wezterm
     pkgs.yt-dlp
 
