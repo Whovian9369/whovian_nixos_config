@@ -192,6 +192,8 @@ in
   ] ++ lib.optionals (osConfig.wsl.enable or true) [
     pkgs.wsl-open
       # Don't really need this outside of WSL
+    rom-properties.packages.${system}.default
+      # Using it from systemPackages outside of WSL
   ];
 
   /*
