@@ -181,6 +181,11 @@ in
     pkgs.wezterm
     pkgs.yt-dlp
 
+    # Comics
+    pkgs.yacreader
+    pkgs.mcomix
+    # Comics
+
     (pkgs.discord.override { withMoonlight = true; })
 
     my_packages.hactoolnet
