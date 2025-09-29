@@ -6,6 +6,7 @@
   home-manager,
   ihaveahax-nur,
   ninfs,
+  nix-game-preservation,
   nixpkgs,
   pkgs,
   rom-properties,
@@ -30,6 +31,7 @@
     # inherit nixpkgs;
     inherit ihaveahax-nur;
     inherit ninfs;
+    inherit nix-game-preservation;
     inherit rom-properties;
     inherit xil;
     # pkgs = import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true; };
