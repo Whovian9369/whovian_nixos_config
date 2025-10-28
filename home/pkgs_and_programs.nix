@@ -62,11 +62,13 @@ in
 
     git = {
       enable = true;
-      userName = "Whovian9369";
-      userEmail = "Whovian9369@gmail.com";
-      extraConfig = {
+      settings = {
         init = {
           defaultBranch = "main";
+        };
+        user = {
+          name = "Whovian9369";
+          email = "Whovian9369@gmail.com";
         };
       };
     };

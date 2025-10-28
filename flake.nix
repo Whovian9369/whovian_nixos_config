@@ -73,18 +73,17 @@
     ### Lix! Lix! Lix!
 
     lix = {
-      url = "git+https://git@git.lix.systems/lix-project/lix";
+      url = "https://git.lix.systems/lix-project/lix/archive/main.tar.gz";
         /*
           Future me, the pattern for using Forgejo URLs is:
           git+https://git@${domain}/${user_org}/${repo}?ref=refs/tags/${TAG}
           git+https://git@${domain}/${user_org}/${repo}?rev=${commitHash}
         */
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-compat.follows = "flake-compat";
+      flake = false;
     };
 
     lix-module = {
-      url = "git+https://git.lix.systems/lix-project/nixos-module";
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/main.tar.gz";
         /*
           Future me, the pattern for using Forgejo URLs is:
           git+https://git@${domain}/${user_org}/${repo}?ref=refs/tags/${TAG}
@@ -145,6 +144,14 @@
         allowUnfree = true;
         permittedInsecurePackages = [ "openssl-1.1.1w" "sublimetext4" ];
       };
+      overlays = [
+      /*
+        (final: prev: {
+          brlaser = prev.brlaser.overrideAttrs (pfinal: pprev:
+            { cmakeFlags = pprev.cmakeFlags ++ [ (nixpkgs.lib.cmakeFeature "CMAKE_POLICY_VERSION_MINIMUM" "3.5") ]; }
+        );})
+      */
+      ];
     };
 
     inherit (import ./system/common/sshKeys.nix) mySSHKeys;

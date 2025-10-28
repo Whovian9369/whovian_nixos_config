@@ -2,7 +2,7 @@
   lib,
   cmake,
   fetchFromGitHub,
-  mbedtls_2,
+  mbedtls,
   perl,
   python3,
   stdenv,
@@ -27,7 +27,7 @@ stdenv.mkDerivation {
 
   nativeBuildInputs = [
     cmake
-    mbedtls_2
+    mbedtls
     perl
     python3
   ] ++ lib.optionals withNinja ninja;
