@@ -4,6 +4,11 @@
 
 -------------------------------
 
+## Useful tools to keep track of
+  - `nixpkgs#nix-bisect`
+    - Hydra-aware `git bisect` support, basically?
+    - `pkgs/by-name/ni/nix-bisect/package.nix`
+
 ## GUI Notes
   - Look into `nixpkgs#eww` for no real reason
 

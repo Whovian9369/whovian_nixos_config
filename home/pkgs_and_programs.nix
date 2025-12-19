@@ -166,6 +166,7 @@ in
 
   ] ++ lib.optionals (!osConfig.wsl.enable or false) [
     pkgs.acpi
+    pkgs.ares
     pkgs.dino
     pkgs.dosage
     pkgs.filezilla
@@ -175,6 +176,7 @@ in
     pkgs.imhex
     pkgs.libreoffice-qt
     pkgs.liferea
+    pkgs.mgba
     pkgs.mpv
     pkgs.obsidian
     pkgs.scrcpy
@@ -191,7 +193,7 @@ in
     (pkgs.discord.override { withMoonlight = true; })
 
     my_packages.hactoolnet
-  ] ++ lib.optionals (osConfig.wsl.enable or true) [
+  ] ++ lib.optionals (osConfig.wsl.enable or false) [
     pkgs.wsl-open
       # Don't really need this outside of WSL
     rom-properties.packages.${system}.default

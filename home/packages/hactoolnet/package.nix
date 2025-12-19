@@ -2,18 +2,19 @@
   lib,
   buildDotnetModule,
   dotnetCorePackages,
-  fetchFromGitHub,
+  fetchFromGitLab,
 }:
 
 buildDotnetModule rec {
   pname = "hactoolnet";
   version = "2024.08.29";
 
-  src = fetchFromGitHub {
-    owner = "Thealexbarney";
+  src = fetchFromGitLab {
+    domain = "git.ryujinx.app";
+    owner = "ryubing";
     repo = "LibHac";
-    rev = "fefa38ff2204de978efdf9df1ff193d85d4d83e5";
-    hash = "sha256-m+aHMNz0C77dJpukvkNTlTYBlUAkmJxGSB27UuNTGVc=";
+    rev = "f5422bb13267a2897f70c209c7cf55af9d7595b6";
+    hash = "sha256-KKCvMOpIXtG7uH0CpYRIKvTkz86kD9CwEmqWSeoiE80=";
   };
 
   # buildType = "Debug";

@@ -5,27 +5,27 @@
   fetchFromGitHub
 }:
 
-buildDotnetModule {
+buildDotnetModule rec {
   pname = "irdkit";
-  version = "1.0.0";
+  version = "1.0.1";
     # NuGet page: https://www.nuget.org/packages/LibIRD
 
   src = fetchFromGitHub {
     owner = "Deterous";
     repo = "LibIRD";
-    rev = "44928620513fbcdadaa26e601f1b902415da044f";
-    hash = "sha256-srEztsG8lUay9u+AAb89DJ8KdS+Iwcz5PJ/rTDkENaQ=";
+    tag = "v${version}";
+    hash = "sha256-7ikZKrqLXiip78oLI2khS+/QQpmzZ2p84eGRDluVMR8=";
     fetchSubmodules = true;
     leaveDotGit = false;
   };
 
-  dotnet-sdk = dotnetCorePackages.sdk_9_0;
-  dotnet-runtime = dotnetCorePackages.runtime_9_0;
+  dotnet-sdk = dotnetCorePackages.sdk_10_0;
+  dotnet-runtime = dotnetCorePackages.runtime_10_0;
   nugetDeps = ./deps.json;
   projectFile = "IRDKit/IRDKit.csproj";
   selfContainedBuild = false;
-  dotnetBuildFlags = [ "--framework net9.0" ];
-  dotnetInstallFlags = [ "--framework net9.0" ];
+  dotnetBuildFlags = [ "--framework net10.0" ];
+  dotnetInstallFlags = [ "--framework net10.0" ];
 
   executables = [ "irdkit" ];
 

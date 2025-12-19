@@ -26,6 +26,9 @@
     pkgs.checkra1n
     pkgs.libusbmuxd
     ### iOS Stuff
+
+    ### Security Key Stuff
+    pkgs.solo2-cli
   ];
 
   programs = {

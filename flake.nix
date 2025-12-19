@@ -202,7 +202,7 @@
           {
             system = {
               configurationRevision = self.shortRev or self.dirtyShortRev or "dirty";
-              extraSystemBuilderCmds = "ln -s ${nixpkgs.lib.cleanSource self.sourceInfo.outPath} $out/src";
+              systemBuilderCommands = "ln -s ${nixpkgs.lib.cleanSource self.sourceInfo.outPath} $out/src";
             };
           }
         ];
@@ -226,7 +226,7 @@
           {
             system = {
               configurationRevision = self.shortRev or self.dirtyShortRev or "dirty";
-              extraSystemBuilderCmds = "ln -s ${nixpkgs.lib.cleanSource self.sourceInfo.outPath} $out/src";
+              systemBuilderCommands = "ln -s ${nixpkgs.lib.cleanSource self.sourceInfo.outPath} $out/src";
             };
           }
         ];
@@ -252,7 +252,7 @@
           {
             system = {
               configurationRevision = self.shortRev or self.dirtyShortRev or "dirty";
-              extraSystemBuilderCmds = "ln -s ${nixpkgs.lib.cleanSource self.sourceInfo.outPath} $out/src";
+              systemBuilderCommands = "ln -s ${nixpkgs.lib.cleanSource self.sourceInfo.outPath} $out/src";
             };
           }
         ];
@@ -270,7 +270,7 @@
           {
             system = {
               configurationRevision = self.shortRev or self.dirtyShortRev or "dirty";
-              extraSystemBuilderCmds = "ln -s ${nixpkgs.lib.cleanSource self.sourceInfo.outPath} $out/src";
+              systemBuilderCommands = "ln -s ${nixpkgs.lib.cleanSource self.sourceInfo.outPath} $out/src";
             };
           }
         ];

@@ -42,6 +42,8 @@
       # Printer and Scanner stuff
     ./udev.nix
       # Extra udev rules
+    ./securitykeys.nix
+      # Security Key stuff
   ];
 
   networking = {

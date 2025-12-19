@@ -6,7 +6,7 @@
 {
 
   home.sessionVariables = {
-    CURSEFORGE_API_KEY = "$2a$10$bL4bIL5pUWqfcO7KQtnMReakwtfHbNKh6v1uTpKlzhwoueEJQnPnm";
+    CURSEFORGE_API_KEY = "\\\$2a\\\$10\\\$bL4bIL5pUWqfcO7KQtnMReakwtfHbNKh6v1uTpKlzhwoueEJQnPnm";
     DOTNET_CLI_TELEMETRY_OPTOUT = "1";
     EDITOR = "nano";
     MANPAGER= "bat -p";

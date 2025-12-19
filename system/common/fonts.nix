@@ -6,7 +6,7 @@
 }:
 {
   fonts = {
-    enableDefaultPackages = false;
+    enableDefaultPackages = true;
     packages = [] ++ lib.optionals (!config.wsl.enable or false) [
       ### fonts.enableDefaultPackages as of nixpkgs 7fd4e5f7c309
       pkgs.dejavu_fonts
