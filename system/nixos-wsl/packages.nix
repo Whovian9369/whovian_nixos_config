@@ -36,7 +36,7 @@
   # From what I can tell, it depends on a package being installed via
   # `environment.systemPackages`, *and* for that package to have a manpage.
   # That's kinda useless for me since I've been mostly installing stuff via
-  # `home-manager`, sooooooooo...
+  # `home-manager`.
   /*
   documentation = {
     nixos = {

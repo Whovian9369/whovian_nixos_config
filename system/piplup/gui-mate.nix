@@ -1,12 +1,23 @@
-services.xserver = {
-  enable = true;
-  desktopManager.mate.enable = true; # NOTE: This already installs the Engrampa archive manager
-  excludePackages = [ pkgs.xterm ];
-};
-environment.systemPackages = with pkgs; [
-  networkmanagerapplet
-  unzip
-  firefox
-];
+{
+  lib,
+  pkgs,
+  rom-properties,
+  ...
+}:
 
-## Obviously not everything, but blehh
+{
+  imports = [ ./audio.nix ];
+
+  services = {
+    displayManager = {
+      sddm.enable = false;
+    };
+    xserver = {
+      enable = true;
+      displayManager.lightdm.enable = true;
+      # NOTE: This already installs the Engrampa archive manager
+      desktopManager.mate.enable = true;
+      excludePackages = [ pkgs.xterm ];
+    };
+  };
+}

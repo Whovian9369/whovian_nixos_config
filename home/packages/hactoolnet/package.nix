@@ -13,8 +13,8 @@ buildDotnetModule rec {
     domain = "git.ryujinx.app";
     owner = "ryubing";
     repo = "LibHac";
-    rev = "f5422bb13267a2897f70c209c7cf55af9d7595b6";
-    hash = "sha256-KKCvMOpIXtG7uH0CpYRIKvTkz86kD9CwEmqWSeoiE80=";
+    rev = "e7a2bac6d567cfdbbdbb20e13d02fbadca0f71ac";
+    hash = "sha256-Uzoks27YejLl1xBn+gb0zhtsvLvs7ZN6lvO5JbeLMLE=";
   };
 
   # buildType = "Debug";

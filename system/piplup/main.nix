@@ -3,19 +3,34 @@
   pkgs,
   config,
   modulesPath,
+  agenix,
   mySSHKeys,
+  nix-index-database,
   ...
 }:
 
 {
   imports = [
     ./packages.nix
-    ./hardware-configuration.nix # Include the results of the hardware scan.
-    ./gui-kde6.nix # GUI Stuff (DE + WM)
-    ./vmware.nix # VMWare Guest Stuff
+      # Package list
+    ./hardware-configuration.nix
+      # Include the results of the hardware scan.
+    ./gui-cinnamon.nix
+      # GUI Stuff (DE + WM)
+    ./gui-kde6.nix
+      # GUI Stuff (DE + WM)
+    ./gui-mate.nix
+      # GUI Stuff (DE + WM)
+    ./gui-xfce.nix
+      # GUI Stuff (DE + WM)
+    ./vmware.nix
+      # VMWare Guest Stuff
   ];
 
-  networking.hostName = "piplup";
+  networking = {
+    hostName = "piplup";
+    networkmanager.enable = true;
+  };
 
   # Enable nix flakes
   nix.settings.experimental-features = [
@@ -40,10 +55,6 @@
     Need to look into this again at some point, I suppose.
   */
 
-  environment.pathsToLink = [
-    "/share/zsh"
-  ];
-
   boot.loader.systemd-boot = {
     enable = true;
     editor = false;
@@ -61,9 +72,14 @@
     };
   };
 
-  environment.shells = [
-    pkgs.zsh
-  ];
+  environment = {
+    shells = [
+      pkgs.zsh
+    ];
+    pathsToLink = [
+      "/share/zsh"
+    ];
+  };
 
 ##############################################################################
 
@@ -86,5 +102,5 @@
 
     For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   */
-  system.stateVersion = "24.05";
+  system.stateVersion = "26.05";
 }

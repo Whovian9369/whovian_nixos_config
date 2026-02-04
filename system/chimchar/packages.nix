@@ -11,7 +11,7 @@
     pkgs.file
     pkgs.sublime4
     pkgs.pwvucontrol
-    (pkgs.vlc.override { libbluray = pkgs.libbluray.override { withAACS = true; withBDplus = true; withJava = true; }; })
+    pkgs.vlc
     pkgs.waypipe
     pkgs.xterm
 
@@ -32,9 +32,9 @@
   ];
 
   programs = {
-    adb.enable = true;
     firefox.enable = true;
     flashrom.enable = true;
+    ghidra = { enable = true; package = pkgs.ghidra-bin; };
     nano.enable = true;
     nm-applet.enable = true;
     screen.enable = true;
@@ -45,10 +45,6 @@
       group = "cdrom";
       gui = true;
       image-analyzer = true;
-    };
-    mosh = {
-      enable = true;
-      openFirewall = false;
     };
   };
 

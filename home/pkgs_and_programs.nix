@@ -10,7 +10,6 @@
   pkgs,
   rom-properties,
   system,
-  xil,
   ...
 }:
 let
@@ -92,7 +91,6 @@ in
       enable = true;
       # Honestly unsure if I should be using `programs.zsh.envExtra` or
       # `programs.zsh.localVariables` here.
-      # Maybe `programs.zsh.shellInit`?
       localVariables.DISABLE_MAGIC_FUNCTIONS = true;
       # enableAutosuggestions = true;
       # enableCompletion = true;
@@ -132,9 +130,10 @@ in
     pkgs.libplist
     pkgs.lynx
     pkgs.megatools
+    pkgs.mosh
     pkgs.ncdu
     pkgs.ndstool
-    pkgs.nixfmt-rfc-style
+    pkgs.nixfmt
     pkgs.progress
     pkgs.pyrosimple
     pkgs.python3
@@ -162,10 +161,10 @@ in
     ihaveahax-nur.packages.${system}.ctrtool
     ninfs.packages.${system}.ninfs
     nix-game-preservation.packages.${system}.sabretools-git
-    # xil.packages.${system}.xil
 
   ] ++ lib.optionals (!osConfig.wsl.enable or false) [
     pkgs.acpi
+    pkgs.android-tools
     pkgs.ares
     pkgs.dino
     pkgs.dosage

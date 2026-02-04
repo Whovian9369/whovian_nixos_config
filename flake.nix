@@ -34,12 +34,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    xil = {
-      url = "github:Qyriad/Xil";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
-    };
-
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -111,7 +105,6 @@
     /*
       Used by:
       - lix-module
-      - xil
     */
     flake-utils = {
       url = "github:numtide/flake-utils";
@@ -136,7 +129,7 @@
     # Lix
     lix, lix-module,
     # Added by me
-    aaru, agenix, home-manager, ihaveahax-nur, ninfs, nix-index-database, nix-game-preservation, nixexprs, rom-properties, xil, ... }:
+    aaru, agenix, home-manager, ihaveahax-nur, ninfs, nix-index-database, nix-game-preservation, nixexprs, rom-properties, ... }:
   let
     pkgs = import nixpkgs {
       system = "x86_64-linux";
@@ -185,7 +178,7 @@
       nixos-wsl = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
-          inherit aaru agenix home-manager ihaveahax-nur ninfs nix-game-preservation nix-index-database nixexprs xil rom-properties mySSHKeys;
+          inherit aaru agenix home-manager ihaveahax-nur ninfs nix-game-preservation nix-index-database nixexprs rom-properties mySSHKeys;
         };
 
         inherit pkgs;
@@ -212,9 +205,7 @@
       chimchar = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
-          # inherit aaru home-manager xil;
-          # inherit agenix nix-index-database rom-properties mySSHKeys;
-          inherit aaru agenix home-manager ihaveahax-nur ninfs nix-game-preservation nix-index-database nixexprs xil rom-properties mySSHKeys;
+          inherit aaru agenix home-manager ihaveahax-nur ninfs nix-game-preservation nix-index-database nixexprs rom-properties mySSHKeys;
         };
 
         inherit pkgs;
@@ -236,17 +227,13 @@
       piplup = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
-          inherit aaru agenix home-manager ihaveahax-nur ninfs nix-game-preservation nix-index-database nixexprs xil rom-properties mySSHKeys;
+          inherit aaru agenix home-manager ihaveahax-nur ninfs nix-game-preservation nix-index-database nixexprs rom-properties mySSHKeys;
         };
 
         inherit pkgs;
         modules = [
           ./system/shared_imports.nix
           ./system/piplup/main.nix
-          # ./system/dotnet_os_codename-workaround.nix
-            # Source of this fix file is
-            # https://github.com/nazarewk-iac/nix-configs
-            #   /modules/ascii-workaround.nix
           lix-module.nixosModules.default
           home-manager.nixosModules.home-manager
           {
@@ -259,6 +246,7 @@
       };
 
       # Mainly for that broken Dell XPS
+    /*
       nixps = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
 
@@ -275,6 +263,7 @@
           }
         ];
       };
+    */
 
       # I love being able to generate ISOs
       isoimage-pc = nixpkgs.lib.nixosSystem {
@@ -291,20 +280,7 @@
       };
     };
 
-    formatter.x86_64-linux = pkgs.nixfmt-rfc-style;
-      /*
-        Some options:
-        - nixpkgs.legacyPackages.x86_64-linux.alejandra
-        - nixpkgs.legacyPackages.x86_64-linux.nixfmt
-        - nixpkgs.legacyPackages.x86_64-linux.nixfmt-classic
-        - nixpkgs.legacyPackages.x86_64-linux.treefmt
-          - Didn't figure it out
-          - Seems too... "Meh"
-
-        Related but not formatters:
-        - nixpkgs.legacyPackages.x86_64-linux.deadnix
-      */
-
+    formatter.x86_64-linux = pkgs.nixfmt;
     packages.x86_64-linux = {
       binaryobjectscanner = pkgs.callPackage ./home/packages/binaryobjectscanner/package.nix {};
       hactoolnet = pkgs.callPackage ./home/packages/hactoolnet/package.nix {};

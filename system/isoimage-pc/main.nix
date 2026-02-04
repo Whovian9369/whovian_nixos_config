@@ -73,7 +73,7 @@
   environment.systemPackages = [
     pkgs._7zz
     pkgs.bat
-    pkgs.dhex
+    # pkgs.dhex
     pkgs.fd
     pkgs.file
     pkgs.git

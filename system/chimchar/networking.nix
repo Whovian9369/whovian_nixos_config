@@ -7,12 +7,14 @@
     };
     resolved = {
       enable = false;
-      dnssec = "true";
-      fallbackDns = [
-         "1.1.1.1"
-         "1.0.0.1"
-       ];
-  dnsovertls = "true";
+      settings.Resolve = {
+        DNSSEC = "true";
+        FallbackDNS = [
+           "1.1.1.1"
+           "1.0.0.1"
+         ];
+        DNSOverTLS = "true";
+      };
     };
   };
 

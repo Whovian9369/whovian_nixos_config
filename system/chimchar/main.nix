@@ -91,20 +91,6 @@
 
   time.timeZone = "America/New_York";
 
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    users = {
-      whovian = {
-        imports = [
-          ../../home/home.nix
-          agenix.homeManagerModules.default
-          nix-index-database.homeModules.nix-index
-        ];
-      };
-    };
-  };
-
   environment.pathsToLink = [
     "/share/zsh"
   ];

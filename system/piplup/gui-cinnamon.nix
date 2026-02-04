@@ -4,50 +4,49 @@
   rom-properties,
   ...
 }:
-{
-  # Use PipeWire
-  security.rtkit.enable = true;
 
+{
+  imports = [ ./audio.nix ];
+
+  # Enable the Cinnamon Desktop Environment.
   services = {
-    # Use PipeWire
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      pulse.enable = true;
-      jack.enable = true;
+    displayManager = {
+      sddm.enable = false;
+      defaultSession = "cinnamon";
     };
-    # Enable the X11 windowing system.
+
     xserver = {
+      displayManager.lightdm.enable = true;
+      desktopManager.cinnamon.enable = true;
+
+      # Configure keymap in X11
       enable = true;
       xkb.layout = "us";
+      xkb.variant = "";
     };
+
     # Enable the Cinnamon Desktop Environment.
     cinnamon.apps.enable = true;
 
-    displayManager.lightdm.enable = true;
-    desktopManager.cinnamon.enable = true;
+    # Mount, trash, and other functionalities
+    gvfs.enable = true;
   };
 
-  # dconf
+  # Enable KDE Connect
+  programs.kdeconnect.enable = true;
   programs.dconf.enable = true;
-
   xdg.icons.enable = true;
+
   environment = {
     sessionVariables.NIXOS_OZONE_WL = "1";
+    cinnamon.excludePackages = [
+      pkgs.celluloid
+      pkgs.onboard
+    ];
     systemPackages = [
-      pkgs.kdePackages.sddm-kcm
-      pkgs.kdePackages.audiocd-kio
-      pkgs.kdePackages.skanpage
-      pkgs.kdePackages.isoimagewriter
-      pkgs.kdePackages.krdc # RDP
-      # pkgs.kdePackages.neochat # Matrix
-      pkgs.kdePackages.breeze-icons
-      pkgs.kdePackages.discover # "KDE and Plasma resources management GUI"
-      pkgs.kdePackages.partitionmanager # Partition Manager
       pkgs.exfatprogs
       pkgs.sublime4
-      rom-properties.packages.x86_64-linux.rp_kde6
-      # (rom-properties.packages.x86_64-linux.rp_kde6.overrideAttrs (oldAttrs: { patches = oldAttrs.patches ++ [ ../files/rp_larger_icons.diff ]; }))
+      rom-properties.packages.x86_64-linux.rp_gtk3
     ];
   };
 }

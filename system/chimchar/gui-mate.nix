@@ -15,15 +15,12 @@
     xserver = {
       enable = true;
       displayManager.lightdm.enable = true;
-      desktopManager = {
-        mate = {
-          enable = true;
-            # NOTE: This already installs the Engrampa archive manager
-          extraCajaExtensions = [
-            rom-properties.packages.x86_64-linux.rp_gtk3
-          ];
-        };
-      };
+      # NOTE: This already installs the Engrampa archive manager
+      desktopManager.mate.enable = true;
     };
   };
+
+  environment.systemPackages = [
+    rom-properties.packages.x86_64-linux.rp_gtk3
+  ];
 }
