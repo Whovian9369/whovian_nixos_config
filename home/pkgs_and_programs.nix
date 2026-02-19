@@ -164,6 +164,7 @@ in
     pkgs.acpi
     pkgs.android-tools
     pkgs.ares
+    pkgs.bolt-launcher # Runescape/Runelite launcher
     pkgs.dino
     pkgs.dosage
     pkgs.filezilla
