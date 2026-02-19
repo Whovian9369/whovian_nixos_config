@@ -25,10 +25,6 @@ let
     ps3dec = pkgs.callPackage ./packages/ps3dec/package.nix {};
     sabretools = pkgs.callPackage ./packages/sabretools/package.nix {};
     psfo = pkgs.callPackage ./packages/psfo/package.nix {};
-    nix-init_packagenix = pkgs.nix-init.overrideAttrs (oldAttrs: rec {
-        patches = [ ./packages/nix-init/default_to_package.diff ];
-      }
-    );
     unnix_script = pkgs.writeShellApplication {
       name = "unnix";
       /* runtimeInputs = [ sed ]; */
@@ -133,6 +129,9 @@ in
     pkgs.mosh
     pkgs.ncdu
     pkgs.ndstool
+    (pkgs.nix-init.overrideAttrs (oldAttrs: {
+        patches = oldAttrs.patches ++ [ ./packages/nix-init/default_to_package.diff ];
+      }))
     pkgs.nixfmt
     pkgs.progress
     pkgs.pyrosimple
@@ -148,7 +147,6 @@ in
     # my_packages.binaryobjectscanner
     my_packages.ird_tools
     my_packages.irdkit
-    my_packages.nix-init_packagenix # Yay for patched apps :)
 
     my_packages.nxtik
     my_packages.ps3dec

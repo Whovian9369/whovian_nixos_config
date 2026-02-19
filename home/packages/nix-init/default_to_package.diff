@@ -1,18 +1,18 @@
 diff --git a/src/main.rs b/src/main.rs
-index 27e20ec..c76417d 100644
+index c780c74..15a8a6e 100644
 --- a/src/main.rs
 +++ b/src/main.rs
-@@ -439,7 +439,7 @@ async fn run() -> Result<()> {
+@@ -455,7 +455,7 @@ async fn run() -> Result<()> {
  
      let (out_dir, out_path) = if let Ok(metadata) = metadata(&output) {
          if metadata.is_dir() {
 -            let out_path = output.join("default.nix");
 +            let out_path = output.join("package.nix");
-             if out_path.exists() && ask_overwrite(&mut editor, &out_path)? {
+             if out_path.exists() && !frontend.should_overwrite(&out_path, opts.overwrite)? {
                  return Ok(());
              }
-@@ -453,7 +453,7 @@ async fn run() -> Result<()> {
-         .map_or(false, |out_path| out_path.ends_with_str(b"/"))
+@@ -469,7 +469,7 @@ async fn run() -> Result<()> {
+         .is_some_and(|out_path| out_path.ends_with_str(b"/"))
      {
          let _ = create_dir_all(&output);
 -        (Some(output.as_ref()), output.join("default.nix"))
