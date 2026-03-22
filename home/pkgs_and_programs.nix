@@ -134,7 +134,8 @@ in
       }))
     pkgs.nixfmt
     pkgs.progress
-    pkgs.pyrosimple
+    # pkgs.pyrosimple
+    (pkgs.pyrosimple.overrideAttrs (oldAttrs: { pythonRelaxDeps = oldAttrs.pythonRelaxDeps ++ [ "parsimonious" ]; }))
     pkgs.python3
     pkgs.rclone
     pkgs.sshfs

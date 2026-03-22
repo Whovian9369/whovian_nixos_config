@@ -7,14 +7,14 @@
 
 buildDotnetModule rec {
   pname = "hactoolnet";
-  version = "2024.08.29";
+  version = "2026.02.25";
 
   src = fetchFromGitLab {
     domain = "git.ryujinx.app";
     owner = "ryubing";
     repo = "LibHac";
-    rev = "e7a2bac6d567cfdbbdbb20e13d02fbadca0f71ac";
-    hash = "sha256-Uzoks27YejLl1xBn+gb0zhtsvLvs7ZN6lvO5JbeLMLE=";
+    rev = "23e402ebb6dedc517e34a98a033078dc0f6fd478";
+    hash = "sha256-Xn+1d5wlbw8H843Ei1liTCKWscYC+Q1U0594XxgzXb0=";
   };
 
   # buildType = "Debug";

@@ -98,7 +98,7 @@
     screen.enable = true;
     zsh = {
       enable = true;
-      shellInit = '' zsh-newuser-install () {} '';
+      shellInit = "zsh-newuser-install () {}";
       /*
         Disable "zsh/newuser" since this is a Live-DVD!
         I just want a working shell to use, please.

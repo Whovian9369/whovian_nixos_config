@@ -28,6 +28,10 @@ $  sudo nix-channel --list
 nixos https://nixos.org/channels/nixos-25.05
 nixos-wsl https://github.com/nix-community/NixOS-WSL/archive/refs/heads/release-25.05.tar.gz
 ```
+-----------
+
+If I need to override a Python package to loosen its dependencies, use `.overrideAttrs (oldAttrs: { pythonRelaxDeps = oldAttrs.pythonRelaxDeps ++ [ "PYTHON PACKAGE NAME HERE" ]; }))`
+
 
 ## Options that I may want:
 I really really should look further into these before actually using them. 
