@@ -117,3 +117,7 @@ Run these commands
   '';
 }
 ```
+
+-----------------------
+
+`nixos-rebuild build-image --image-variant iso --flake .#iso`

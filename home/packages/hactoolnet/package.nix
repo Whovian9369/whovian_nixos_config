@@ -2,19 +2,19 @@
   lib,
   buildDotnetModule,
   dotnetCorePackages,
-  fetchFromGitLab,
+  fetchFromForgejo,
 }:
 
 buildDotnetModule rec {
   pname = "hactoolnet";
-  version = "2026.02.25";
+  version = "2026.04.01";
 
-  src = fetchFromGitLab {
+  src = fetchFromForgejo {
     domain = "git.ryujinx.app";
-    owner = "ryubing";
+    owner = "projects";
     repo = "LibHac";
-    rev = "23e402ebb6dedc517e34a98a033078dc0f6fd478";
-    hash = "sha256-Xn+1d5wlbw8H843Ei1liTCKWscYC+Q1U0594XxgzXb0=";
+    rev = "873db0262d2d0c2388ac8dd954ec6a82c7d2b287";
+    hash = "sha256-a8/fzBcnAIiDczRamLabloiyYI/0jmoLT0GwzAsp+PQ=";
   };
 
   # buildType = "Debug";
@@ -24,14 +24,14 @@ buildDotnetModule rec {
     public readonly string Configuration = IsLocalBuild ? "Debug" : "Release";
   */
 
-  dotnet-sdk = dotnetCorePackages.sdk_8_0;
+  dotnet-sdk = dotnetCorePackages.sdk_10_0;
   dotnet-runtime = dotnetCorePackages.runtime_8_0;
   nugetDeps = ./deps.json;
   projectFile = "src/hactoolnet/hactoolnet.csproj";
   # projectFile = "LibHac.sln";
   selfContainedBuild = false;
-  dotnetBuildFlags = [ "--framework net8.0" ];
-  dotnetInstallFlags = [ "--framework net8.0" ];
+  # dotnetBuildFlags = [ "--framework net10.0" ];
+  # dotnetInstallFlags = [ "--framework net8.0" ];
 
   executables = "hactoolnet";
 

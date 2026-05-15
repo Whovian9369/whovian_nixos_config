@@ -66,6 +66,8 @@ in
           email = "Whovian9369@gmail.com";
         };
       };
+      # Available options for `signing.format` are: "openpgp", "ssh", "x509", or null
+      signing.format = null;
     };
 
     jq = {
@@ -129,9 +131,7 @@ in
     pkgs.mosh
     pkgs.ncdu
     pkgs.ndstool
-    (pkgs.nix-init.overrideAttrs (oldAttrs: {
-        patches = oldAttrs.patches ++ [ ./packages/nix-init/default_to_package.diff ];
-      }))
+    (pkgs.nix-init.overrideAttrs (oldAttrs: { patches = oldAttrs.patches ++ [ ./packages/nix-init/default_to_package.diff ]; }))
     pkgs.nixfmt
     pkgs.progress
     # pkgs.pyrosimple
@@ -173,12 +173,15 @@ in
     pkgs.hunspell
     pkgs.hunspellDicts.en-us-large
     pkgs.imhex
+    pkgs.komikku
     pkgs.libreoffice-qt
     pkgs.liferea
+    pkgs.lollypop
     pkgs.mgba
     pkgs.mpv
     pkgs.obsidian
     pkgs.scrcpy
+    pkgs.shortwave
     pkgs.terminator
     pkgs.unofficial-homestuck-collection
     pkgs.wezterm
